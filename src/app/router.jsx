@@ -8,6 +8,14 @@ import AuthLayout from '@/features/auth/layouts/AuthLayout'
 import ForgotPasswordPage from '@/features/auth/pages/ForgotPasswordPage'
 import CheckEmailPage from '@/features/auth/pages/CheckEmailPage'
 import ResetPasswordPage from '@/features/auth/pages/ResetPasswordPage'
+import DashboardLayout from '@/features/dashboard/layouts/DashboardLayout'
+import CompaniesPage from '@/features/dashboard/pages/CompaniesPage'
+import ApplicationsPage from '@/features/dashboard/pages/ApplicationsPage'
+import SettingsPage from '@/features/dashboard/pages/SettingsPage'
+import ReportsPage from '@/features/dashboard/pages/ReportsPage'
+import SupportPage from '@/features/dashboard/pages/SupportPage'
+import PaymentsPage from '@/features/dashboard/pages/PaymentsPage'
+import SubscriptionsPage from '@/features/dashboard/pages/SubscriptionsPage'
 
 const LoginPage = lazy(() => import('@/features/auth/pages/LoginPage'))
 const DashboardPage = lazy(() => import('@/features/dashboard/pages/DashboardPage'))
@@ -28,8 +36,56 @@ const router = createBrowserRouter([
     element: <PrivateRoute />,
     errorElement: <ErrorBoundary />,
     children: [
-      { path: ROUTES.DASHBOARD, element: <DashboardPage /> },
-      { path: ROUTES.USERS, element: <UsersPage /> },
+      {
+        path: ROUTES.DASHBOARD,
+        element: <DashboardLayout />,
+        children: [
+          {
+            index: true,
+            element: <DashboardPage />,
+          },
+
+          {
+            path: ROUTES.COMPANIES,
+            element: <CompaniesPage />,
+          },
+
+          {
+            path: ROUTES.APPLICATIONS,
+            element: <ApplicationsPage />,
+          },
+
+          {
+            path: ROUTES.USERS,
+            element: <UsersPage />,
+          },
+
+          {
+            path: ROUTES.SUBSCRIPTIONS,
+            element: <SubscriptionsPage />,
+          },
+
+          {
+            path: ROUTES.PAYMENTS,
+            element: <PaymentsPage />,
+          },
+
+          {
+            path: ROUTES.SUPPORT,
+            element: <SupportPage />,
+          },
+
+          {
+            path: ROUTES.REPORTS,
+            element: <ReportsPage />,
+          },
+
+          {
+            path: ROUTES.SETTINGS,
+            element: <SettingsPage />,
+          },
+        ],
+      },
     ],
   },
 
