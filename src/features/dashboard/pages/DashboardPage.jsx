@@ -1,5 +1,10 @@
+import { DashboardOverview } from '../components/overview/DashboardOverview'
+import { useDashboardOverview } from '../hooks/useDashboardOverview'
+
 const DashboardPage = () => {
-  return <div>Dashboard Page</div>
+  const { data, isLoading } = useDashboardOverview()
+
+  return <DashboardOverview data={data} isLoading={isLoading} />
 }
 
 export default DashboardPage

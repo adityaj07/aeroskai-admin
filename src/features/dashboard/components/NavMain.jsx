@@ -3,11 +3,7 @@ import clsx from 'clsx'
 
 import { HugeiconsIcon } from '@hugeicons/react'
 
-import {
-  SidebarGroup,
-  SidebarMenu,
-  SidebarMenuItem,
-} from '@/components/ui/sidebar'
+import { SidebarGroup, SidebarMenu, SidebarMenuItem } from '@/components/ui/sidebar'
 import { ROUTES } from '@/constants/routes.constants'
 
 export function NavMain({ items }) {
@@ -67,7 +63,7 @@ export function NavMain({ items }) {
                 </span>
 
                 {item.badge && (
-                  <div className="ml-auto flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-[#3155D4] px-1 text-[10px] font-medium leading-none text-white">
+                  <div className="ml-auto flex h-[18px] min-w-[18px] items-center justify-center rounded-full bg-[#1565C0] text-[10px] font-medium leading-none text-white">
                     {item.badge}
                   </div>
                 )}
