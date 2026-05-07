@@ -4,7 +4,7 @@ import { HugeiconsIcon } from '@hugeicons/react'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 
-export const CompaniesToolbar = ({ search, onSearchChange }) => {
+export const CompaniesToolbar = ({ search, onSearchChange, onCreateCompany }) => {
   return (
     <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
       <div className="relative w-full max-w-[420px]">
@@ -22,7 +22,11 @@ export const CompaniesToolbar = ({ search, onSearchChange }) => {
         />
       </div>
 
-      <Button className="h-10 rounded-md bg-[#1565C0] px-4 text-xs font-semibold text-white hover:bg-[#0F4DA0] dark:bg-[#1565C0] dark:hover:bg-[#0F4DA0]">
+      <Button
+        type="button"
+        onClick={onCreateCompany}
+        className="h-10 rounded-md bg-[#1565C0] px-4 text-xs font-semibold text-white hover:bg-[#0F4DA0] dark:bg-[#1565C0] dark:hover:bg-[#0F4DA0]"
+      >
         Create Company Account
       </Button>
     </div>

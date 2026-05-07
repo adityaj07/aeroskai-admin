@@ -6,6 +6,7 @@ export const ROUTES = {
   RESET_PASSWORD: '/reset-password',
   DASHBOARD: '/dashboard',
   COMPANIES: 'companies',
+  COMPANY_CREATE: 'companies/create',
   COMPANY_DETAIL: (id = ':companyId') => `companies/${id}`,
   APPLICATIONS: 'applications',
   USERS: 'users',

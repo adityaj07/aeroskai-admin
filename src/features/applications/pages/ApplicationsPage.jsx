@@ -10,14 +10,14 @@ import { CompaniesTable } from '../components/CompaniesTable'
 import { CompaniesToolbar } from '../components/CompaniesToolbar'
 import { useCompanies } from '../hooks/useCompanies'
 
-const CompaniesPage = () => {
+const ApplicationsPage = () => {
   const navigate = useNavigate()
   const [status, setStatus] = useState('All')
   const [search, setSearch] = useState('')
 
   const debouncedSearch = useDebounce(search, 250)
 
-  const { data, isLoading } = useCompanies({
+  const { data, isLoading } = useApplictions({
     status,
     search: debouncedSearch,
   })
@@ -48,4 +48,4 @@ const CompaniesPage = () => {
   )
 }
 
-export default CompaniesPage
+export default ApplicationsPage

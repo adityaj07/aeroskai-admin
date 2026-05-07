@@ -10,8 +10,9 @@ import CheckEmailPage from '@/features/auth/pages/CheckEmailPage'
 import ResetPasswordPage from '@/features/auth/pages/ResetPasswordPage'
 import DashboardLayout from '@/features/dashboard/layouts/DashboardLayout'
 import CompaniesPage from '@/features/companies/pages/CompaniesPage'
+import CreateCompanyPage from '@/features/companies/pages/CreateCompanyPage'
 import CompanyDetailsPage from '@/features/companies/pages/CompanyDetailsPage'
-import ApplicationsPage from '@/features/dashboard/pages/ApplicationsPage'
+import ApplicationsPage from '@/features/applications/pages/ApplicationsPage'
 import SettingsPage from '@/features/settings/page/SettingsPage'
 import ReportsPage from '@/features/dashboard/pages/ReportsPage'
 import SupportPage from '@/features/dashboard/pages/SupportPage'
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
           {
             path: ROUTES.COMPANIES,
             element: <CompaniesPage />,
+          },
+          {
+            path: ROUTES.COMPANY_CREATE,
+            element: <CreateCompanyPage />,
           },
           {
             path: ROUTES.COMPANY_DETAIL(),
