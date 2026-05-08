@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
@@ -14,8 +14,12 @@ import {
   TableRow,
 } from '@/components/ui/table'
 import { UserStatusBadge } from './UserStatusBadge'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import { usersService } from '../services/user.service'
+import { USERS_QUERY_KEYS } from '../constants/users.constants'
+import { ConfirmUserStatusDialog } from './userDetails/dialogs/ConfirmUserStatusDialog'
 
-const getColumns = (navigate) => [
+const getColumns = (navigate, onToggleStatus) => [
   {
     accessorKey: 'username',
     header: 'Username',
@@ -56,7 +60,7 @@ const getColumns = (navigate) => [
           <Button
             variant="ghost"
             className="h-8 rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
-            onClick={() => navigate(`${ROUTES.DASHBOARD}/${ROUTES.USER_DETAIL(row.original.id)}`)}
+            onClick={() => onToggleStatus && onToggleStatus(row.original)}
           >
             {isActive ? 'Deactivate' : 'Activate'}
           </Button>
@@ -68,8 +72,22 @@ const getColumns = (navigate) => [
 
 export const UsersTable = ({ users }) => {
   const navigate = useNavigate()
+  const [selectedUser, setSelectedUser] = useState(null)
+  const [confirmOpen, setConfirmOpen] = useState(false)
+
+  const queryClient = useQueryClient()
+  const mutation = useMutation({
+    mutationFn: ({ id, status }) => usersService.updateStatus(id, status),
+    onSuccess: () => queryClient.invalidateQueries({ queryKey: USERS_QUERY_KEYS.list }),
+  })
+
+  const handleToggleStatus = (user) => {
+    setSelectedUser(user)
+    setConfirmOpen(true)
+  }
+
   const data = useMemo(() => users ?? [], [users])
-  const columns = useMemo(() => getColumns(navigate), [navigate])
+  const columns = useMemo(() => getColumns(navigate, handleToggleStatus), [navigate])
 
   const table = useReactTable({
     data,
@@ -137,6 +155,25 @@ export const UsersTable = ({ users }) => {
           )}
         </TableBody>
       </Table>
+
+      <ConfirmUserStatusDialog
+        open={confirmOpen}
+        title={selectedUser?.status === 'Active' ? 'Deactivate account?' : 'Activate account?'}
+        description={
+          selectedUser?.status === 'Active'
+            ? "This will restrict the user's access to the platform. They will not be able to log in or use features."
+            : "This will restore the user's access to the platform. They will be able to log in and use features."
+        }
+        confirmLabel={selectedUser?.status === 'Active' ? 'Yes, Deactivate' : 'Yes, Activate'}
+        confirmClassName={selectedUser?.status === 'Active' ? 'bg-[#DC2626]' : 'bg-[#16A34A]'}
+        onClose={() => setConfirmOpen(false)}
+        onConfirm={() => {
+          if (!selectedUser) return
+          const newStatus = selectedUser.status === 'Active' ? 'Inactive' : 'Active'
+          mutation.mutate({ id: selectedUser.id, status: newStatus })
+          setConfirmOpen(false)
+        }}
+      />
     </motion.div>
   )
 }

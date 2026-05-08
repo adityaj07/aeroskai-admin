@@ -1,5 +1,6 @@
 import { BaseDialog } from '@/components/shared/app/BaseDialog'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/lib/utils'
 
 export const ConfirmUserStatusDialog = ({
   open,
@@ -25,7 +26,7 @@ export const ConfirmUserStatusDialog = ({
         <Button
           type="button"
           onClick={onConfirm}
-          className={`h-10 text-sm text-white ${confirmClassName}`}
+          className={cn('h-10 text-sm text-white', confirmClassName)}
         >
           {confirmLabel}
         </Button>

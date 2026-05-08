@@ -1,14 +1,16 @@
 const usersMockData = [
   {
     id: 'savannah17',
+    fullName: 'Isabella Walker',
     username: '@savannah17',
-    email: 'savannah17@mail.com',
+    email: 'isabella@flightpath.com',
     subscription: 'Active',
     dateJoined: 'Sep 12, 2025',
     status: 'Active',
   },
   {
     id: 'olivia-white',
+    fullName: 'Olivia White',
     username: '@olivia_white',
     email: 'olivia.white@mail.com',
     subscription: 'Active',
@@ -17,6 +19,7 @@ const usersMockData = [
   },
   {
     id: 'sophie-jones',
+    fullName: 'Sophie Jones',
     username: '@sophie_jones',
     email: 'sophie.jones@mail.com',
     subscription: 'Active',
@@ -25,6 +28,7 @@ const usersMockData = [
   },
   {
     id: 'james-brown',
+    fullName: 'James Brown',
     username: '@james.brown',
     email: 'james.brown@mail.com',
     subscription: 'Inactive',
@@ -33,6 +37,7 @@ const usersMockData = [
   },
   {
     id: 'sara-lee',
+    fullName: 'Sara Lee',
     username: '@sara_lee',
     email: 'sara.lee@mail.com',
     subscription: 'Active',
@@ -41,6 +46,7 @@ const usersMockData = [
   },
   {
     id: 'jack-smith',
+    fullName: 'Jack Smith',
     username: '@jack_smith',
     email: 'jack.smith@mail.com',
     subscription: 'Inactive',
@@ -49,6 +55,7 @@ const usersMockData = [
   },
   {
     id: 'michael-johnson',
+    fullName: 'Michael Johnson',
     username: '@michael.johnson',
     email: 'michael.johnson@mail.com',
     subscription: 'Inactive',
@@ -57,6 +64,7 @@ const usersMockData = [
   },
   {
     id: 'linda-smith',
+    fullName: 'Linda Smith',
     username: '@linda.smith',
     email: 'linda.smith@mail.com',
     subscription: 'Active',
@@ -65,6 +73,7 @@ const usersMockData = [
   },
   {
     id: 'ethan-walker',
+    fullName: 'Ethan Walker',
     username: '@ethan_walker',
     email: 'ethan.walker@mail.com',
     subscription: 'Inactive',
@@ -73,6 +82,7 @@ const usersMockData = [
   },
   {
     id: 'jason34',
+    fullName: 'Jason Miller',
     username: '@jason34',
     email: 'jason34@mail.com',
     subscription: 'Active',
@@ -81,6 +91,7 @@ const usersMockData = [
   },
   {
     id: 'lily22',
+    fullName: 'Lily Anderson',
     username: '@lily22',
     email: 'lily22@mail.com',
     subscription: 'Pending',
@@ -93,90 +104,135 @@ const userDetailsMock = {
   savannah17: {
     id: 'savannah17',
     username: '@savannah17',
-    fullName: 'Savannah Carter',
-    email: 'savannah17@mail.com',
+    fullName: 'Isabella Walker',
+    email: 'isabella@flightpath.com',
+    phoneNumber: '+61 98765 23456',
     status: 'Active',
-
-    accountDetails: [
-      { label: 'Username', value: '@savannah17' },
-      { label: 'Full Name', value: 'Savannah Carter' },
-      { label: 'Email Address', value: 'savannah17@mail.com' },
-      { label: 'Phone Number', value: '+1 202 555 0123' },
-    ],
-
-    subscriptionDetails: [
-      { label: 'Subscription Status', value: 'Active' },
-      { label: 'Plan Type', value: 'Professional' },
-      { label: 'Renewal Date', value: 'Dec 12, 2025' },
-    ],
-
-    activityDetails: [
-      { label: 'Date Joined', value: 'Sep 12, 2025' },
-      { label: 'Last Active', value: '2 hours ago' },
-    ],
-  },
-
-  'olivia-white': {
-    id: 'olivia-white',
-    username: '@olivia_white',
-    fullName: 'Olivia White',
-    email: 'olivia.white@mail.com',
-    status: 'Active',
-
-    accountDetails: [
-      { label: 'Username', value: '@olivia_white' },
-      { label: 'Full Name', value: 'Olivia White' },
-      { label: 'Email Address', value: 'olivia.white@mail.com' },
-      { label: 'Phone Number', value: '+1 202 555 0188' },
-    ],
-
-    subscriptionDetails: [
-      { label: 'Subscription Status', value: 'Active' },
-      { label: 'Plan Type', value: 'Enterprise' },
-      { label: 'Renewal Date', value: 'Mar 5, 2026' },
-    ],
-
-    activityDetails: [
-      { label: 'Date Joined', value: 'Mar 5, 2025' },
-      { label: 'Last Active', value: '1 day ago' },
-    ],
+    professionalDetails: {
+      role: 'Pilot',
+      sector: 'Airline',
+      goals: '5 years',
+      referral: 'Friend Referral',
+    },
+    activity: {
+      posts: 151,
+      followers: '112K',
+      following: 879,
+    },
+    account: {
+      accountType: 'Public',
+      dateJoined: 'Sep 12, 2025',
+      lastLogin: '2 hours ago',
+    },
+    subscription: {
+      plan: 'Monthly',
+      startDate: 'Sep 12, 2025',
+      endDate: 'Oct 12, 2025',
+      status: 'Active',
+    },
   },
 }
 
-const normalizeStatusFilter = (status) => {
-  if (status === 'All') return null
-  return status
-}
+const delay = (ms) => new Promise((res) => setTimeout(res, ms))
 
 export const usersService = {
-  getAll: async ({ status = 'All', search = '' } = {}) => {
-    const normalizedStatus = normalizeStatusFilter(status)
-    const normalizedSearch = search.trim().toLowerCase()
+  getAll: async (params = {}) => {
+    await delay(120)
+    const { status = 'All', search = '' } = params
 
-    const filtered = usersMockData.filter((user) => {
-      const matchesStatus = normalizedStatus ? user.status === normalizedStatus : true
-
-      const matchesSearch = normalizedSearch
-        ? [user.username, user.email].some((field) =>
-            field.toLowerCase().includes(normalizedSearch)
-          )
-        : true
-
-      return matchesStatus && matchesSearch
+    const filtered = usersMockData.filter((u) => {
+      if (status && status !== 'All' && u.status !== status) return false
+      if (search) {
+        const s = search.toLowerCase()
+        return (
+          u.fullName.toLowerCase().includes(s) ||
+          u.username.toLowerCase().includes(s) ||
+          u.email.toLowerCase().includes(s)
+        )
+      }
+      return true
     })
 
-    return Promise.resolve({
-      data: filtered,
-      meta: {
-        total: usersMockData.length,
-        visible: filtered.length,
-      },
-    })
+    return { data: filtered }
   },
 
-  getById: async (id) => {
-    const details = userDetailsMock[id] ?? userDetailsMock['savannah17']
+  getById: async (userId) => {
+    await delay(80)
+    const rawKey = userId?.toString()?.trim()
+    const normalizedKey = rawKey?.replace(/^@/, '')
+    const details =
+      userDetailsMock[rawKey] ||
+      userDetailsMock[normalizedKey] ||
+      Object.values(userDetailsMock).find(
+        (detail) =>
+          detail.id === rawKey ||
+          detail.id === normalizedKey ||
+          detail.username === rawKey ||
+          detail.username === `@${normalizedKey}`
+      )
+    if (details) return details
 
-    return Promise.resolve(details)
+    const user = usersMockData.find(
+      (u) =>
+        u.id === rawKey ||
+        u.id === normalizedKey ||
+        u.username === rawKey ||
+        u.username === `@${normalizedKey}`
+    )
+    if (!user) throw new Error('User not found')
+
+    return {
+      id: user.id,
+      username: user.username,
+      fullName: user.fullName,
+      email: user.email,
+      phoneNumber: user.phoneNumber ?? '',
+      status: user.status,
+      professionalDetails: {
+        role: user.role ?? '—',
+        sector: user.sector ?? '—',
+        goals: user.goals ?? '—',
+        referral: user.referral ?? '—',
+      },
+      activity: {
+        posts: user.posts ?? 0,
+        followers: user.followers ?? '0',
+        following: user.following ?? 0,
+      },
+      account: {
+        accountType: user.accountType ?? '—',
+        dateJoined: user.dateJoined,
+        lastLogin: user.lastLogin ?? '—',
+      },
+      subscription: {
+        plan: user.subscription ?? '—',
+        startDate: user.subscriptionStartDate ?? '—',
+        endDate: user.subscriptionEndDate ?? '—',
+        status: user.status,
+      },
+    }
+  },
+
+  updateStatus: async (userId, newStatus) => {
+    await delay(80)
+    const idx = usersMockData.findIndex((u) => u.id === userId || u.username === userId)
+    if (idx === -1) throw new Error('User not found')
+    usersMockData[idx].status = newStatus
+
+    const detailKey = userId?.toString()
+    if (userDetailsMock[detailKey]) {
+      userDetailsMock[detailKey] = {
+        ...userDetailsMock[detailKey],
+        status: newStatus,
+        subscription: {
+          ...userDetailsMock[detailKey].subscription,
+          status: newStatus,
+        },
+      }
+    }
+
+    return usersMockData[idx]
   },
 }
+
+export default usersService

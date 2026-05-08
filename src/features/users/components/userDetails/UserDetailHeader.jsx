@@ -2,8 +2,10 @@ import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 
 import { UserStatusBadge } from '../UserStatusBadge'
+import { cn } from '@/lib/utils'
 
-export const UserDetailHeader = ({ details }) => {
+export const UserDetailHeader = ({ details, onToggleStatus }) => {
+  const status = details.status
   const initials =
     details.fullName
       ?.split(' ')
@@ -12,33 +14,37 @@ export const UserDetailHeader = ({ details }) => {
       ?.join('') || 'U'
 
   return (
-    <div className="p-2">
-      <div className="flex items-start justify-between gap-4">
-        {/* Left */}
-        <div className="flex items-start gap-2.5">
-          <Avatar className="h-8 w-8 rounded-lg bg-[#1565C01A]">
-            <AvatarFallback className="rounded-lg bg-[#1565C01A] text-[12px] font-semibold text-[#1F1E1F] dark:text-white">
-              {initials}
-            </AvatarFallback>
-          </Avatar>
+    <div className="flex flex-col gap-4 rounded-2xl bg-white px-4 py-4  dark:bg-[#121417] sm:flex-row sm:items-center sm:justify-between md:px-5">
+      <div className="flex min-w-0 items-start gap-4 sm:gap-5">
+        <Avatar className="h-11.5 w-11.5 shrink-0 rounded-[12px] bg-[#1565C01A]">
+          <AvatarFallback className="rounded-[12px] bg-[#1565C01A] text-[20px] font-semibold text-[#1F1E1F] dark:text-white">
+            {initials}
+          </AvatarFallback>
+        </Avatar>
 
-          <div className="flex flex-col gap-1">
-            <p className="text-[14px] font-semibold leading-none text-[#1F1E1F] dark:text-white">
-              {details.username}
-            </p>
+        <div className="min-w-0 flex-1">
+          <p className="leading-5.5 truncate text-[20px] font-semibold text-[#1F1E1F] dark:text-white">
+            {details.username}
+          </p>
 
-            <UserStatusBadge status={details.status} />
+          <div className="mt-2 flex flex-wrap gap-2">
+            <UserStatusBadge status={status} />
           </div>
         </div>
-
-        {/* Right */}
-        <Button
-          type="button"
-          className="h-auto rounded-md bg-[#EAEEF3] px-4 py-2 text-[11px] font-semibold text-[#DC2626] shadow-none hover:bg-[#E2E8F0] dark:bg-[#1F2937] dark:text-[#F87171]"
-        >
-          Deactivate Account
-        </Button>
       </div>
+
+      <Button
+        type="button"
+        onClick={() => onToggleStatus && onToggleStatus()}
+        className={cn(
+          'w-full rounded-md px-4 py-3 text-[11px] font-semibold shadow-none sm:w-auto sm:px-6 sm:py-4',
+          status === 'Active'
+            ? 'bg-[#F1F5F9] text-[#DC2626] hover:bg-[#E2E8F0] dark:bg-[#1F2937] dark:text-[#F87171]'
+            : 'bg-[#1565C0] text-white hover:bg-[#0F4C92] dark:bg-[#1565C0] dark:text-white'
+        )}
+      >
+        {status === 'Active' ? 'Deactivate Account' : 'Activate Account'}
+      </Button>
     </div>
   )
 }
