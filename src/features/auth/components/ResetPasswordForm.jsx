@@ -54,11 +54,13 @@ export const ResetPasswordForm = () => {
 
   return (
     <AuthFormMotion>
-      <Card className="w-full rounded-[20px] border-[#F3F4F6]">
+      <Card className="w-full rounded-[20px] border-[#F3F4F6] bg-white dark:border-white/10 dark:bg-[#121417]">
         <CardHeader className="space-y-2 pb-4 text-center">
-          <CardTitle className="text-2xl text-[#1F1E1F] md:text-3xl">Reset password</CardTitle>
+          <CardTitle className="text-2xl text-[#1F1E1F] dark:text-white md:text-3xl">
+            Reset password
+          </CardTitle>
 
-          <CardDescription className="text-[12px] text-[#6F7680]">
+          <CardDescription className="text-[12px] text-[#6F7680] dark:text-[#A9B0BA]">
             Create a new password for your account.
           </CardDescription>
         </CardHeader>
@@ -67,7 +69,10 @@ export const ResetPasswordForm = () => {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} noValidate>
               <FormItem className="mt-3">
-                <FormLabel htmlFor="password" className="text-[13px] font-semibold text-[#0C1014]">
+                <FormLabel
+                  htmlFor="password"
+                  className="text-[13px] font-semibold text-[#0C1014] dark:text-white"
+                >
                   New Password
                 </FormLabel>
 
@@ -78,7 +83,7 @@ export const ResetPasswordForm = () => {
                       type={showPassword ? 'text' : 'password'}
                       placeholder="Enter new password"
                       autoComplete="new-password"
-                      className="rounded-lg border-[1px] border-[#F3F4F6] bg-[#F7F9F9] pr-10 ring-0 placeholder:text-[#6F7680]"
+                      className="rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[#1F1E1F] ring-0 placeholder:text-[#6F7680] dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD]"
                       {...form.register('password')}
                     />
 
@@ -105,7 +110,7 @@ export const ResetPasswordForm = () => {
               <FormItem className="mt-3">
                 <FormLabel
                   htmlFor="confirmPassword"
-                  className="text-[13px] font-semibold text-[#0C1014]"
+                  className="text-[13px] font-semibold text-[#0C1014] dark:text-white"
                 >
                   Confirm Password
                 </FormLabel>
@@ -117,7 +122,7 @@ export const ResetPasswordForm = () => {
                       type={showConfirmPassword ? 'text' : 'password'}
                       placeholder="Confirm new password"
                       autoComplete="new-password"
-                      className="rounded-lg border-[1px] border-[#F3F4F6] bg-[#F7F9F9] pr-10 ring-0 placeholder:text-[#6F7680]"
+                      className="rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[#1F1E1F] ring-0 placeholder:text-[#6F7680] dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD]"
                       {...form.register('confirmPassword')}
                     />
 
@@ -153,14 +158,11 @@ export const ResetPasswordForm = () => {
                 {isPending ? 'Resetting...' : 'Reset Password'}
               </Button>
 
-              <Link to={ROUTES.LOGIN}>
-                <Button
-                  type="button"
-                  variant="ghost"
-                  className="mt-10 h-10 w-full text-sm text-[#6F7680]"
-                >
-                  Back to login
-                </Button>
+              <Link
+                to={ROUTES.LOGIN}
+                className="mt-8 flex justify-center text-[14px] font-medium text-[#6F7680] transition-colors hover:text-[#1565C0] dark:text-[#A9B0BA] dark:hover:text-white"
+              >
+                Back to login
               </Link>
             </form>
           </Form>

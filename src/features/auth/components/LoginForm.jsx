@@ -53,10 +53,12 @@ export const LoginForm = () => {
 
   return (
     <AuthFormMotion>
-      <Card className="w-full rounded-[20px] border-[#F3F4F6] ">
+      <Card className="w-full rounded-[20px] border-[#F3F4F6] bg-white dark:border-white/10 dark:bg-[#121417]">
         <CardHeader className="space-y-2 pb-4 text-center">
-          <CardTitle className="text-2xl text-[#1F1E1F] md:text-3xl">Welcome back</CardTitle>
-          <CardDescription className="text-[12px] text-[#6F7680]">
+          <CardTitle className="text-2xl text-[#1F1E1F] dark:text-white md:text-3xl">
+            Welcome back
+          </CardTitle>
+          <CardDescription className="text-[12px] text-[#6F7680] dark:text-[#A9B0BA]">
             Login to your account
           </CardDescription>
         </CardHeader>
@@ -65,7 +67,10 @@ export const LoginForm = () => {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} noValidate>
               <FormItem className="mt-3">
-                <FormLabel htmlFor="email" className="text-[13px] font-semibold text-[#0C1014]">
+                <FormLabel
+                  htmlFor="email"
+                  className="text-[13px] font-semibold text-[#0C1014] dark:text-white"
+                >
                   Email
                 </FormLabel>
                 <FormControl>
@@ -74,7 +79,7 @@ export const LoginForm = () => {
                     type="email"
                     placeholder="Enter email address"
                     autoComplete="email"
-                    className="rounded-lg border-[1px] border-[#F3F4F6] bg-[#F7F9F9] pr-10 ring-0 placeholder:text-[#6F7680]"
+                    className="rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[#1F1E1F] ring-0 placeholder:text-[#6F7680] dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD]"
                     {...form.register('email')}
                   />
                 </FormControl>
@@ -84,7 +89,10 @@ export const LoginForm = () => {
               </FormItem>
 
               <FormItem className="mt-3">
-                <FormLabel htmlFor="password" className="text-[13px] font-semibold text-[#0C1014]">
+                <FormLabel
+                  htmlFor="password"
+                  className="text-[13px] font-semibold text-[#0C1014] dark:text-white"
+                >
                   Password
                 </FormLabel>
 
@@ -95,7 +103,7 @@ export const LoginForm = () => {
                       type={showPassword ? 'text' : 'password'}
                       placeholder="Create a password"
                       autoComplete="current-password"
-                      className="rounded-lg border-[1px] border-[#F3F4F6] bg-[#F7F9F9] pr-10 ring-0 placeholder:text-[#6F7680]"
+                      className="rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[#1F1E1F] ring-0 placeholder:text-[#6F7680] dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD]"
                       {...form.register('password')}
                     />
 
@@ -109,7 +117,7 @@ export const LoginForm = () => {
                         icon={showPassword ? ViewIcon : ViewOffSlashIcon}
                         size={18}
                         strokeWidth={1.8}
-                        className="text-[#6F7680]"
+                        className="text-[#6F7680] dark:text-[#A9B0BA]"
                       />
                     </button>
                   </div>
@@ -118,7 +126,7 @@ export const LoginForm = () => {
                 <div className="flex justify-end">
                   <Link
                     to={ROUTES.FORGOT_PASSWORD}
-                    className="text-xs font-medium text-[#F43F5E] hover:opacity-80"
+                    className="text-xs font-medium text-[#F43F5E] transition-colors hover:opacity-80 dark:text-[#FB7185]"
                   >
                     Forgot password?
                   </Link>
