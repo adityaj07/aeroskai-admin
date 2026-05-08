@@ -1,27 +1,37 @@
+import { LogOut } from '@hugeicons/core-free-icons'
+import { HugeiconsIcon } from '@hugeicons/react'
 import * as React from 'react'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
-
-import { Sidebar, SidebarContent, SidebarFooter, SidebarHeader } from '@/components/ui/sidebar'
-
-import { Button } from '@/components/ui/button'
+import { useNavigate } from 'react-router-dom'
 
 import LogoHorizontal from '@/assets/images/Logo-horizontal.svg'
+import { Button } from '@/components/ui/button'
+import {
+  Sidebar,
+  SidebarContent,
+  SidebarFooter,
+  SidebarHeader,
+  useSidebar,
+} from '@/components/ui/sidebar'
+import { ROUTES } from '@/constants/routes.constants'
 
-import { NavMain } from './NavMain'
 import { dashboardNavigation } from '../config/MenuConfig'
 
-import { HugeiconsIcon } from '@hugeicons/react'
-import { LogOut } from '@hugeicons/core-free-icons'
-
-import { ROUTES } from '@/constants/routes.constants'
+import { NavMain } from './NavMain'
 import { ConfirmLogoutDialog } from './dialogs/ConfirmLogoutDialog'
 
 export function AppSidebar({ ...props }) {
   const navigate = useNavigate()
+  const { isMobile, setOpenMobile } = useSidebar()
 
   const [logoutOpen, setLogoutOpen] = useState(false)
+
+  const keepSidebarOpen = React.useCallback(() => {
+    if (isMobile) {
+      setOpenMobile(true)
+    }
+  }, [isMobile, setOpenMobile])
 
   const handleLogout = () => {
     localStorage.removeItem('token')
@@ -39,7 +49,7 @@ export function AppSidebar({ ...props }) {
         </SidebarHeader>
 
         <SidebarContent className="dark:bg-background bg-white">
-          <NavMain items={dashboardNavigation} />
+          <NavMain items={dashboardNavigation} onItemClick={keepSidebarOpen} />
         </SidebarContent>
 
         <SidebarFooter className="dark:bg-background bg-white p-4">

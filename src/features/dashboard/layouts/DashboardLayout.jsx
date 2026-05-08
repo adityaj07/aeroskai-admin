@@ -40,8 +40,8 @@ const DashboardLayout = () => {
       <SidebarInset className="min-w-0">
         <header className="bg-background/95 sticky top-0 z-40 flex h-16 shrink-0 items-center justify-between gap-2 border-b px-4 backdrop-blur">
           <div className="flex items-center justify-between gap-2">
-            <SidebarTrigger className="-ml-1" />
-            <Separator orientation="vertical" className="mr-2 data-[orientation=vertical]:h-4" />
+            <SidebarTrigger className="-ml-1 md:hidden" />
+            {/* <Separator orientation="vertical" className="mr-2 data-[orientation=vertical]:h-4" /> */}
             <Breadcrumb>
               <BreadcrumbList>
                 <BreadcrumbItem>

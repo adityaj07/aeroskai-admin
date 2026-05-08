@@ -1,12 +1,12 @@
-import { NavLink, useLocation } from 'react-router-dom'
-import clsx from 'clsx'
-
 import { HugeiconsIcon } from '@hugeicons/react'
+import clsx from 'clsx'
+import { useCallback } from 'react'
+import { NavLink, useLocation } from 'react-router-dom'
 
 import { SidebarGroup, SidebarMenu, SidebarMenuItem } from '@/components/ui/sidebar'
 import { ROUTES } from '@/constants/routes.constants'
 
-export function NavMain({ items }) {
+export function NavMain({ items, onItemClick }) {
   const location = useLocation()
 
   const resolveDashboardPath = (url) => {
@@ -15,6 +15,13 @@ export function NavMain({ items }) {
   }
 
   const normalizePath = (path) => (path !== '/' && path.endsWith('/') ? path.slice(0, -1) : path)
+
+  const handleItemClick = useCallback(
+    (event) => {
+      onItemClick?.(event)
+    },
+    [onItemClick]
+  )
 
   return (
     <SidebarGroup className="px-[10px] py-4">
@@ -32,6 +39,7 @@ export function NavMain({ items }) {
             <SidebarMenuItem key={item.title}>
               <NavLink
                 to={itemPath}
+                onClick={handleItemClick}
                 className={clsx(
                   'group/nav-item flex h-11 w-full items-center gap-2 rounded-[8px] px-[18px] py-[10px] transition-all duration-200',
                   isActive
