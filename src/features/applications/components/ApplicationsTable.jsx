@@ -16,7 +16,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-import { CompanyStatusBadge } from './CompanyStatusBadge'
+import { ApplicationStatusBadge } from './ApplicationStatusBadge'
 
 const getColumns = (navigate) => [
   {
@@ -38,49 +38,43 @@ const getColumns = (navigate) => [
     ),
   },
   {
-    accessorKey: 'username',
-    header: 'Username',
+    accessorKey: 'contactEmail',
+    header: 'Contact Email',
   },
   {
-    accessorKey: 'email',
-    header: 'Email',
-  },
-  {
-    accessorKey: 'totalEmployees',
-    header: 'Total Employees',
-  },
-  {
-    accessorKey: 'payment',
-    header: 'Payment',
+    accessorKey: 'submittedDate',
+    header: 'Date Submitted',
   },
   {
     accessorKey: 'status',
     header: 'Status',
-    cell: ({ row }) => <CompanyStatusBadge status={row.original.status} />,
+    cell: ({ row }) => <ApplicationStatusBadge status={row.original.status} />,
   },
-  {
-    accessorKey: 'subscriptionExpiry',
-    header: 'Subscription Expiry',
-  },
+
   {
     id: 'actions',
     header: 'Actions',
+    cell: ({ row }) => {
+      const isCompleted = row.original.status === 'Approved' || row.original.status === 'Rejected'
 
-    cell: ({ row }) => (
-      <Button
-        variant="ghost"
-        className="h-8 rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
-        onClick={() => navigate(`${ROUTES.DASHBOARD}/${ROUTES.COMPANY_DETAIL(row.original.id)}`)}
-      >
-        View Details
-      </Button>
-    ),
+      return (
+        <Button
+          variant="ghost"
+          className="h-8 rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+          onClick={() =>
+            navigate(`${ROUTES.DASHBOARD}/${ROUTES.APPLICATION_DETAIL(row.original.id)}`)
+          }
+        >
+          {isCompleted ? 'View' : 'Review'}
+        </Button>
+      )
+    },
   },
 ]
 
-export const CompaniesTable = ({ companies }) => {
+export const ApplicationsTable = ({ applications }) => {
   const navigate = useNavigate()
-  const data = useMemo(() => companies ?? [], [companies])
+  const data = useMemo(() => applications ?? [], [applications])
   const columns = useMemo(() => getColumns(navigate), [navigate])
 
   const table = useReactTable({
@@ -108,7 +102,9 @@ export const CompaniesTable = ({ companies }) => {
                   key={header.id}
                   className={`
             h-12 bg-[#F7F9F9] px-4 text-xs font-semibold
-            text-[#6F7680] dark:bg-[#171A1E] dark:text-[#9AA2AD]  
+            text-[#6F7680] dark:bg-[#171A1E] dark:text-[#9AA2AD]
+
+           
           `}
                 >
                   {header.isPlaceholder
@@ -143,7 +139,7 @@ export const CompaniesTable = ({ companies }) => {
                 colSpan={columns.length}
                 className="py-10 text-center text-sm text-[#6F7680] dark:text-[#9AA2AD]"
               >
-                No companies found.
+                No applications found.
               </TableCell>
             </TableRow>
           )}

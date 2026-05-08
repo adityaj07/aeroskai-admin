@@ -7,8 +7,7 @@ import { Button } from '@/components/ui/button'
 import { Calendar } from '@/components/ui/calendar'
 import { Input } from '@/components/ui/input'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
-
-import { BaseCompanyDialog } from './BaseCompanyDialog'
+import { BaseDialog } from '@/components/shared/app/BaseDialog'
 
 const DatePickerField = ({ value, onChange }) => {
   return (
@@ -20,7 +19,12 @@ const DatePickerField = ({ value, onChange }) => {
         </button>
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
-        <Calendar mode="single" selected={value} onSelect={(date) => date && onChange(date)} initialFocus />
+        <Calendar
+          mode="single"
+          selected={value}
+          onSelect={(date) => date && onChange(date)}
+          initialFocus
+        />
       </PopoverContent>
     </Popover>
   )
@@ -31,14 +35,24 @@ export const ManageSubscriptionDialog = ({ open, data, onClose }) => {
   const [endDate, setEndDate] = useState(new Date('2025-12-31'))
 
   return (
-    <BaseCompanyDialog open={open} title="Manage Subscription" onClose={onClose}>
+    <BaseDialog open={open} title="Manage Subscription" onClose={onClose}>
       <div className="space-y-4">
         <div className="rounded-lg bg-[#F7F9F9] p-3 dark:bg-white/5">
           <p className="text-xs text-[#6F7680] dark:text-[#A9B0BA]">Current Subscription</p>
-          <p className="text-2xl font-semibold text-[#0C1014] dark:text-white">{data.seats} Seats</p>
+          <p className="text-2xl font-semibold text-[#0C1014] dark:text-white">
+            {data.seats} Seats
+          </p>
           <div className="mt-2 grid grid-cols-2 gap-2 text-xs text-[#6F7680] dark:text-[#A9B0BA]">
-            <div>Start Date<br />{data.startDate}</div>
-            <div>End Date<br />{data.endDate}</div>
+            <div>
+              Start Date
+              <br />
+              {data.startDate}
+            </div>
+            <div>
+              End Date
+              <br />
+              {data.endDate}
+            </div>
           </div>
         </div>
 
@@ -48,12 +62,20 @@ export const ManageSubscriptionDialog = ({ open, data, onClose }) => {
             <Input value="$70.99" readOnly className="h-10 bg-[#F7F9F9] dark:bg-white/5" />
           </div>
           <div>
-            <p className="mb-1 text-xs font-semibold text-[#0C1014] dark:text-white">Number of Seats</p>
-            <Input value={String(data.seats)} readOnly className="h-10 bg-[#F7F9F9] dark:bg-white/5" />
+            <p className="mb-1 text-xs font-semibold text-[#0C1014] dark:text-white">
+              Number of Seats
+            </p>
+            <Input
+              value={String(data.seats)}
+              readOnly
+              className="h-10 bg-[#F7F9F9] dark:bg-white/5"
+            />
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div>
-              <p className="mb-1 text-xs font-semibold text-[#0C1014] dark:text-white">Start Date</p>
+              <p className="mb-1 text-xs font-semibold text-[#0C1014] dark:text-white">
+                Start Date
+              </p>
               <DatePickerField value={startDate} onChange={setStartDate} />
             </div>
             <div>
@@ -77,6 +99,6 @@ export const ManageSubscriptionDialog = ({ open, data, onClose }) => {
           </Button>
         </div>
       </div>
-    </BaseCompanyDialog>
+    </BaseDialog>
   )
 }

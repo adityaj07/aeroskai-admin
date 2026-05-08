@@ -1,8 +1,7 @@
+import { BaseDialog } from '@/components/shared/app/BaseDialog'
 import { Button } from '@/components/ui/button'
 
-import { BaseCompanyDialog } from './BaseCompanyDialog'
-
-export const ConfirmCompanyActionDialog = ({
+export const ConfirmUserStatusDialog = ({
   open,
   title,
   description,
@@ -12,7 +11,7 @@ export const ConfirmCompanyActionDialog = ({
   onConfirm,
 }) => {
   return (
-    <BaseCompanyDialog open={open} title={title} onClose={onClose} widthClassName="max-w-[600px]">
+    <BaseDialog open={open} title={title} onClose={onClose} widthClassName="max-w-[600px]">
       <p className="mb-6 text-start text-xs text-[#6F7680] dark:text-[#A9B0BA]">{description}</p>
       <div className="grid grid-cols-2 gap-2">
         <Button
@@ -31,6 +30,6 @@ export const ConfirmCompanyActionDialog = ({
           {confirmLabel}
         </Button>
       </div>
-    </BaseCompanyDialog>
+    </BaseDialog>
   )
 }

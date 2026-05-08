@@ -8,11 +8,11 @@ import { Form } from '@/components/ui/form'
 import { Button } from '@/components/ui/button'
 import { ROUTES } from '@/constants/routes.constants'
 
-import { AdditionalSettingsSection } from '../components/create-company/AdditionalSettingsSection'
-import { CompanyDetailsSection } from '../components/create-company/CompanyDetailsSection'
-import { LogoUploadDialog } from '../components/create-company/LogoUploadDialog'
-import { PrimaryContactSection } from '../components/create-company/PrimaryContactSection'
-import { SubscriptionSettingsSection } from '../components/create-company/SubscriptionSettingsSection'
+import { AdditionalSettingsSection } from '../components/createCompany/AdditionalSettingsSection'
+import { CompanyDetailsSection } from '../components/createCompany/CompanyDetailsSection'
+import { LogoUploadDialog } from '../components/createCompany/LogoUploadDialog'
+import { PrimaryContactSection } from '../components/createCompany/PrimaryContactSection'
+import { SubscriptionSettingsSection } from '../components/createCompany/SubscriptionSettingsSection'
 import { createCompanySchema } from '../schemas/createCompany.schema'
 
 const defaultValues = {

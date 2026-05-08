@@ -18,6 +18,7 @@ import ReportsPage from '@/features/dashboard/pages/ReportsPage'
 import SupportPage from '@/features/dashboard/pages/SupportPage'
 import PaymentsPage from '@/features/dashboard/pages/PaymentsPage'
 import SubscriptionsPage from '@/features/dashboard/pages/SubscriptionsPage'
+import UserDetailsPage from '@/features/users/pages/UserDetailsPage'
 
 const LoginPage = lazy(() => import('@/features/auth/pages/LoginPage'))
 const DashboardPage = lazy(() => import('@/features/dashboard/pages/DashboardPage'))
@@ -59,17 +60,18 @@ const router = createBrowserRouter([
             path: ROUTES.COMPANY_DETAIL(),
             element: <CompanyDetailsPage />,
           },
-
           {
             path: ROUTES.APPLICATIONS,
             element: <ApplicationsPage />,
           },
-
           {
             path: ROUTES.USERS,
             element: <UsersPage />,
           },
-
+          {
+            path: ROUTES.USER_DETAIL(),
+            element: <UserDetailsPage />,
+          },
           {
             path: ROUTES.SUBSCRIPTIONS,
             element: <SubscriptionsPage />,

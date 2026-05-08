@@ -4,14 +4,13 @@ import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group'
 import { Textarea } from '@/components/ui/textarea'
-
-import { BaseCompanyDialog } from './BaseCompanyDialog'
+import { BaseDialog } from '@/components/shared/app/BaseDialog'
 
 export const SendSubscriptionEmailDialog = ({ open, toEmail, onClose }) => {
   const [type, setType] = useState('pricing')
 
   return (
-    <BaseCompanyDialog open={open} title="Send Subscription Email" onClose={onClose}>
+    <BaseDialog open={open} title="Send Subscription Email" onClose={onClose}>
       <div className="space-y-3">
         <div>
           <p className="mb-1 text-xs font-semibold text-[#0C1014] dark:text-white">To</p>
@@ -64,6 +63,6 @@ export const SendSubscriptionEmailDialog = ({ open, toEmail, onClose }) => {
           </Button>
         </div>
       </div>
-    </BaseCompanyDialog>
+    </BaseDialog>
   )
 }

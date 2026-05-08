@@ -2,22 +2,19 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 
-import { ROUTES } from '@/constants/routes.constants'
 import { useDebounce } from '@/hooks/useDebounce'
-
-import { CompaniesStatusSwitcher } from '../components/CompaniesStatusSwitcher'
-import { CompaniesTable } from '../components/CompaniesTable'
-import { CompaniesToolbar } from '../components/CompaniesToolbar'
-import { useCompanies } from '../hooks/useCompanies'
+import { useApplications } from '../hooks/useApplications'
+import { ApplicationsTable } from '../components/ApplicationsTable'
+import { ApplicationsStatusSwitcher } from '../components/ApplicationsStatusSwitcher'
+import { ApplicationsToolbar } from '../components/ApplicationsToolbar'
 
 const ApplicationsPage = () => {
-  const navigate = useNavigate()
   const [status, setStatus] = useState('All')
   const [search, setSearch] = useState('')
 
   const debouncedSearch = useDebounce(search, 250)
 
-  const { data, isLoading } = useApplictions({
+  const { data, isLoading } = useApplications({
     status,
     search: debouncedSearch,
   })
@@ -29,20 +26,16 @@ const ApplicationsPage = () => {
       transition={{ duration: 0.22, ease: 'easeOut' }}
       className="space-y-5"
     >
-      <CompaniesToolbar
-        search={search}
-        onSearchChange={setSearch}
-        onCreateCompany={() => navigate(`${ROUTES.DASHBOARD}/${ROUTES.COMPANY_CREATE}`)}
-      />
+      <ApplicationsToolbar search={search} onSearchChange={setSearch} />
 
-      <CompaniesStatusSwitcher selectedStatus={status} onStatusChange={setStatus} />
+      <ApplicationsStatusSwitcher selectedStatus={status} onStatusChange={setStatus} />
 
       {isLoading ? (
         <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-white/10 dark:text-[#9AA2AD]">
-          Loading companies...
+          Loading applications...
         </div>
       ) : (
-        <CompaniesTable companies={data?.data} />
+        <ApplicationsTable applications={data?.data} />
       )}
     </motion.div>
   )

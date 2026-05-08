@@ -1,12 +1,11 @@
+import { BaseDialog } from '@/components/shared/app/BaseDialog'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
 
-import { BaseCompanyDialog } from './BaseCompanyDialog'
-
 export const SendNormalEmailDialog = ({ open, toEmail, onClose }) => {
   return (
-    <BaseCompanyDialog open={open} title="Send Email" onClose={onClose}>
+    <BaseDialog open={open} title="Send Email" onClose={onClose}>
       <div className="space-y-3">
         <div>
           <p className="mb-1 text-xs font-semibold text-[#0C1014] dark:text-white">To</p>
@@ -38,6 +37,6 @@ export const SendNormalEmailDialog = ({ open, toEmail, onClose }) => {
           </Button>
         </div>
       </div>
-    </BaseCompanyDialog>
+    </BaseDialog>
   )
 }

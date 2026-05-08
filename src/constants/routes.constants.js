@@ -9,11 +9,12 @@ export const ROUTES = {
   COMPANY_CREATE: 'companies/create',
   COMPANY_DETAIL: (id = ':companyId') => `companies/${id}`,
   APPLICATIONS: 'applications',
+  APPLICATION_DETAIL: (id = ':applicationId') => `applications/${id}`,
   USERS: 'users',
+  USER_DETAIL: (id = ':userId') => `users/${id}`,
   SUBSCRIPTIONS: 'subscriptions',
   PAYMENTS: 'payments',
   SUPPORT: 'support',
   REPORTS: 'reports',
   SETTINGS: 'settings',
-  USER_DETAIL: (id = ':id') => `/users/${id}`,
 }

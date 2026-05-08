@@ -1,14 +1,13 @@
 import { useRef } from 'react'
 
 import { Button } from '@/components/ui/button'
-
-import { BaseCompanyDialog } from '../details/dialogs/BaseCompanyDialog'
+import { BaseDialog } from '@/components/shared/app/BaseDialog'
 
 export const LogoUploadDialog = ({ open, onClose, onPickFile }) => {
   const fileRef = useRef(null)
 
   return (
-    <BaseCompanyDialog
+    <BaseDialog
       open={open}
       title="Upload Company Logo"
       onClose={onClose}
@@ -47,6 +46,6 @@ export const LogoUploadDialog = ({ open, onClose, onPickFile }) => {
           </Button>
         </div>
       </div>
-    </BaseCompanyDialog>
+    </BaseDialog>
   )
 }

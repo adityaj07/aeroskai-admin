@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom'
 
 const transition = { duration: 0.2, ease: 'easeOut' }
 
-export const BaseCompanyDialog = ({
+export const BaseDialog = ({
   open,
   title,
   onClose,
