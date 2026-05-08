@@ -18,7 +18,8 @@ import { loginSchema } from '@/features/auth/schemas/login.schema'
 export const LoginForm = () => {
   const navigate = useNavigate()
   const [showPassword, setShowPassword] = useState(false)
-  const { mutateAsync: login, isPending } = useLogin()
+  // const { mutateAsync: login, isPending } = useLogin()
+  const [isPending, setIsPending] = useState(false)
 
   const form = useForm({
     resolver: zodResolver(loginSchema),
@@ -29,25 +30,44 @@ export const LoginForm = () => {
     mode: 'onSubmit',
   })
 
-  const onSubmit = async (values) => {
-    try {
-      const response = await login(values)
-      const token = response?.data?.token || response?.data?.accessToken
+  // const onSubmit = async (values) => {
+  //   try {
+  //     const response = await login(values)
+  //     const token = response?.data?.token || response?.data?.accessToken
 
-      if (token) {
-        localStorage.setItem('token', token)
-      }
+  //     if (token) {
+  //       localStorage.setItem('token', token)
+  //     }
+
+  //     toast.success('Logged in successfully')
+  //     navigate(ROUTES.DASHBOARD)
+  //   } catch (error) {
+  //     const message =
+  //       error?.response?.data?.message ||
+  //       error?.message ||
+  //       'Login failed. Please check your credentials and try again.'
+
+  //     toast.error(message)
+  //     form.setError('root', { message })
+  //   }
+  // }
+
+  // dummy stuff
+  const onSubmit = async () => {
+    try {
+      setIsPending(true)
+
+      await new Promise((resolve) => setTimeout(resolve, 700))
+
+      localStorage.setItem('token', 'dummy-token')
 
       toast.success('Logged in successfully')
-      navigate(ROUTES.DASHBOARD)
-    } catch (error) {
-      const message =
-        error?.response?.data?.message ||
-        error?.message ||
-        'Login failed. Please check your credentials and try again.'
 
-      toast.error(message)
-      form.setError('root', { message })
+      navigate(ROUTES.DASHBOARD)
+    } catch {
+      toast.error('Something went wrong')
+    } finally {
+      setIsPending(false)
     }
   }
 
