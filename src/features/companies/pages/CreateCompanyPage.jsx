@@ -46,8 +46,8 @@ const CreateCompanyPage = () => {
   })
 
   const onSubmit = (values) => {
-    console.log('Create Company payload:', values)
-    navigate(`/${ROUTES.DASHBOARD}/${ROUTES.COMPANIES}`)
+    // console.log('Create Company payload:', values)
+    navigate(`${ROUTES.DASHBOARD}/${ROUTES.COMPANIES}`)
   }
 
   return (

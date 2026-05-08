@@ -1,23 +1,24 @@
 import { lazy, Suspense } from 'react'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import PrivateRoute from '@/components/shared/PrivateRoute/PrivateRoute'
 import ErrorBoundary from '@/components/shared/ErrorBoundary/ErrorBoundary'
+import PrivateRoute from '@/components/shared/PrivateRoute/PrivateRoute'
 import { ROUTES } from '@/constants/routes.constants'
-import AuthLayout from '@/features/auth/layouts/AuthLayout'
-import ForgotPasswordPage from '@/features/auth/pages/ForgotPasswordPage'
-import CheckEmailPage from '@/features/auth/pages/CheckEmailPage'
-import ResetPasswordPage from '@/features/auth/pages/ResetPasswordPage'
-import DashboardLayout from '@/features/dashboard/layouts/DashboardLayout'
-import CompaniesPage from '@/features/companies/pages/CompaniesPage'
-import CreateCompanyPage from '@/features/companies/pages/CreateCompanyPage'
-import CompanyDetailsPage from '@/features/companies/pages/CompanyDetailsPage'
+import ApplicationDetailsPage from '@/features/applications/pages/ApplicationDetailsPage'
 import ApplicationsPage from '@/features/applications/pages/ApplicationsPage'
-import SettingsPage from '@/features/settings/page/SettingsPage'
-import ReportsPage from '@/features/dashboard/pages/ReportsPage'
-import SupportPage from '@/features/dashboard/pages/SupportPage'
+import AuthLayout from '@/features/auth/layouts/AuthLayout'
+import CheckEmailPage from '@/features/auth/pages/CheckEmailPage'
+import ForgotPasswordPage from '@/features/auth/pages/ForgotPasswordPage'
+import ResetPasswordPage from '@/features/auth/pages/ResetPasswordPage'
+import CompaniesPage from '@/features/companies/pages/CompaniesPage'
+import CompanyDetailsPage from '@/features/companies/pages/CompanyDetailsPage'
+import CreateCompanyPage from '@/features/companies/pages/CreateCompanyPage'
+import DashboardLayout from '@/features/dashboard/layouts/DashboardLayout'
 import PaymentsPage from '@/features/dashboard/pages/PaymentsPage'
+import ReportsPage from '@/features/dashboard/pages/ReportsPage'
 import SubscriptionsPage from '@/features/dashboard/pages/SubscriptionsPage'
+import SupportPage from '@/features/dashboard/pages/SupportPage'
+import SettingsPage from '@/features/settings/page/SettingsPage'
 import UserDetailsPage from '@/features/users/pages/UserDetailsPage'
 
 const LoginPage = lazy(() => import('@/features/auth/pages/LoginPage'))
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
           {
             path: ROUTES.APPLICATIONS,
             element: <ApplicationsPage />,
+          },
+          {
+            path: ROUTES.APPLICATION_DETAIL(),
+            element: <ApplicationDetailsPage />,
           },
           {
             path: ROUTES.USERS,

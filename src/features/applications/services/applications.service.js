@@ -1,3 +1,5 @@
+import { format } from 'date-fns'
+
 const applicationsMockData = [
   {
     id: 'globaltech-ventures',
@@ -121,6 +123,37 @@ const applicationDetailsMock = {
   },
 }
 
+const formatHistoryDate = () => format(new Date(), 'MMM d, yyyy — h:mm a')
+
+const updateApplicationRecord = (id, updater) => {
+  const currentDetails = applicationDetailsMock[id]
+
+  if (!currentDetails) {
+    return applicationDetailsMock['globaltech-ventures']
+  }
+
+  const nextDetails = updater(currentDetails)
+  applicationDetailsMock[id] = nextDetails
+
+  const listIndex = applicationsMockData.findIndex((application) => application.id === id)
+
+  if (listIndex !== -1) {
+    applicationsMockData[listIndex] = {
+      ...applicationsMockData[listIndex],
+      company: nextDetails.company ?? applicationsMockData[listIndex].company,
+      contactEmail: nextDetails.email ?? applicationsMockData[listIndex].contactEmail,
+      status: nextDetails.status ?? applicationsMockData[listIndex].status,
+    }
+  }
+
+  return nextDetails
+}
+
+const appendHistoryEntry = (details, title, date = formatHistoryDate()) => ({
+  ...details,
+  statusHistory: [...(details.statusHistory ?? []), { title, date }],
+})
+
 const normalizeStatusFilter = (status) => {
   if (status === 'All') return null
   return status
@@ -154,6 +187,53 @@ export const applicationsService = {
 
   getById: async (id) => {
     const details = applicationDetailsMock[id] ?? applicationDetailsMock['globaltech-ventures']
+
+    return Promise.resolve(details)
+  },
+
+  approve: async (id, payload = {}) => {
+    const details = updateApplicationRecord(id, (currentDetails) =>
+      appendHistoryEntry(
+        {
+          ...currentDetails,
+          status: 'Approved',
+          approvalDetails: payload,
+        },
+        'Application approved'
+      )
+    )
+
+    return Promise.resolve(details)
+  },
+
+  reject: async (id, payload = {}) => {
+    const details = updateApplicationRecord(id, (currentDetails) =>
+      appendHistoryEntry(
+        {
+          ...currentDetails,
+          status: 'Rejected',
+          rejectionReason: payload.reason ?? '',
+        },
+        'Application rejected'
+      )
+    )
+
+    return Promise.resolve(details)
+  },
+
+  requestMoreInformation: async (id, payload = {}) => {
+    const details = updateApplicationRecord(id, (currentDetails) =>
+      appendHistoryEntry(
+        {
+          ...currentDetails,
+          requestedInformation: {
+            subject: payload.subject ?? '',
+            message: payload.message ?? '',
+          },
+        },
+        'More information requested'
+      )
+    )
 
     return Promise.resolve(details)
   },
