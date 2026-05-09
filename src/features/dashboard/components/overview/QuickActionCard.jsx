@@ -14,7 +14,7 @@ export const QuickActionCard = ({ title, description, icon = 'list' }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.22, ease: 'easeOut' }}
     >
-      <Card className="rounded-[20px] border-[#ECEFF3] p-4 dark:border-white/10 dark:bg-[#121417]">
+      <Card className="rounded-[20px] border-[#ECEFF3] p-4 dark:border-white/10 dark:bg-transparent">
         <div className="mb-4 flex items-center justify-between md:mb-6">
           <div className="rounded-full bg-[#1E88E5]/10 p-2 text-[#1E88E5] dark:bg-[#1E88E5]/20">
             <HugeiconsIcon icon={leadingIcon} size={14} strokeWidth={1.8} />

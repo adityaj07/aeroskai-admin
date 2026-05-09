@@ -18,7 +18,7 @@ export const CompaniesToolbar = ({ search, onSearchChange, onCreateCompany }) =>
           value={search}
           onChange={(event) => onSearchChange(event.target.value)}
           placeholder="Search by company name, username, or email"
-          className="h-10 w-full rounded-md border border-[#F3F4F6] bg-white pl-9 pr-3 text-sm text-[#0C1014] placeholder:text-[#6F7680] focus-visible:border-[#1565C0]/40 focus-visible:ring-0 dark:border-white/10 dark:bg-[#121417] dark:text-white dark:placeholder:text-[#9AA2AD]"
+          className="h-11 w-full rounded-md border border-[#F3F4F6] bg-white pl-9 pr-3 text-sm text-[#0C1014] placeholder:text-[#6F7680] focus-visible:border-[#1565C0]/40 focus-visible:ring-0 dark:border-white/10 dark:bg-transparent dark:text-white dark:placeholder:text-[#A2AAB4]"
         />
       </div>
 

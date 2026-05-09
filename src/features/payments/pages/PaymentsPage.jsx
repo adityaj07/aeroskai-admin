@@ -19,14 +19,14 @@ const PaymentsPage = () => {
         <TabsList className="inline-flex h-10 items-center rounded-lg bg-[#F7F9F9] p-1 dark:bg-white/5">
           <TabsTrigger
             value="companies"
-            className="h-8 rounded-md px-4 text-xs font-medium text-[#6F7680] transition-colors data-[state=active]:bg-[#1565C0] data-[state=active]:text-white dark:text-[#A9B0BA]"
+            className="h-8 rounded-md px-4 text-[13px] font-semibold text-[#6F7680] transition-colors data-[state=active]:bg-[#1565C0] data-[state=active]:text-white dark:text-white"
           >
             Companies
           </TabsTrigger>
 
           <TabsTrigger
             value="individual-users"
-            className="h-8 rounded-md px-4 text-xs font-medium text-[#6F7680] transition-colors data-[state=active]:bg-[#1565C0] data-[state=active]:text-white dark:text-[#A9B0BA]"
+            className="h-8 rounded-md px-4 text-[13px] font-semibold text-[#6F7680] transition-colors data-[state=active]:bg-[#1565C0] data-[state=active]:text-white dark:text-white"
           >
             Individual Users
           </TabsTrigger>

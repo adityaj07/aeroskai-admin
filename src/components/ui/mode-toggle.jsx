@@ -1,49 +1,45 @@
 import { Moon02Icon, Sun03Icon } from '@hugeicons/core-free-icons'
-
 import { HugeiconsIcon } from '@hugeicons/react'
+import { useMemo } from 'react'
 
 import { Button } from '@/components/ui/button'
-
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
 import { useTheme } from '@/providers/ThemeProvider'
 
 export function ModeToggle() {
-  const { setTheme } = useTheme()
+  const { theme, setTheme } = useTheme()
+
+  const resolvedTheme = useMemo(() => {
+    if (theme !== 'system') return theme
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'
+  }, [theme])
+
+  const handleToggle = () => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark')
+  }
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="icon" className="relative">
-          <HugeiconsIcon
-            icon={Sun03Icon}
-            size={18}
-            strokeWidth={1.8}
-            className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
-          />
+    <Button
+      variant="outline"
+      size="icon"
+      className="relative"
+      onClick={handleToggle}
+      aria-label="Toggle light and dark mode"
+    >
+      <HugeiconsIcon
+        icon={Sun03Icon}
+        size={18}
+        strokeWidth={1.8}
+        className="rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0"
+      />
 
-          <HugeiconsIcon
-            icon={Moon02Icon}
-            size={18}
-            strokeWidth={1.8}
-            className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
-          />
+      <HugeiconsIcon
+        icon={Moon02Icon}
+        size={18}
+        strokeWidth={1.8}
+        className="absolute rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100"
+      />
 
-          <span className="sr-only">Toggle theme</span>
-        </Button>
-      </DropdownMenuTrigger>
-
-      <DropdownMenuContent align="end">
-        <DropdownMenuItem onClick={() => setTheme('light')}>Light</DropdownMenuItem>
-
-        <DropdownMenuItem onClick={() => setTheme('dark')}>Dark</DropdownMenuItem>
-
-        <DropdownMenuItem onClick={() => setTheme('system')}>System</DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+      <span className="sr-only">Toggle theme</span>
+    </Button>
   )
 }

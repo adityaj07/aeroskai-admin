@@ -14,52 +14,72 @@ const chartConfig = {
 
 export const SparklineAreaChart = ({ points }) => {
   const gradientId = useId().replace(/:/g, '')
-  const data = points.map((value, index) => ({ label: index + 1, value }))
+  const maskId = useId().replace(/:/g, '')
+
+  const data = points.map((value, index) => ({
+    label: index + 1,
+    value,
+  }))
 
   return (
-    <div className="relative">
-      {/* LEFT FADE */}
-      <div className="pointer-events-none absolute left-0 top-0 z-10 h-full w-10 bg-gradient-to-r from-white to-transparent dark:from-[#121417]" />
+    <ChartContainer
+      className="!aspect-auto h-[110px] w-full overflow-hidden p-0"
+      config={chartConfig}
+    >
+      <AreaChart
+        data={data}
+        margin={{
+          top: 40,
+          right: -6,
+          bottom: 0,
+          left: -14,
+        }}
+      >
+        <defs>
+          {/* AREA FILL */}
+          <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stopColor={DASHBOARD_COLORS.primaryBlue} stopOpacity={0.45} />
 
-      {/* RIGHT FADE */}
-      <div className="pointer-events-none absolute right-0 top-0 z-10 h-full w-10 bg-gradient-to-l from-white to-transparent dark:from-[#121417]" />
+            <stop offset="65%" stopColor={DASHBOARD_COLORS.primaryBlue} stopOpacity={0.08} />
 
-    <ChartContainer className="h-[90px] w-full overflow-hidden p-0 !aspect-auto" config={chartConfig}>
-        <AreaChart
-          data={data}
-          margin={{
-            top: 6,
-            right: -12,
-            bottom: 0,
-            left: -12,
+            <stop offset="100%" stopColor={DASHBOARD_COLORS.primaryBlue} stopOpacity={0} />
+          </linearGradient>
+
+          {/* EDGE FADE MASK */}
+          <linearGradient id={maskId} x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stopColor="white" stopOpacity="0" />
+
+            <stop offset="12%" stopColor="white" stopOpacity="1" />
+
+            <stop offset="88%" stopColor="white" stopOpacity="1" />
+
+            <stop offset="100%" stopColor="white" stopOpacity="0" />
+          </linearGradient>
+
+          <mask id={`mask-${maskId}`}>
+            <rect x="0" y="0" width="100%" height="100%" fill={`url(#${maskId})`} />
+          </mask>
+        </defs>
+
+        <ChartTooltip
+          cursor={false}
+          content={<ChartTooltipContent hideLabel formatter={(value) => <span>{value}</span>} />}
+        />
+
+        <Area
+          type="monotone"
+          dataKey="value"
+          stroke={DASHBOARD_COLORS.primaryBlue}
+          strokeWidth={2}
+          fill={`url(#${gradientId})`}
+          mask={`url(#mask-${maskId})`}
+          dot={false}
+          activeDot={{
+            r: 3,
+            fill: DASHBOARD_COLORS.primaryBlue,
           }}
-        >
-          <defs>
-            <linearGradient id={gradientId} x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor={DASHBOARD_COLORS.primaryBlue} stopOpacity={0.32} />
-              <stop offset="100%" stopColor="#FFFFFF" stopOpacity={0.02} />
-            </linearGradient>
-          </defs>
-
-          <ChartTooltip
-            cursor={false}
-            content={<ChartTooltipContent hideLabel formatter={(value) => <span>{value}</span>} />}
-          />
-
-          <Area
-            type="monotone"
-            dataKey="value"
-            stroke={DASHBOARD_COLORS.primaryBlue}
-            strokeWidth={2}
-            fill={`url(#${gradientId})`}
-            dot={false}
-            activeDot={{
-              r: 3,
-              fill: DASHBOARD_COLORS.primaryBlue,
-            }}
-          />
-        </AreaChart>
-      </ChartContainer>
-    </div>
+        />
+      </AreaChart>
+    </ChartContainer>
   )
 }

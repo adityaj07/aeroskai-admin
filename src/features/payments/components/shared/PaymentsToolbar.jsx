@@ -3,7 +3,13 @@ import { HugeiconsIcon } from '@hugeicons/react'
 
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 
 const selectTriggerClassName =
   'h-9 min-w-[108px] rounded-md border border-[#F3F4F6] bg-white px-3 text-xs font-medium text-[#6F7680] dark:border-white/10 dark:bg-[#121417] dark:text-[#A9B0BA]'
@@ -35,7 +41,7 @@ export const PaymentsToolbar = ({
           value={search}
           onChange={(event) => onSearchChange(event.target.value)}
           placeholder={placeholder}
-          className="h-10 w-full rounded-md border border-[#F3F4F6] bg-white pl-9 pr-3 text-sm text-[#0C1014] placeholder:text-[#6F7680] focus-visible:border-[#1565C0]/40 focus-visible:ring-0 dark:border-white/10 dark:bg-[#121417] dark:text-white dark:placeholder:text-[#9AA2AD]"
+          className="h-11 w-full rounded-md border border-[#F3F4F6] bg-white pl-9 pr-3 text-sm text-[#0C1014] placeholder:text-[#6F7680] focus-visible:border-[#1565C0]/40 focus-visible:ring-0 dark:border-white/10 dark:bg-transparent dark:text-white dark:placeholder:text-[#A2AAB4]"
         />
       </div>
 

@@ -38,7 +38,7 @@ export const RevenueBarChartCard = ({ revenue }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.22, ease: 'easeOut' }}
     >
-      <Card className="h-full min-w-0 overflow-hidden rounded-[20px] border-[#ECEFF3] p-4 dark:border-white/10 dark:bg-[#121417]">
+      <Card className="h-full min-w-0 overflow-hidden rounded-[20px] border-[#ECEFF3] p-4 dark:border-white/10 dark:bg-transparent">
         <div className="mb-6 flex min-w-0 items-start justify-between gap-2">
           <div className="min-w-0">
             <div className="mb-3 flex items-center gap-2">
@@ -120,7 +120,7 @@ export const RevenueBarChartCard = ({ revenue }) => {
               {revenue.data.map((entry) => (
                 <Cell
                   key={entry.day}
-                  fill={entry.highlighted ? DASHBOARD_COLORS.primaryBlue : '#D7E4F3'}
+                  fill={entry.highlighted ? DASHBOARD_COLORS.primaryBlue : '#1E88E51A'}
                 />
               ))}
               <LabelList

@@ -6,7 +6,7 @@ import { SparklineAreaChart } from './SparklineAreaChart'
 
 export const StatOverviewCard = ({ title, value, trend }) => {
   return (
-    <Card className="h-[170px] rounded-2xl border border-[#ECEFF3] bg-white px-5 py-4 shadow-none dark:border-white/10 dark:bg-[#121417]">
+    <Card className="h-[170px] rounded-2xl border border-[#ECEFF3] bg-white px-5 py-4 shadow-none dark:border-white/10 dark:bg-transparent">
       <div className="items-between flex h-full justify-between gap-6">
         {/* LEFT CONTENT */}
         <div className="flex flex-col justify-between">
@@ -26,7 +26,7 @@ export const StatOverviewCard = ({ title, value, trend }) => {
 
         {/* RIGHT CHART */}
         <div className="flex flex-1 items-end justify-end overflow-hidden">
-          <div className="w-full max-w-[220px]">
+          <div className="w-full max-w-[250px] overflow-hidden pr-4 pt-6">
             <SparklineAreaChart points={trend} />
           </div>
         </div>

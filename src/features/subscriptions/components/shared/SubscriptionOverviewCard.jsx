@@ -10,7 +10,7 @@ export const SubscriptionOverviewCard = ({ title, value, trend = [] }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.22, ease: 'easeOut' }}
     >
-      <Card className="h-[170px] rounded-2xl border border-[#ECEFF3] bg-white px-5 py-4 shadow-none dark:border-white/10 dark:bg-[#121417]">
+      <Card className="h-[170px] rounded-2xl border border-[#ECEFF3] bg-white px-5 py-4 shadow-none dark:border-white/10 dark:bg-transparent">
         <div className="items-between flex h-full justify-between gap-6">
           <div className="flex flex-col justify-between">
             <p className="text-[14px] font-medium text-[#6F7680] dark:text-[#A9B0BA]">{title}</p>
