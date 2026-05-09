@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card } from '@/components/ui/card'
 
-export const QuickActionCard = ({ title, description, icon = 'list' }) => {
+export const QuickActionCard = ({ title, description, icon = 'list', onAction }) => {
   const leadingIcon = icon === 'plus' ? Add01Icon : AddToListIcon
 
   return (
@@ -23,6 +23,7 @@ export const QuickActionCard = ({ title, description, icon = 'list' }) => {
             variant="default"
             size="icon-sm"
             className="h-8 w-8 rounded-full bg-[#1E88E5] p-0 text-white hover:bg-[#1976D2]"
+            onClick={onAction}
           >
             <HugeiconsIcon icon={ArrowUpRight01Icon} size={14} strokeWidth={2} />
           </Button>

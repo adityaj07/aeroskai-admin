@@ -1,4 +1,4 @@
-import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
+import { ArrowLeft01Icon, ArrowRight01Icon, Notification01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import { motion } from 'framer-motion'
@@ -14,7 +14,6 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-
 import { ROUTES } from '@/constants/routes.constants'
 
 import { SubscriptionStatusBadge } from '../shared/SubscriptionStatusBadge'
@@ -49,15 +48,27 @@ const getColumns = (navigate) => [
     header: 'Actions',
 
     cell: ({ row }) => (
-      <Button
-        variant="ghost"
-        className="h-8 rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
-        onClick={() =>
-          navigate(`${ROUTES.DASHBOARD}/${ROUTES.SUBSCRIPTION_DETAIL_COMPANY(row.original.id)}`)
-        }
-      >
-        Manage
-      </Button>
+      <div className="flex items-center gap-2">
+        <Button
+          variant="ghost"
+          className="h-8 rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+          onClick={() =>
+            navigate(`${ROUTES.DASHBOARD}/${ROUTES.SUBSCRIPTION_DETAIL_COMPANY(row.original.id)}`)
+          }
+        >
+          Manage
+        </Button>
+
+        {(row.original.status === 'Expired' || row.original.status === 'Expiring Soon') && (
+          <button
+            type="button"
+            className="flex h-[38px] w-[38px] items-center justify-center rounded-[6px] bg-[#F7F9F9] text-[#6F7680] hover:bg-[#E9EEF3] hover:text-[#0C1014] dark:bg-[#14171A] dark:text-[#A9B0BA] dark:hover:bg-[#1A1E22] dark:hover:text-white"
+            aria-label="Send reminder notification"
+          >
+            <HugeiconsIcon icon={Notification01Icon} size={16} />
+          </button>
+        )}
+      </div>
     ),
   },
 ]

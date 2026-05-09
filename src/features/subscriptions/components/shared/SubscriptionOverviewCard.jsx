@@ -14,7 +14,7 @@ export const SubscriptionOverviewCard = ({ title, value, trend = [] }) => {
         <div className="items-between flex h-full justify-between gap-6">
           <div className="flex flex-col justify-between">
             <p className="text-[14px] font-medium text-[#6F7680] dark:text-[#A9B0BA]">{title}</p>
-            <p className="text-[44px] font-medium leading-none tracking-[-1.5px] text-[#0C1014] dark:text-white sm:text-[48px]">
+            <p className="text-[44px] font-medium leading-none tracking-[-1.5px] text-[#0C1014] dark:text-white sm:text-[40px]">
               {value}
             </p>
           </div>

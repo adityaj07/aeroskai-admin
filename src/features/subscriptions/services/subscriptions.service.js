@@ -79,6 +79,7 @@ const individualSubscriptionsMockData = [
 const companySubscriptionDetailsMock = {
   'flight-tech-solutions': {
     id: 'flight-tech-solutions',
+    companyId: 'flight-tech-solutions',
     companyName: 'Flight Tech Solutions',
     username: '@flighttech',
     status: 'Active',
@@ -89,24 +90,50 @@ const companySubscriptionDetailsMock = {
       inUse: 8,
       startDate: 'Jan 1, 2025',
       endDate: 'Dec 31, 2025',
+      startDateInput: '01/01/2025',
+      endDateInput: '31/12/2025',
+      paymentReference: 'INV-2025-0048 / PO-8812',
       status: 'Active',
+    },
+
+    renewalReminder: {
+      to: 'contact@flighttech.com',
+      subject: 'Your Aeroskai Subscription is Expiring Soon',
+      expiryDate: '31/05/2026',
+      message:
+        'Dear Flight Tech Solutions,\n\nThis is a friendly reminder that your Aeroskai subscription is due to expire on Dec 31, 2025.\n\nOnce your subscription expires, your organization access will be restricted and team members will see an account notice.\n\nTo renew your subscription, please reach out to us directly.\nEmail: billing@aeroskai.com\n\nBest regards,\nAeroskai Team',
+    },
+
+    invoiceEmail: {
+      to: 'contact@flighttech.com',
+      subject: 'Your Aeroskai Subscription Details',
+      message:
+        'Dear Flight Tech Solutions,\n\nYour current subscription details are as follows:\n\nPlan: Pro (20 seats)\nDuration: Jan 1, 2025 - Dec 31, 2025\nPricing: [Admin to complete]\nPayment Instructions: [Admin to complete]\n\nPlease contact billing@aeroskai.com for questions.\n\nBest regards,\nAeroskai Team',
     },
 
     renewalWorkflow: [
       {
         title: 'Send Renewal Reminder',
         description: 'Email sent to company 30 days before expiry',
-        completed: true,
+        state: 'complete',
+        note: 'Sent Mar 1, 2025',
       },
       {
         title: 'Send Invoice / PO',
-        description: 'Invoice sent externally',
-        completed: true,
+        description: 'Invoice sent externally - outside the app',
+        state: 'complete',
+        note: 'Invoice #INV-2026-0048 sent Mar 5, 2025',
       },
       {
         title: 'Await External Payment',
-        description: 'Awaiting company payment confirmation',
-        completed: false,
+        description: 'Company completes payment via bank transfer / PO - no in-app payment',
+        state: 'pending',
+        cta: 'Mark Payment Confirmed',
+      },
+      {
+        title: 'Update Subscription Dates',
+        description: 'Admin updates start/end dates below to restore access',
+        state: 'inactive',
       },
     ],
   },
@@ -149,6 +176,22 @@ const individualSubscriptionDetailsMock = {
         method: 'Stripe',
         transactionId: 'TXN-843928',
         status: 'Refunded',
+      },
+      {
+        date: 'May 20, 2026',
+        plan: 'Monthly',
+        amount: '$7.37',
+        method: 'Stripe',
+        transactionId: 'TXN-843929',
+        status: 'Failed',
+      },
+      {
+        date: 'Mar 18, 2026',
+        plan: 'Monthly',
+        amount: '$7.37',
+        method: 'Cash',
+        transactionId: 'TXN-843927',
+        status: 'Successful',
       },
     ],
   },

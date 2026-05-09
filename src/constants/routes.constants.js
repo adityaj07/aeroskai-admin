@@ -4,6 +4,8 @@ export const ROUTES = {
   FORGOT_PASSWORD: '/forgot-password',
   CHECK_EMAIL: '/check-email',
   RESET_PASSWORD: '/reset-password',
+  INVITED: '/invited',
+  CREATE_INVITED_ACCOUNT: '/create-account',
   DASHBOARD: '/dashboard',
   COMPANIES: 'companies',
   COMPANY_CREATE: 'companies/create',

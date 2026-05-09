@@ -1,11 +1,23 @@
-import { Skeleton } from '@/components/ui/skeleton'
 import { motion } from 'framer-motion'
+import { useNavigate } from 'react-router-dom'
+
+import { Skeleton } from '@/components/ui/skeleton'
+import { ROUTES } from '@/constants/routes.constants'
 
 import { QuickActionCard } from './QuickActionCard'
 import { RevenueBarChartCard } from './RevenueBarChartCard'
 import { StatOverviewCard } from './StatOverviewCard'
 
 export const DashboardOverview = ({ data, isLoading }) => {
+  const navigate = useNavigate()
+
+  const actionRouteMap = {
+    'create-company-account': `${ROUTES.DASHBOARD}/${ROUTES.COMPANY_CREATE}`,
+    'manage-users': `${ROUTES.DASHBOARD}/${ROUTES.USERS}`,
+    'review-applications': `${ROUTES.DASHBOARD}/${ROUTES.APPLICATIONS}`,
+    'support-inbox': `${ROUTES.DASHBOARD}/${ROUTES.SUPPORT}`,
+  }
+
   if (isLoading) {
     return (
       <div className="space-y-4">
@@ -65,6 +77,10 @@ export const DashboardOverview = ({ data, isLoading }) => {
               title={action.title}
               description={action.description}
               icon={action.icon}
+              onAction={() => {
+                const targetRoute = actionRouteMap[action.id]
+                if (targetRoute) navigate(targetRoute)
+              }}
             />
           ))}
         </div>
