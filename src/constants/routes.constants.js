@@ -13,6 +13,8 @@ export const ROUTES = {
   USERS: 'users',
   USER_DETAIL: (id = ':userId') => `users/${id}`,
   SUBSCRIPTIONS: 'subscriptions',
+  SUBSCRIPTION_DETAIL_COMPANY: (id = ':subscriptionId') => `subscriptions/company/${id}`,
+  SUBSCRIPTION_DETAIL_USER: (id = ':subscriptionId') => `subscriptions/user/${id}`,
   PAYMENTS: 'payments',
   SUPPORT: 'support',
   REPORTS: 'reports',

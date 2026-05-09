@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
 
 import { useDebounce } from '@/hooks/useDebounce'
 import { useApplications } from '../hooks/useApplications'
 import { ApplicationsTable } from '../components/ApplicationsTable'
-import { ApplicationsStatusSwitcher } from '../components/ApplicationsStatusSwitcher'
 import { ApplicationsToolbar } from '../components/ApplicationsToolbar'
+import { StatusSwitcher } from '@/components/shared/app/StatusSwitcher'
+import { APPLICATION_STATUS_FILTERS } from '../constants/applications.constants'
 
 const ApplicationsPage = () => {
   const [status, setStatus] = useState('All')
@@ -28,7 +28,11 @@ const ApplicationsPage = () => {
     >
       <ApplicationsToolbar search={search} onSearchChange={setSearch} />
 
-      <ApplicationsStatusSwitcher selectedStatus={status} onStatusChange={setStatus} />
+      <StatusSwitcher
+        statuses={APPLICATION_STATUS_FILTERS}
+        selectedStatus={status}
+        onStatusChange={setStatus}
+      />
 
       {isLoading ? (
         <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-white/10 dark:text-[#9AA2AD]">

@@ -5,10 +5,11 @@ import { useNavigate } from 'react-router-dom'
 import { ROUTES } from '@/constants/routes.constants'
 import { useDebounce } from '@/hooks/useDebounce'
 
-import { CompaniesStatusSwitcher } from '../components/CompaniesStatusSwitcher'
 import { CompaniesTable } from '../components/CompaniesTable'
 import { CompaniesToolbar } from '../components/CompaniesToolbar'
 import { useCompanies } from '../hooks/useCompanies'
+import { COMPANY_STATUS_FILTERS } from '../constants/companies.constants'
+import { StatusSwitcher } from '@/components/shared/app/StatusSwitcher'
 
 const CompaniesPage = () => {
   const navigate = useNavigate()
@@ -35,7 +36,11 @@ const CompaniesPage = () => {
         onCreateCompany={() => navigate(`${ROUTES.DASHBOARD}/${ROUTES.COMPANY_CREATE}`)}
       />
 
-      <CompaniesStatusSwitcher selectedStatus={status} onStatusChange={setStatus} />
+      <StatusSwitcher
+        statuses={COMPANY_STATUS_FILTERS}
+        selectedStatus={status}
+        onStatusChange={setStatus}
+      />
 
       {isLoading ? (
         <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-white/10 dark:text-[#9AA2AD]">

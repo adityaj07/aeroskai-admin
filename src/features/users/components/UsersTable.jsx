@@ -18,11 +18,16 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { usersService } from '../services/user.service'
 import { USERS_QUERY_KEYS } from '../constants/users.constants'
 import { ConfirmUserStatusDialog } from './userDetails/dialogs/ConfirmUserStatusDialog'
+import { HugeiconsIcon } from '@hugeicons/react'
+import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
 
 const getColumns = (navigate, onToggleStatus) => [
   {
     accessorKey: 'username',
     header: 'Username',
+    cell: ({ row }) => (
+      <span className="font-medium text-[#0C1014] dark:text-white">{row.original.username}</span>
+    ),
   },
   {
     accessorKey: 'email',
@@ -70,7 +75,7 @@ const getColumns = (navigate, onToggleStatus) => [
   },
 ]
 
-export const UsersTable = ({ users }) => {
+export const UsersTable = ({ users, meta }) => {
   const navigate = useNavigate()
   const [selectedUser, setSelectedUser] = useState(null)
   const [confirmOpen, setConfirmOpen] = useState(false)
@@ -88,6 +93,8 @@ export const UsersTable = ({ users }) => {
 
   const data = useMemo(() => users ?? [], [users])
   const columns = useMemo(() => getColumns(navigate, handleToggleStatus), [navigate])
+
+  const total = meta?.total ?? data.length
 
   const table = useReactTable({
     data,
@@ -155,6 +162,22 @@ export const UsersTable = ({ users }) => {
           )}
         </TableBody>
       </Table>
+
+      <div className="flex items-center justify-between border-t border-[#EEF1F4] px-4 py-3 text-xs text-[#6F7680] dark:border-white/10 dark:text-[#9AA2AD]">
+        <p>
+          Showing 1-{data.length} of {total}
+        </p>
+
+        <div className="flex items-center gap-2">
+          <button className="rounded-md p-1 text-[#9AA2AD] hover:bg-[#F5F7FA] hover:text-[#0C1014] dark:hover:bg-white/5 dark:hover:text-white">
+            <HugeiconsIcon icon={ArrowLeft01Icon} size={16} />
+          </button>
+
+          <button className="rounded-md p-1 text-[#9AA2AD] hover:bg-[#F5F7FA] hover:text-[#0C1014] dark:hover:bg-white/5 dark:hover:text-white">
+            <HugeiconsIcon icon={ArrowRight01Icon} size={16} />
+          </button>
+        </div>
+      </div>
 
       <ConfirmUserStatusDialog
         open={confirmOpen}

@@ -1,9 +1,9 @@
-import { APPLICATION_STATUS_FILTERS } from '../constants/applications.constants'
+import { SUBSCRIPTION_COMPANIES_STATUS_FILTERS } from '../../constants/subscriptions.constants'
 
-export const ApplicationsStatusSwitcher = ({ selectedStatus, onStatusChange }) => {
+export const SubscriptionCompaniesStatusSwitcher = ({ selectedStatus, onStatusChange }) => {
   return (
     <div className="flex flex-wrap items-center gap-5 border-b border-[#EEF1F4] pt-3 dark:border-white/10">
-      {APPLICATION_STATUS_FILTERS.map((status) => {
+      {SUBSCRIPTION_COMPANIES_STATUS_FILTERS.map((status) => {
         const isActive = selectedStatus === status
 
         return (
