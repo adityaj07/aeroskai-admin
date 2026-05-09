@@ -87,7 +87,7 @@ export const PaymentCompaniesTable = ({ companies = [], meta, onIssueRefund }) =
       className="overflow-hidden rounded-xl border border-[#EEF1F4] pt-4 dark:border-white/10"
     >
       <div className="w-full overflow-x-auto">
-        <Table className="min-w-[980px]">
+        <Table className="min-w-[920px] lg:min-w-[980px]">
           <TableHeader className="bg-[#F7F9F9] dark:bg-[#171A1E]">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow
@@ -139,7 +139,7 @@ export const PaymentCompaniesTable = ({ companies = [], meta, onIssueRefund }) =
         </Table>
       </div>
 
-      <div className="flex items-center justify-between border-t border-[#EEF1F4] px-4 py-3 text-xs text-[#6F7680] dark:border-white/10 dark:text-[#9AA2AD]">
+      <div className="flex flex-col gap-2 border-t border-[#EEF1F4] px-4 py-3 text-xs text-[#6F7680] sm:flex-row sm:items-center sm:justify-between dark:border-white/10 dark:text-[#9AA2AD]">
         <p>
           Showing 1-{data.length} of {total}
         </p>

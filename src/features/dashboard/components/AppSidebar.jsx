@@ -27,9 +27,9 @@ export function AppSidebar({ ...props }) {
 
   const [logoutOpen, setLogoutOpen] = useState(false)
 
-  const keepSidebarOpen = React.useCallback(() => {
+  const handleSidebarItemClick = React.useCallback(() => {
     if (isMobile) {
-      setOpenMobile(true)
+      setOpenMobile(false)
     }
   }, [isMobile, setOpenMobile])
 
@@ -49,7 +49,7 @@ export function AppSidebar({ ...props }) {
         </SidebarHeader>
 
         <SidebarContent className="dark:bg-background bg-white">
-          <NavMain items={dashboardNavigation} onItemClick={keepSidebarOpen} />
+          <NavMain items={dashboardNavigation} onItemClick={handleSidebarItemClick} />
         </SidebarContent>
 
         <SidebarFooter className="dark:bg-background bg-white p-4">

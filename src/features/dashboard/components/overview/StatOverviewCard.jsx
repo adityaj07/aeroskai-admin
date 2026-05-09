@@ -26,7 +26,7 @@ export const StatOverviewCard = ({ title, value, trend }) => {
 
         {/* RIGHT CHART */}
         <div className="flex flex-1 items-end justify-end overflow-hidden">
-          <div className="w-full max-w-[250px] overflow-hidden pr-4 pt-6">
+          <div className=" w-full max-w-[250px] overflow-hidden pt-6">
             <SparklineAreaChart points={trend} />
           </div>
         </div>

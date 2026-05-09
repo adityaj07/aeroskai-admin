@@ -1,11 +1,12 @@
 import { useState } from 'react'
 
+import { StatusSwitcher } from '@/components/shared/app/StatusSwitcher'
+
 import { SUBSCRIPTION_USERS_STATUS_FILTERS } from '../../constants/subscriptions.constants'
 import { useIndividualSubscriptions } from '../../hooks/useIndividualSubscriptions'
 import { SubscriptionOverviewCard } from '../shared/SubscriptionOverviewCard'
 
 import { SubscriptionUsersTable } from './SubscriptionUsersTable'
-import { StatusSwitcher } from '@/components/shared/app/StatusSwitcher'
 
 export const SubscriptionUsersSection = () => {
   const [status, setStatus] = useState('All')
@@ -31,7 +32,7 @@ export const SubscriptionUsersSection = () => {
 
   return (
     <div className="space-y-6">
-      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
         <SubscriptionOverviewCard
           title="Active Subs"
           value={overviewMetrics.total}
