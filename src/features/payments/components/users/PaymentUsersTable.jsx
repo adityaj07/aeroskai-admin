@@ -3,7 +3,6 @@ import { HugeiconsIcon } from '@hugeicons/react'
 import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
 import { motion } from 'framer-motion'
 import { useMemo } from 'react'
-import { useNavigate } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
 import {
@@ -15,59 +14,62 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-import { ROUTES } from '@/constants/routes.constants'
+import { PaymentsStatusBadge } from '../shared/PaymentsStatusBadge'
 
-import { SubscriptionStatusBadge } from '../shared/SubscriptionStatusBadge'
-
-const getColumns = (navigate) => [
+const getColumns = (onIssueRefund) => [
   {
-    accessorKey: 'username',
-    header: 'Username',
+    accessorKey: 'user',
+    header: 'User',
     cell: ({ row }) => (
-      <span className="font-medium text-[#0C1014] dark:text-white">{row.original.username}</span>
+      <span className="font-medium text-[#0C1014] dark:text-white">{row.original.user}</span>
     ),
   },
   {
-    accessorKey: 'email',
-    header: 'Email',
+    accessorKey: 'referenceId',
+    header: 'Reference ID',
   },
   {
     accessorKey: 'plan',
     header: 'Plan',
   },
   {
-    accessorKey: 'nextRenewal',
-    header: 'Next Renewal',
+    accessorKey: 'amount',
+    header: 'Amount',
+  },
+  {
+    accessorKey: 'paymentMethod',
+    header: 'Payment Method',
   },
   {
     accessorKey: 'status',
     header: 'Status',
-    cell: ({ row }) => <SubscriptionStatusBadge status={row.original.status} />,
+    cell: ({ row }) => <PaymentsStatusBadge status={row.original.status} />,
+  },
+  {
+    accessorKey: 'date',
+    header: 'Date',
   },
   {
     id: 'actions',
     header: 'Actions',
 
-    cell: ({ row }) => (
-      <Button
-        variant="ghost"
-        className="h-8 rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
-        onClick={() =>
-          navigate(`${ROUTES.DASHBOARD}/${ROUTES.SUBSCRIPTION_DETAIL_USER(row.original.id)}`)
-        }
-      >
-        View Details
-      </Button>
-    ),
+    cell: ({ row }) =>
+      row.original.status === 'Successful' ? (
+        <Button
+          variant="ghost"
+          className="h-8 rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+          onClick={() => onIssueRefund?.(row.original)}
+        >
+          Issue Refund
+        </Button>
+      ) : null,
   },
 ]
 
-export const SubscriptionUsersTable = ({ users = [], meta }) => {
-  const navigate = useNavigate()
-
+export const PaymentUsersTable = ({ users = [], meta, onIssueRefund }) => {
   const data = useMemo(() => users, [users])
 
-  const columns = useMemo(() => getColumns(navigate), [navigate])
+  const columns = useMemo(() => getColumns(onIssueRefund), [onIssueRefund])
 
   const total = meta?.total ?? data.length
 
@@ -129,7 +131,7 @@ export const SubscriptionUsersTable = ({ users = [], meta }) => {
                   colSpan={columns.length}
                   className="py-10 text-center text-sm text-[#6F7680] dark:text-[#9AA2AD]"
                 >
-                  No individual subscriptions found.
+                  No payments found.
                 </TableCell>
               </TableRow>
             )}
@@ -155,5 +157,3 @@ export const SubscriptionUsersTable = ({ users = [], meta }) => {
     </motion.div>
   )
 }
-
-export default SubscriptionUsersTable

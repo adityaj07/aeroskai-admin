@@ -1,14 +1,11 @@
 import { useState } from 'react'
 
-import { useDebounce } from '@/hooks/useDebounce'
-
 import { SUBSCRIPTION_USERS_STATUS_FILTERS } from '../../constants/subscriptions.constants'
 import { useIndividualSubscriptions } from '../../hooks/useIndividualSubscriptions'
 import { SubscriptionOverviewCard } from '../shared/SubscriptionOverviewCard'
-import { SubscriptionsStatusSwitcher } from '../shared/SubscriptionsStatusSwitcher'
-import { SubscriptionsToolbar } from '../shared/SubscriptionsToolbar'
 
 import { SubscriptionUsersTable } from './SubscriptionUsersTable'
+import { StatusSwitcher } from '@/components/shared/app/StatusSwitcher'
 
 export const SubscriptionUsersSection = () => {
   const [status, setStatus] = useState('All')
@@ -57,7 +54,7 @@ export const SubscriptionUsersSection = () => {
         />
       </div>
 
-      <SubscriptionsStatusSwitcher
+      <StatusSwitcher
         statuses={SUBSCRIPTION_USERS_STATUS_FILTERS}
         selectedStatus={status}
         onStatusChange={setStatus}

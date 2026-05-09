@@ -17,7 +17,7 @@ import {
 
 import { ROUTES } from '@/constants/routes.constants'
 
-import { SubscriptionStatusBadge } from '../SubscriptionStatusBadge'
+import { SubscriptionStatusBadge } from '../shared/SubscriptionStatusBadge'
 
 const getColumns = (navigate) => [
   {
