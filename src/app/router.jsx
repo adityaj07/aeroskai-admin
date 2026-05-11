@@ -4,132 +4,299 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ErrorBoundary from '@/components/shared/ErrorBoundary/ErrorBoundary'
 import PrivateRoute from '@/components/shared/PrivateRoute/PrivateRoute'
 import { ROUTES } from '@/constants/routes.constants'
-import ApplicationDetailsPage from '@/features/applications/pages/ApplicationDetailsPage'
-import ApplicationsPage from '@/features/applications/pages/ApplicationsPage'
-import AuthLayout from '@/features/auth/layouts/AuthLayout'
-import CheckEmailPage from '@/features/auth/pages/CheckEmailPage'
-import CreateInvitedAccountPage from '@/features/auth/pages/CreateInvitedAccountPage'
-import ForgotPasswordPage from '@/features/auth/pages/ForgotPasswordPage'
-import InvitedPage from '@/features/auth/pages/InvitedPage'
-import ResetPasswordPage from '@/features/auth/pages/ResetPasswordPage'
-import CompaniesPage from '@/features/companies/pages/CompaniesPage'
-import CompanyDetailsPage from '@/features/companies/pages/CompanyDetailsPage'
-import CreateCompanyPage from '@/features/companies/pages/CreateCompanyPage'
-import DashboardLayout from '@/features/dashboard/layouts/DashboardLayout'
-import SupportPage from '@/features/support/pages/SupportPage'
-import PaymentsPage from '@/features/payments/pages/PaymentsPage'
-import ReportDetailsPage from '@/features/reports/pages/ReportDetailsPage'
-import ReportsPage from '@/features/reports/pages/ReportsPage'
-import SettingsPage from '@/features/settings/page/SettingsPage'
-import CompanySubscriptionDetailsPage from '@/features/subscriptions/pages/CompanySubscriptionDetailsPage'
-import SubscriptionsPage from '@/features/subscriptions/pages/SubscriptionsPage'
-import UserSubscriptionDetailsPage from '@/features/subscriptions/pages/UserSubscriptionDetailsPage'
-import UserDetailsPage from '@/features/users/pages/UserDetailsPage'
+import { RouteSuspense } from '@/components/shared/app/RouteSuspense'
+
+const AuthLayout = lazy(() => import('@/features/auth/layouts/AuthLayout'))
+const DashboardLayout = lazy(() => import('@/features/dashboard/layouts/DashboardLayout'))
 
 const LoginPage = lazy(() => import('@/features/auth/pages/LoginPage'))
+const ForgotPasswordPage = lazy(() => import('@/features/auth/pages/ForgotPasswordPage'))
+const CheckEmailPage = lazy(() => import('@/features/auth/pages/CheckEmailPage'))
+const ResetPasswordPage = lazy(() => import('@/features/auth/pages/ResetPasswordPage'))
+const InvitedPage = lazy(() => import('@/features/auth/pages/InvitedPage'))
+const CreateInvitedAccountPage = lazy(
+  () => import('@/features/auth/pages/CreateInvitedAccountPage')
+)
+
 const DashboardPage = lazy(() => import('@/features/dashboard/pages/DashboardPage'))
+
+const CompaniesPage = lazy(() => import('@/features/companies/pages/CompaniesPage'))
+const CompanyDetailsPage = lazy(() => import('@/features/companies/pages/CompanyDetailsPage'))
+const CreateCompanyPage = lazy(() => import('@/features/companies/pages/CreateCompanyPage'))
+
+const ApplicationsPage = lazy(() => import('@/features/applications/pages/ApplicationsPage'))
+const ApplicationDetailsPage = lazy(
+  () => import('@/features/applications/pages/ApplicationDetailsPage')
+)
+
 const UsersPage = lazy(() => import('@/features/users/pages/UsersPage'))
+const UserDetailsPage = lazy(() => import('@/features/users/pages/UserDetailsPage'))
+
+const SubscriptionsPage = lazy(() => import('@/features/subscriptions/pages/SubscriptionsPage'))
+const CompanySubscriptionDetailsPage = lazy(
+  () => import('@/features/subscriptions/pages/CompanySubscriptionDetailsPage')
+)
+const UserSubscriptionDetailsPage = lazy(
+  () => import('@/features/subscriptions/pages/UserSubscriptionDetailsPage')
+)
+
+const PaymentsPage = lazy(() => import('@/features/payments/pages/PaymentsPage'))
+
+const SupportPage = lazy(() => import('@/features/support/pages/SupportPage'))
+
+const ReportsPage = lazy(() => import('@/features/reports/pages/ReportsPage'))
+const ReportDetailsPage = lazy(() => import('@/features/reports/pages/ReportDetailsPage'))
+
+const SettingsPage = lazy(() => import('@/features/settings/page/SettingsPage'))
 
 const router = createBrowserRouter([
   {
-    element: <AuthLayout />,
+    element: (
+      <RouteSuspense>
+        <AuthLayout />
+      </RouteSuspense>
+    ),
+
     children: [
-      { path: ROUTES.LOGIN, element: <LoginPage /> },
-      { path: ROUTES.FORGOT_PASSWORD, element: <ForgotPasswordPage /> },
-      { path: ROUTES.CHECK_EMAIL, element: <CheckEmailPage /> },
-      { path: ROUTES.RESET_PASSWORD, element: <ResetPasswordPage /> },
-      { path: ROUTES.INVITED, element: <InvitedPage /> },
-      { path: ROUTES.CREATE_INVITED_ACCOUNT, element: <CreateInvitedAccountPage /> },
+      {
+        path: ROUTES.LOGIN,
+        element: (
+          <RouteSuspense>
+            <LoginPage />
+          </RouteSuspense>
+        ),
+      },
+
+      {
+        path: ROUTES.FORGOT_PASSWORD,
+        element: (
+          <RouteSuspense>
+            <ForgotPasswordPage />
+          </RouteSuspense>
+        ),
+      },
+
+      {
+        path: ROUTES.CHECK_EMAIL,
+        element: (
+          <RouteSuspense>
+            <CheckEmailPage />
+          </RouteSuspense>
+        ),
+      },
+
+      {
+        path: ROUTES.RESET_PASSWORD,
+        element: (
+          <RouteSuspense>
+            <ResetPasswordPage />
+          </RouteSuspense>
+        ),
+      },
+
+      {
+        path: ROUTES.INVITED,
+        element: (
+          <RouteSuspense>
+            <InvitedPage />
+          </RouteSuspense>
+        ),
+      },
+
+      {
+        path: ROUTES.CREATE_INVITED_ACCOUNT,
+        element: (
+          <RouteSuspense>
+            <CreateInvitedAccountPage />
+          </RouteSuspense>
+        ),
+      },
     ],
   },
 
   {
     element: <PrivateRoute />,
     errorElement: <ErrorBoundary />,
+
     children: [
       {
         path: ROUTES.DASHBOARD,
-        element: <DashboardLayout />,
+
+        element: (
+          <RouteSuspense>
+            <DashboardLayout />
+          </RouteSuspense>
+        ),
+
         children: [
           {
             index: true,
-            element: <DashboardPage />,
+
+            element: (
+              <RouteSuspense>
+                <DashboardPage />
+              </RouteSuspense>
+            ),
           },
 
           {
             path: ROUTES.COMPANIES,
-            element: <CompaniesPage />,
+
+            element: (
+              <RouteSuspense>
+                <CompaniesPage />
+              </RouteSuspense>
+            ),
           },
+
           {
             path: ROUTES.COMPANY_CREATE,
-            element: <CreateCompanyPage />,
+
+            element: (
+              <RouteSuspense>
+                <CreateCompanyPage />
+              </RouteSuspense>
+            ),
           },
+
           {
             path: ROUTES.COMPANY_DETAIL(),
-            element: <CompanyDetailsPage />,
+
+            element: (
+              <RouteSuspense>
+                <CompanyDetailsPage />
+              </RouteSuspense>
+            ),
           },
+
           {
             path: ROUTES.APPLICATIONS,
-            element: <ApplicationsPage />,
+
+            element: (
+              <RouteSuspense>
+                <ApplicationsPage />
+              </RouteSuspense>
+            ),
           },
+
           {
             path: ROUTES.APPLICATION_DETAIL(),
-            element: <ApplicationDetailsPage />,
+
+            element: (
+              <RouteSuspense>
+                <ApplicationDetailsPage />
+              </RouteSuspense>
+            ),
           },
+
           {
             path: ROUTES.USERS,
-            element: <UsersPage />,
+
+            element: (
+              <RouteSuspense>
+                <UsersPage />
+              </RouteSuspense>
+            ),
           },
+
           {
             path: ROUTES.USER_DETAIL(),
-            element: <UserDetailsPage />,
+
+            element: (
+              <RouteSuspense>
+                <UserDetailsPage />
+              </RouteSuspense>
+            ),
           },
+
           {
             path: ROUTES.SUBSCRIPTIONS,
-            element: <SubscriptionsPage />,
+
+            element: (
+              <RouteSuspense>
+                <SubscriptionsPage />
+              </RouteSuspense>
+            ),
           },
+
           {
             path: ROUTES.SUBSCRIPTION_DETAIL_COMPANY(),
-            element: <CompanySubscriptionDetailsPage />,
+
+            element: (
+              <RouteSuspense>
+                <CompanySubscriptionDetailsPage />
+              </RouteSuspense>
+            ),
           },
+
           {
             path: ROUTES.SUBSCRIPTION_DETAIL_USER(),
-            element: <UserSubscriptionDetailsPage />,
+
+            element: (
+              <RouteSuspense>
+                <UserSubscriptionDetailsPage />
+              </RouteSuspense>
+            ),
           },
 
           {
             path: ROUTES.PAYMENTS,
-            element: <PaymentsPage />,
+
+            element: (
+              <RouteSuspense>
+                <PaymentsPage />
+              </RouteSuspense>
+            ),
           },
 
           {
             path: ROUTES.SUPPORT,
-            element: <SupportPage />,
+
+            element: (
+              <RouteSuspense>
+                <SupportPage />
+              </RouteSuspense>
+            ),
           },
 
           {
             path: ROUTES.REPORTS,
-            element: <ReportsPage />,
+
+            element: (
+              <RouteSuspense>
+                <ReportsPage />
+              </RouteSuspense>
+            ),
           },
+
           {
             path: ROUTES.REPORT_DETAIL(),
-            element: <ReportDetailsPage />,
+
+            element: (
+              <RouteSuspense>
+                <ReportDetailsPage />
+              </RouteSuspense>
+            ),
           },
 
           {
             path: ROUTES.SETTINGS,
-            element: <SettingsPage />,
+
+            element: (
+              <RouteSuspense>
+                <SettingsPage />
+              </RouteSuspense>
+            ),
           },
         ],
       },
     ],
   },
 
-  { path: '*', element: <div>404 — Page not found</div> },
+  {
+    path: '*',
+    element: <div>404 — Page not found</div>,
+  },
 ])
 
-export const AppRouter = () => (
-  <Suspense fallback={<div>Loading...</div>}>
-    <RouterProvider router={router} />
-  </Suspense>
-)
+export const AppRouter = () => <RouterProvider router={router} />

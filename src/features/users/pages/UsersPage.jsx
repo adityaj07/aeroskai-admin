@@ -4,7 +4,8 @@ import { useDebounce } from '@/hooks/useDebounce'
 import { UsersTable } from '../components/UsersTable'
 import { useUsers } from '../hooks/useUsers'
 import { UsersToolbar } from '../components/UsersToolbar'
-import { UserStatusSwitcher } from '../components/UserStatusSwitcher'
+import { StatusSwitcher } from '@/components/shared/app/StatusSwitcher'
+import { USER_STATUS_FILTERS } from '../constants/users.constants'
 
 const UsersPage = () => {
   const [status, setStatus] = useState('All')
@@ -26,7 +27,11 @@ const UsersPage = () => {
     >
       <UsersToolbar search={search} onSearchChange={setSearch} />
 
-      <UserStatusSwitcher selectedStatus={status} onStatusChange={setStatus} />
+      <StatusSwitcher
+        statuses={USER_STATUS_FILTERS}
+        selectedStatus={status}
+        onStatusChange={setStatus}
+      />
 
       {isLoading ? (
         <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-white/10 dark:text-[#9AA2AD]">

@@ -5,8 +5,6 @@ import { SparklineAreaChart } from '@/features/dashboard/components/overview/Spa
 import { formatCompactNumber } from '@/utils/formatCompactNumber'
 
 export const PaymentsOverviewCard = ({ title, value, trend = [] }) => {
-  console.log('VALUE => ', value)
-
   return (
     <motion.div
       initial={{ opacity: 0, y: 6 }}

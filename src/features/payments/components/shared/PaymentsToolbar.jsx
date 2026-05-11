@@ -75,7 +75,7 @@ export const PaymentsToolbar = ({
         <Button
           type="button"
           onClick={onExportCsv}
-          className="col-span-2 h-11 w-full rounded-[8px] bg-[#EAEEF3] px-4 py-2 text-[13px] font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15 sm:col-auto sm:h-9 sm:w-auto sm:rounded-md"
+          className="py-5.5 col-span-2 h-11 w-full rounded-[8px] bg-[#EAEEF3] px-4 text-[13px] font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15 sm:col-auto sm:h-9 sm:w-auto sm:rounded-md"
         >
           Export CSV
         </Button>
@@ -84,7 +84,7 @@ export const PaymentsToolbar = ({
           <Button
             type="button"
             onClick={onRecordPayment}
-            className="col-span-2 h-11 w-full rounded-[8px] bg-[#1565C0] px-4 text-[13px] font-semibold text-white hover:bg-[#0F54A1] sm:col-auto sm:h-9 sm:w-auto sm:rounded-md"
+            className="py-5.5 col-span-2 h-11 w-full rounded-[8px] bg-[#1565C0] px-4 text-[13px] font-semibold text-white hover:bg-[#0F54A1] sm:col-auto sm:h-9 sm:w-auto sm:rounded-md"
           >
             Record Payment
           </Button>

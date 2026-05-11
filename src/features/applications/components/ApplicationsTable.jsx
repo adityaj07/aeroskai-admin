@@ -95,7 +95,7 @@ export const ApplicationsTable = ({ applications, meta }) => {
       className="overflow-hidden rounded-xl border border-[#EEF1F4] pt-4 dark:border-white/10"
     >
       <Table className="min-w-[980px]">
-        <TableHeader className="bg-[#F7F9F9] dark:bg-[#171A1E]">
+        <TableHeader className="bg-[#F7F9F9] dark:bg-[#14171A]">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow
               key={headerGroup.id}
@@ -106,9 +106,7 @@ export const ApplicationsTable = ({ applications, meta }) => {
                   key={header.id}
                   className={`
             h-12 bg-[#F7F9F9] px-4 text-xs font-semibold
-            text-[#0C1014] dark:bg-[#171A1E] dark:text-[#9AA2AD]
-
-           
+            text-[#0C1014] dark:bg-[#14171A] dark:text-[#F7F9F9]
           `}
                 >
                   {header.isPlaceholder
@@ -124,7 +122,7 @@ export const ApplicationsTable = ({ applications, meta }) => {
           {table.getRowModel().rows.map((row) => (
             <TableRow
               key={row.id}
-              className="border-b border-[#F3F4F6] hover:bg-[#FBFCFD] dark:border-white/10 dark:hover:bg-white/5"
+              className="border-b border-[#F3F4F6] hover:bg-[#FBFCFD] dark:border-white/10 dark:hover:bg-[#14171A]"
             >
               {row.getVisibleCells().map((cell) => (
                 <TableCell
