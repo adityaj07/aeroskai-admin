@@ -18,6 +18,7 @@ import CreateCompanyPage from '@/features/companies/pages/CreateCompanyPage'
 import DashboardLayout from '@/features/dashboard/layouts/DashboardLayout'
 import SupportPage from '@/features/dashboard/pages/SupportPage'
 import PaymentsPage from '@/features/payments/pages/PaymentsPage'
+import ReportDetailsPage from '@/features/reports/pages/ReportDetailsPage'
 import ReportsPage from '@/features/reports/pages/ReportsPage'
 import SettingsPage from '@/features/settings/page/SettingsPage'
 import CompanySubscriptionDetailsPage from '@/features/subscriptions/pages/CompanySubscriptionDetailsPage'
@@ -109,6 +110,10 @@ const router = createBrowserRouter([
           {
             path: ROUTES.REPORTS,
             element: <ReportsPage />,
+          },
+          {
+            path: ROUTES.REPORT_DETAIL(),
+            element: <ReportDetailsPage />,
           },
 
           {

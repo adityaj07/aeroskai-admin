@@ -45,7 +45,7 @@ export const PaymentsToolbar = ({
         />
       </div>
 
-      <div className="grid w-full grid-cols-2 gap-2 sm:w-auto sm:flex sm:flex-wrap sm:items-center sm:justify-end">
+      <div className="grid w-full grid-cols-2 gap-2 sm:flex sm:w-auto sm:flex-wrap sm:items-center sm:justify-end">
         <Select value={status} onValueChange={onStatusChange}>
           <SelectTrigger className={`${selectTriggerClassName} w-full sm:w-auto`}>
             <SelectValue placeholder="Status" />
@@ -75,7 +75,7 @@ export const PaymentsToolbar = ({
         <Button
           type="button"
           onClick={onExportCsv}
-          className="col-span-2 h-11 w-full rounded-[8px] bg-[#EAEEF3] px-4 text-[13px] font-semibold text-[#0C1014] hover:bg-[#DEE5EC] sm:col-auto sm:h-9 sm:w-auto sm:rounded-md dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+          className="col-span-2 h-11 w-full rounded-[8px] bg-[#EAEEF3] px-4 py-2 text-[13px] font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15 sm:col-auto sm:h-9 sm:w-auto sm:rounded-md"
         >
           Export CSV
         </Button>

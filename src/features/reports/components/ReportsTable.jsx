@@ -1,14 +1,11 @@
-import { useMemo } from 'react'
-import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
-
-import { motion } from 'framer-motion'
-
 import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
-
 import { HugeiconsIcon } from '@hugeicons/react'
+import { flexRender, getCoreRowModel, useReactTable } from '@tanstack/react-table'
+import { motion } from 'framer-motion'
+import { useMemo } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 import { Button } from '@/components/ui/button'
-
 import {
   Table,
   TableBody,
@@ -17,10 +14,11 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
+import { ROUTES } from '@/constants/routes.constants'
 
 import { ReportsStatusBadge } from './ReportsStatusBadge'
 
-const getColumns = () => [
+const getColumns = (onOpenDetails) => [
   {
     accessorKey: 'id',
     header: 'Report ID',
@@ -69,6 +67,8 @@ const getColumns = () => [
 
       return (
         <Button
+          type="button"
+          onClick={() => onOpenDetails(row.original.id)}
           variant="ghost"
           className="h-8 rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
         >
@@ -80,9 +80,13 @@ const getColumns = () => [
 ]
 
 export const ReportsTable = ({ reports = [], meta }) => {
+  const navigate = useNavigate()
   const data = useMemo(() => reports, [reports])
-
-  const columns = useMemo(() => getColumns(), [])
+  const columns = useMemo(
+    () =>
+      getColumns((reportId) => navigate(`${ROUTES.DASHBOARD}/${ROUTES.REPORT_DETAIL(reportId)}`)),
+    [navigate]
+  )
 
   const total = meta?.total ?? data.length
 
@@ -103,7 +107,7 @@ export const ReportsTable = ({ reports = [], meta }) => {
       className="overflow-hidden rounded-xl border border-[#EEF1F4] pt-4 dark:border-white/10"
     >
       <div className="w-full overflow-x-auto">
-        <Table className="min-w-[980px]">
+        <Table className="min-w-245">
           <TableHeader className="bg-[#F7F9F9] dark:bg-[#171A1E]">
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow
@@ -113,7 +117,7 @@ export const ReportsTable = ({ reports = [], meta }) => {
                 {headerGroup.headers.map((header) => (
                   <TableHead
                     key={header.id}
-                    className="h-12 bg-[#F7F9F9] px-4 text-xs font-semibold text-[#6F7680] dark:bg-[#171A1E] dark:text-[#9AA2AD]"
+                    className="h-12 bg-[#F7F9F9] px-4 text-xs font-semibold text-[#0C1014] dark:bg-[#171A1E] dark:text-[#9AA2AD]"
                   >
                     {header.isPlaceholder
                       ? null

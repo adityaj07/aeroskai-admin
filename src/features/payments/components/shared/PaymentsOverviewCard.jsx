@@ -2,8 +2,11 @@ import { motion } from 'framer-motion'
 
 import { Card } from '@/components/ui/card'
 import { SparklineAreaChart } from '@/features/dashboard/components/overview/SparklineAreaChart'
+import { formatCompactNumber } from '@/utils/formatCompactNumber'
 
 export const PaymentsOverviewCard = ({ title, value, trend = [] }) => {
+  console.log('VALUE => ', value)
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 6 }}
@@ -15,7 +18,7 @@ export const PaymentsOverviewCard = ({ title, value, trend = [] }) => {
           <div className="flex min-w-0 flex-col justify-between">
             <p className="text-[14px] font-medium text-[#6F7680] dark:text-[#A9B0BA]">{title}</p>
             <p className="max-w-full overflow-hidden text-[clamp(2rem,4.2vw,2.5rem)] font-medium leading-none tracking-[-1px] text-[#0C1014] dark:text-white">
-              {value}
+              {formatCompactNumber(value)}
             </p>
           </div>
 

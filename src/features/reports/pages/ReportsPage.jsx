@@ -4,7 +4,11 @@ import { motion } from 'framer-motion'
 import { useDebounce } from '@/hooks/useDebounce'
 import { StatusSwitcher } from '@/components/shared/app/StatusSwitcher'
 
-import { REPORT_STATUS_FILTERS } from '../constants/reports.constants'
+import {
+  REPORT_STATUS_FILTERS,
+  REPORT_CONTENT_TYPE_FILTERS,
+  REPORT_DURATION_FILTERS,
+} from '../constants/reports.constants'
 import { useReports } from '../hooks/useReports'
 
 import { ReportsToolbar } from '../components/ReportsToolbar'
@@ -13,12 +17,16 @@ import { ReportsTable } from '../components/ReportsTable'
 const ReportsPage = () => {
   const [status, setStatus] = useState('All')
   const [search, setSearch] = useState('')
+  const [contentType, setContentType] = useState('All Content')
+  const [duration, setDuration] = useState('Last 30 days')
 
   const debouncedSearch = useDebounce(search, 250)
 
   const { data, isLoading } = useReports({
     status,
     search: debouncedSearch,
+    contentType,
+    duration,
   })
 
   return (
@@ -28,7 +36,16 @@ const ReportsPage = () => {
       transition={{ duration: 0.22, ease: 'easeOut' }}
       className="space-y-5"
     >
-      <ReportsToolbar search={search} onSearchChange={setSearch} />
+      <ReportsToolbar
+        search={search}
+        onSearchChange={setSearch}
+        contentType={contentType}
+        contentTypes={REPORT_CONTENT_TYPE_FILTERS}
+        onContentTypeChange={setContentType}
+        duration={duration}
+        durations={REPORT_DURATION_FILTERS}
+        onDurationChange={setDuration}
+      />
 
       <StatusSwitcher
         statuses={REPORT_STATUS_FILTERS}

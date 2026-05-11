@@ -70,7 +70,7 @@ export const DashboardOverview = ({ data, isLoading }) => {
       <div className="grid min-w-0 items-stretch gap-4 md:gap-6 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)]">
         <RevenueBarChartCard revenue={data.revenue} />
 
-        <div className="grid min-w-0 content-start gap-4 md:gap-6 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
+        <div className="grid min-w-0 content-start gap-4 sm:grid-cols-2 md:gap-6 lg:grid-cols-1 xl:grid-cols-2">
           {data.actions.map((action) => (
             <QuickActionCard
               key={action.id}

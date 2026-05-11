@@ -97,7 +97,7 @@ export const PaymentUsersTable = ({ users = [], meta, onIssueRefund }) => {
                 {headerGroup.headers.map((header) => (
                   <TableHead
                     key={header.id}
-                    className="h-12 bg-[#F7F9F9] px-4 text-xs font-semibold text-[#6F7680] dark:bg-[#171A1E] dark:text-[#9AA2AD]"
+                    className="h-12 bg-[#F7F9F9] px-4 text-xs font-semibold text-[#0C1014] dark:bg-[#171A1E] dark:text-[#9AA2AD]"
                   >
                     {header.isPlaceholder
                       ? null
@@ -139,7 +139,7 @@ export const PaymentUsersTable = ({ users = [], meta, onIssueRefund }) => {
         </Table>
       </div>
 
-      <div className="flex flex-col gap-2 border-t border-[#EEF1F4] px-4 py-3 text-xs text-[#6F7680] sm:flex-row sm:items-center sm:justify-between dark:border-white/10 dark:text-[#9AA2AD]">
+      <div className="flex flex-col gap-2 border-t border-[#EEF1F4] px-4 py-3 text-xs text-[#6F7680] dark:border-white/10 dark:text-[#9AA2AD] sm:flex-row sm:items-center sm:justify-between">
         <p>
           Showing 1-{data.length} of {total}
         </p>

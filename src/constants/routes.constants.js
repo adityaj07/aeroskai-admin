@@ -20,5 +20,6 @@ export const ROUTES = {
   PAYMENTS: 'payments',
   SUPPORT: 'support',
   REPORTS: 'reports',
+  REPORT_DETAIL: (id = ':reportId') => `reports/${id}`,
   SETTINGS: 'settings',
 }

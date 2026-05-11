@@ -21,7 +21,7 @@ export function ModeToggle() {
     <Button
       variant="outline"
       size="icon"
-      className="relative"
+      className="relative size-[36px] bg-transparent"
       onClick={handleToggle}
       aria-label="Toggle light and dark mode"
     >

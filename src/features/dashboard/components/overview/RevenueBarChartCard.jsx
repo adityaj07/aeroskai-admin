@@ -39,9 +39,9 @@ export const RevenueBarChartCard = ({ revenue }) => {
       transition={{ duration: 0.22, ease: 'easeOut' }}
     >
       <Card className="h-full min-w-0 overflow-hidden rounded-[20px] border-[#ECEFF3] p-4 dark:border-white/10 dark:bg-transparent">
-        <div className="mb-6 flex min-w-0 items-start justify-between gap-2">
+        <div className="mb-6.75 flex min-w-0 items-start justify-between gap-2">
           <div className="min-w-0">
-            <div className="mb-3 flex items-center gap-2">
+            <div className="mb-4 flex items-center gap-2">
               <span className="inline-block h-8 w-3 rounded-[3px] bg-[#1E88E5]" />
               <p className="text-base font-bold text-[#0C1014] dark:text-white">{revenue.title}</p>
             </div>

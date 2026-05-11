@@ -121,7 +121,7 @@ export const UsersTable = ({ users, meta }) => {
                   key={header.id}
                   className={`
             h-12 bg-[#F7F9F9] px-4 text-xs font-semibold
-            text-[#6F7680] dark:bg-[#171A1E] dark:text-[#9AA2AD]
+            text-[#0C1014] dark:bg-[#171A1E] dark:text-[#9AA2AD]
           `}
                 >
                   {header.isPlaceholder

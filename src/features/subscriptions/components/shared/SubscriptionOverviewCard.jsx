@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 
 import { Card } from '@/components/ui/card'
 import { SparklineAreaChart } from '@/features/dashboard/components/overview/SparklineAreaChart'
+import { formatCompactNumber } from '@/utils/formatCompactNumber'
 
 export const SubscriptionOverviewCard = ({ title, value, trend = [] }) => {
   return (
@@ -15,7 +16,7 @@ export const SubscriptionOverviewCard = ({ title, value, trend = [] }) => {
           <div className="flex flex-col justify-between">
             <p className="text-[14px] font-medium text-[#6F7680] dark:text-[#A9B0BA]">{title}</p>
             <p className="text-[44px] font-medium leading-none tracking-[-1.5px] text-[#0C1014] dark:text-white sm:text-[40px]">
-              {value}
+              {formatCompactNumber(value)}
             </p>
           </div>
 
