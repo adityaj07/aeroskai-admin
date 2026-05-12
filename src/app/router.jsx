@@ -5,6 +5,7 @@ import ErrorBoundary from '@/components/shared/ErrorBoundary/ErrorBoundary'
 import PrivateRoute from '@/components/shared/PrivateRoute/PrivateRoute'
 import { ROUTES } from '@/constants/routes.constants'
 import { RouteSuspense } from '@/components/shared/app/RouteSuspense'
+import AccountActivatedPage from '@/features/auth/pages/AccountActivatedPage'
 
 const AuthLayout = lazy(() => import('@/features/auth/layouts/AuthLayout'))
 const DashboardLayout = lazy(() => import('@/features/dashboard/layouts/DashboardLayout'))
@@ -108,6 +109,15 @@ const router = createBrowserRouter([
         element: (
           <RouteSuspense>
             <CreateInvitedAccountPage />
+          </RouteSuspense>
+        ),
+      },
+
+      {
+        path: ROUTES.ACCOUNT_ACTIVATED,
+        element: (
+          <RouteSuspense>
+            <AccountActivatedPage />
           </RouteSuspense>
         ),
       },

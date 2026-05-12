@@ -64,7 +64,7 @@ export const ApproveApplicationDialog = ({ open, application, onClose, onSubmit 
               Billing cycle
             </p>
 
-            <Select value={billingCycle} onValueChange={setBillingCycle}>
+            {/* <Select value={billingCycle} onValueChange={setBillingCycle}>
               <SelectTrigger className="h-10 w-full bg-[#F7F9F9] text-sm dark:bg-white/5">
                 <SelectValue placeholder="Select billing cycle" />
               </SelectTrigger>
@@ -76,7 +76,7 @@ export const ApproveApplicationDialog = ({ open, application, onClose, onSubmit 
                   </SelectItem>
                 ))}
               </SelectContent>
-            </Select>
+            </Select> */}
           </div>
 
           {/* Seats */}
@@ -147,13 +147,13 @@ export const ApproveApplicationDialog = ({ open, application, onClose, onSubmit 
             type="button"
             variant="secondary"
             onClick={closeDialog}
-            className="h-10 bg-[#EAEEF3] dark:bg-white/10"
+            className="h-10 cursor-pointer bg-[#EAEEF3] dark:bg-white/10"
           >
             Cancel
           </Button>
           <Button
             type="button"
-            className="h-10 bg-[#1565C0] text-white hover:bg-[#0F54A1]"
+            className="h-10 cursor-pointer bg-[#1565C0] text-white hover:bg-[#0F54A1]"
             onClick={() =>
               onSubmit({
                 price: '$70.99',

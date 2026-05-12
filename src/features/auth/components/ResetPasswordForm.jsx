@@ -54,13 +54,13 @@ export const ResetPasswordForm = () => {
 
   return (
     <AuthFormMotion>
-      <Card className="w-full rounded-[20px] border-[#F3F4F6] bg-white dark:border-white/10 dark:bg-[#121417]">
+      <Card className="w-full rounded-[20px] border-[#F3F4F6] bg-transparent dark:border-[#25292E]">
         <CardHeader className="space-y-2 pb-4 text-center">
-          <CardTitle className="text-2xl text-[#1F1E1F] dark:text-white md:text-3xl">
+          <CardTitle className="text-[24px] font-semibold tracking-[-0.02em] text-[#1F1E1F] dark:text-[#F7F9F9] sm:text-[28px] lg:text-[32px]">
             Reset password
           </CardTitle>
 
-          <CardDescription className="text-[12px] text-[#6F7680] dark:text-[#A9B0BA]">
+          <CardDescription className="text-[12px] text-[#6F7680] dark:text-[#A2AAB4] sm:text-[13px] lg:text-[14px]">
             Create a new password for your account.
           </CardDescription>
         </CardHeader>
@@ -71,7 +71,7 @@ export const ResetPasswordForm = () => {
               <FormItem className="mt-3">
                 <FormLabel
                   htmlFor="password"
-                  className="text-[13px] font-semibold text-[#0C1014] dark:text-white"
+                  className="text-[12px] font-semibold text-[#0C1014] dark:text-white sm:text-[13px]"
                 >
                   New Password
                 </FormLabel>
@@ -83,7 +83,7 @@ export const ResetPasswordForm = () => {
                       type={showPassword ? 'text' : 'password'}
                       placeholder="Enter new password"
                       autoComplete="new-password"
-                      className="rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[#1F1E1F] ring-0 placeholder:text-[#6F7680] dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD]"
+                      className="mt-2 h-10 rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[13px] text-[#1F1E1F] ring-0 placeholder:text-[12px] placeholder:text-[#6F7680] dark:border-[#25292E] dark:bg-[#14171A] dark:text-white dark:placeholder:text-[#A2AAB4] sm:h-11 sm:text-[14px] sm:placeholder:text-[13px]"
                       {...form.register('password')}
                     />
 
@@ -97,6 +97,7 @@ export const ResetPasswordForm = () => {
                         icon={showPassword ? ViewOffSlashIcon : ViewIcon}
                         size={18}
                         strokeWidth={1.8}
+                        className="text-[#6F7680] dark:text-[#A9B0BA]"
                       />
                     </button>
                   </div>
@@ -110,7 +111,7 @@ export const ResetPasswordForm = () => {
               <FormItem className="mt-3">
                 <FormLabel
                   htmlFor="confirmPassword"
-                  className="text-[13px] font-semibold text-[#0C1014] dark:text-white"
+                  className="text-[12px] font-semibold text-[#0C1014] dark:text-white sm:text-[13px]"
                 >
                   Confirm Password
                 </FormLabel>
@@ -122,7 +123,7 @@ export const ResetPasswordForm = () => {
                       type={showConfirmPassword ? 'text' : 'password'}
                       placeholder="Confirm new password"
                       autoComplete="new-password"
-                      className="rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[#1F1E1F] ring-0 placeholder:text-[#6F7680] dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD]"
+                      className="mt-2 h-10 rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[13px] text-[#1F1E1F] ring-0 placeholder:text-[12px] placeholder:text-[#6F7680] dark:border-[#25292E] dark:bg-[#14171A] dark:text-white dark:placeholder:text-[#A2AAB4] sm:h-11 sm:text-[14px] sm:placeholder:text-[13px]"
                       {...form.register('confirmPassword')}
                     />
 
@@ -136,6 +137,7 @@ export const ResetPasswordForm = () => {
                         icon={showConfirmPassword ? ViewOffSlashIcon : ViewIcon}
                         size={18}
                         strokeWidth={1.8}
+                        className="text-[#6F7680] dark:text-[#A9B0BA]"
                       />
                     </button>
                   </div>
@@ -152,7 +154,7 @@ export const ResetPasswordForm = () => {
 
               <Button
                 type="submit"
-                className="mt-10 h-10 w-full bg-[#1565C0] text-sm"
+                className="mt-10 h-10 w-full cursor-pointer bg-[#1565C0] text-[13px] sm:h-11 sm:text-[14px]"
                 disabled={isPending}
               >
                 {isPending ? 'Resetting...' : 'Reset Password'}
@@ -160,7 +162,7 @@ export const ResetPasswordForm = () => {
 
               <Link
                 to={ROUTES.LOGIN}
-                className="mt-8 flex justify-center text-[14px] font-medium text-[#6F7680] transition-colors hover:text-[#1565C0] dark:text-[#A9B0BA] dark:hover:text-white"
+                className="mt-[53px] flex cursor-pointer justify-center text-[12px] font-medium text-[#6F7680] transition-colors hover:text-[#1565C0] dark:text-[#A9B0BA] dark:hover:text-white sm:text-[13px] lg:text-[14px]"
               >
                 Back to login
               </Link>

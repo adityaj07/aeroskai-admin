@@ -23,7 +23,7 @@ export const CompanySubscriptionAdminActionsCard = ({ details }) => {
       <AdminSectionCard title="Admin Actions" contentClassName="space-y-2.5">
         <Button
           type="button"
-          className={`${actionButtonClass} bg-[#1565C0] text-white hover:bg-[#0F54A1]`}
+          className={`${actionButtonClass} cursor-pointer bg-[#1565C0] text-white hover:bg-[#0F54A1]`}
           onClick={() => setRenewalOpen(true)}
         >
           Send Renewal Reminder
@@ -32,7 +32,7 @@ export const CompanySubscriptionAdminActionsCard = ({ details }) => {
         <Button
           type="button"
           variant="secondary"
-          className={`${actionButtonClass} bg-[#EAEEF3] text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white`}
+          className={`${actionButtonClass} cursor-pointer bg-[#EAEEF3] text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white`}
           onClick={() => setInvoiceOpen(true)}
         >
           Send Invoice Email
@@ -41,7 +41,7 @@ export const CompanySubscriptionAdminActionsCard = ({ details }) => {
         <Button
           type="button"
           variant="secondary"
-          className={`${actionButtonClass} bg-[#EAEEF3] text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white`}
+          className={`${actionButtonClass} cursor-pointer bg-[#EAEEF3] text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white`}
           onClick={() =>
             navigate(`${ROUTES.DASHBOARD}/${ROUTES.COMPANY_DETAIL(details.companyId)}`)
           }

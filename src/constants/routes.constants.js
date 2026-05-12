@@ -6,6 +6,7 @@ export const ROUTES = {
   RESET_PASSWORD: '/reset-password',
   INVITED: '/invited',
   CREATE_INVITED_ACCOUNT: '/create-account',
+  ACCOUNT_ACTIVATED: '/account-activated',
   DASHBOARD: '/dashboard',
   COMPANIES: 'companies',
   COMPANY_CREATE: 'companies/create',

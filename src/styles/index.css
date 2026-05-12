@@ -120,6 +120,16 @@
 }
 
 @layer base {
+  ::selection {
+    background-color: #1565c0;
+    color: #ffffff;
+  }
+
+  ::-moz-selection {
+    background-color: #1565c0;
+    color: #ffffff;
+  }
+
   * {
     @apply border-border outline-ring/50;
   }

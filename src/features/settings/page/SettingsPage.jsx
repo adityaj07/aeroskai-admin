@@ -76,7 +76,7 @@ const SettingsPage = () => {
           transition={{ duration: 0.2, delay: 0.05, ease: 'easeOut' }}
           className="flex items-center justify-end"
         >
-          <Button className="h-10 min-w-[132px] bg-[#1565C0] text-sm text-white transition-colors hover:bg-[#0F54A1] dark:bg-[#1565C0] dark:hover:bg-[#0F54A1]">
+          <Button className="h-10 min-w-[132px] cursor-pointer bg-[#1565C0] text-sm text-white transition-colors hover:bg-[#0F54A1] dark:bg-[#1565C0] dark:hover:bg-[#0F54A1]">
             Save Changes
           </Button>
         </motion.div>

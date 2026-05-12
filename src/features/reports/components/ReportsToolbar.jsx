@@ -11,7 +11,7 @@ import {
 } from '@/components/ui/select'
 
 const selectTriggerClassName =
-  'h-[44px] min-w-[133px] rounded-[8px] border border-[#F3F4F6] bg-white px-4 py-[11px] text-[13px] font-semibold text-[#6F7680] shadow-none ring-0 outline-none focus:ring-0 focus:outline-none focus:border-[#1565C0]/40 dark:border-white/10 dark:bg-transparent dark:text-[#A9B0BA]'
+  'h-[44px] min-w-[133px] rounded-[8px] border border-[#F3F4F6] bg-white px-4 py-[11px] text-[13px] font-semibold text-[#6F7680] shadow-none ring-0 outline-none focus:ring-0 focus:outline-none focus:border-[#1565C0]/40 dark:border-[#25292E] dark:bg-transparent dark:text-[#A9B0BA]'
 
 export const ReportsToolbar = ({
   search,
@@ -37,7 +37,7 @@ export const ReportsToolbar = ({
           value={search}
           onChange={(event) => onSearchChange(event.target.value)}
           placeholder="Search by username, content, or report ID"
-          className="h-11 w-full rounded-md border border-[#F3F4F6] bg-white pl-9 pr-3 text-sm text-[#0C1014] placeholder:text-[#6F7680] focus-visible:border-[#1565C0]/40 focus-visible:ring-0 dark:border-white/10 dark:bg-transparent dark:text-white dark:placeholder:text-[#A2AAB4]"
+          className="h-11 w-full rounded-md border border-[#F3F4F6] bg-white pl-9 pr-3 text-sm text-[#0C1014] placeholder:text-[#6F7680] focus-visible:border-[#1565C0]/40 focus-visible:ring-0 dark:border-[#25292E] dark:bg-transparent dark:text-white dark:placeholder:text-[#A2AAB4]"
         />
       </div>
 

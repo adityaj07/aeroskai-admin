@@ -15,7 +15,7 @@ export const QuickActionCard = ({ title, description, icon = 'list', onAction })
       transition={{ duration: 0.22, ease: 'easeOut' }}
       className="h-full"
     >
-      <Card className="flex h-full flex-col rounded-[20px] border-[#ECEFF3] p-4 dark:border-white/10 dark:bg-transparent">
+      <Card className="flex h-full flex-col rounded-[20px] border-[#ECEFF3] p-4 dark:border-[#25292E] dark:bg-transparent">
         <div className="mb-4 flex items-center justify-between md:mb-6">
           <div className=" rounded-full  p-2 text-[#1E88E5]">
             <HugeiconsIcon icon={leadingIcon} size={24} strokeWidth={1.8} />
@@ -24,10 +24,15 @@ export const QuickActionCard = ({ title, description, icon = 'list', onAction })
           <Button
             variant="default"
             size="icon-sm"
-            className="size-[44px] shrink-0 rounded-full bg-[#1E88E5] p-0 text-white hover:bg-[#1976D2]"
+            className="size-[44px] shrink-0 cursor-pointer rounded-full bg-[#1E88E5] p-0 text-white hover:bg-[#1976D2]"
             onClick={onAction}
           >
-            <HugeiconsIcon icon={ArrowUpRight01Icon} size={14} strokeWidth={2} />
+            <HugeiconsIcon
+              icon={ArrowUpRight01Icon}
+              size={24}
+              strokeWidth={2}
+              className="dark:text-black"
+            />
           </Button>
         </div>
 

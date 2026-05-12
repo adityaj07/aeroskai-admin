@@ -15,7 +15,7 @@ const CompanyDetailsPage = () => {
 
   if (isLoading || !data) {
     return (
-      <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-white/10 dark:text-[#A9B0BA]">
+      <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#A9B0BA]">
         Loading company details...
       </div>
     )

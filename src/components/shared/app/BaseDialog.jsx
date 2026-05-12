@@ -36,7 +36,7 @@ export const BaseDialog = ({
               <button
                 type="button"
                 onClick={onClose}
-                className="inline-flex size-7 items-center justify-center rounded-full text-[#1F1E1F] hover:bg-[#F3F4F6] dark:text-white dark:hover:bg-white/10"
+                className="inline-flex size-7 cursor-pointer items-center justify-center rounded-full text-[#1F1E1F] hover:bg-[#F3F4F6] dark:text-white dark:hover:bg-white/10"
               >
                 <HugeiconsIcon icon={Cancel01Icon} size={16} />
               </button>

@@ -41,7 +41,7 @@ const getColumns = () => [
     cell: () => (
       <Button
         variant="ghost"
-        className="h-8 rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white"
+        className="h-8 cursor-pointer rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white"
       >
         Issue Refund
       </Button>
@@ -82,7 +82,7 @@ export const UserBillingHistoryCard = ({ rows }) => {
 
           <TableBody>
             {table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id} className="border-b border-[#F3F4F6] dark:border-white/10">
+              <TableRow key={row.id} className="border-b border-[#F3F4F6] dark:border-[#25292E]">
                 {row.getVisibleCells().map((cell) => (
                   <TableCell
                     key={cell.id}
@@ -97,17 +97,17 @@ export const UserBillingHistoryCard = ({ rows }) => {
         </Table>
       </div>
 
-      <div className="flex items-center justify-between border-t border-[#EEF1F4] px-4 py-3 text-xs text-[#6F7680] dark:border-white/10 dark:text-[#9AA2AD]">
+      <div className="flex items-center justify-between border-t border-[#EEF1F4] px-4 py-3 text-xs text-[#6F7680] dark:border-[#25292E] dark:text-[#9AA2AD]">
         <p>
           Showing 1-{data.length} of {data.length}
         </p>
 
         <div className="flex items-center gap-2">
-          <button className="rounded-md p-1 text-[#9AA2AD] hover:bg-[#F5F7FA] hover:text-[#0C1014] dark:hover:bg-white/5 dark:hover:text-white">
+          <button className="cursor-pointer rounded-md p-1 text-[#9AA2AD] hover:bg-[#F5F7FA] hover:text-[#0C1014] dark:hover:bg-white/5 dark:hover:text-white">
             <HugeiconsIcon icon={ArrowLeft01Icon} size={16} />
           </button>
 
-          <button className="rounded-md p-1 text-[#9AA2AD] hover:bg-[#F5F7FA] hover:text-[#0C1014] dark:hover:bg-white/5 dark:hover:text-white">
+          <button className="cursor-pointer rounded-md p-1 text-[#9AA2AD] hover:bg-[#F5F7FA] hover:text-[#0C1014] dark:hover:bg-white/5 dark:hover:text-white">
             <HugeiconsIcon icon={ArrowRight01Icon} size={16} />
           </button>
         </div>

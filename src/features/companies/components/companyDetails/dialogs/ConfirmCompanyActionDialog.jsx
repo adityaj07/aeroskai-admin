@@ -12,20 +12,24 @@ export const ConfirmCompanyActionDialog = ({
 }) => {
   return (
     <BaseDialog open={open} title={title} onClose={onClose} widthClassName="max-w-[600px]">
-      <p className="mb-6 text-start text-xs text-[#6F7680] dark:text-[#A9B0BA]">{description}</p>
-      <div className="grid grid-cols-2 gap-2">
+      <p className="mb-6 text-start text-[12px] leading-relaxed text-[#6F7680] dark:text-[#A9B0BA] sm:text-[13px]">
+        {description}
+      </p>
+
+      <div className="grid grid-cols-1 gap-2 sm:grid-cols-2">
         <Button
           type="button"
           variant="secondary"
           onClick={onClose}
-          className="h-10 border border-[#F3F4F6] bg-[#EAEEF3] text-sm text-[#1F1E1F] hover:bg-[#DEE5EC] dark:border-white/10 dark:bg-white/10 dark:text-white"
+          className="h-10 cursor-pointer border border-[#F3F4F6] bg-[#EAEEF3] text-[13px] text-[#1F1E1F] transition-colors hover:bg-[#DEE5EC] dark:border-[#25292E] dark:bg-white/10 dark:text-white dark:hover:bg-white/15 sm:h-11 sm:text-[14px]"
         >
           Cancel
         </Button>
+
         <Button
           type="button"
           onClick={onConfirm}
-          className={`h-10 text-sm text-white ${confirmClassName}`}
+          className={`h-10 cursor-pointer text-[13px] text-white transition-colors sm:h-11 sm:text-[14px] ${confirmClassName}`}
         >
           {confirmLabel}
         </Button>

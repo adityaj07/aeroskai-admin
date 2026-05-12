@@ -15,6 +15,7 @@ import {
 } from '@/components/ui/dropdown-menu'
 
 import { DASHBOARD_COLORS } from '../../constants/dashboard.constants'
+import { formatCompactNumber } from '@/utils/formatCompactNumber'
 
 const chartConfig = {
   amount: {
@@ -38,7 +39,7 @@ export const RevenueBarChartCard = ({ revenue }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.22, ease: 'easeOut' }}
     >
-      <Card className="h-full min-w-0 overflow-hidden rounded-[20px] border-[#ECEFF3] p-4 dark:border-white/10 dark:bg-transparent">
+      <Card className="h-full min-w-0 overflow-hidden rounded-[20px] border-[#ECEFF3] p-4 dark:border-[#25292E] dark:bg-transparent">
         <div className="mb-6.75 flex min-w-0 items-start justify-between gap-2">
           <div className="min-w-0">
             <div className="mb-4 flex items-center gap-2">
@@ -47,7 +48,7 @@ export const RevenueBarChartCard = ({ revenue }) => {
             </div>
             <div className="flex min-w-0 items-center gap-2">
               <p className="truncate text-[30px] font-medium leading-none text-[#0C1014] dark:text-white sm:text-[40px]">
-                ${revenue.amount.toFixed(2)}
+                ${formatCompactNumber(revenue.amount.toFixed(2))}
               </p>
               <p className="inline-flex items-center gap-1 text-xs font-medium text-[#12B76A]">
                 <HugeiconsIcon icon={ArrowUpRight01Icon} size={12} strokeWidth={1.8} />
@@ -61,7 +62,7 @@ export const RevenueBarChartCard = ({ revenue }) => {
               <Button
                 variant="outline"
                 size="sm"
-                className="h-8 gap-1 rounded-md border-[#ECEFF3] px-2.5 text-xs text-[#6F7680] dark:border-white/10 dark:text-[#A9B0BA]"
+                className="h-8 cursor-pointer gap-1 rounded-md border-[#ECEFF3] px-2.5 text-xs text-[#6F7680] dark:border-[#25292E] dark:text-[#A9B0BA]"
               >
                 {selectedPeriod}
                 <HugeiconsIcon

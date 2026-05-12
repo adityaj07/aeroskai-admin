@@ -66,14 +66,14 @@ export const SupportTabContent = ({ companyData = [], individualData = [], isLoa
 
   if (isLoading) {
     return (
-      <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-white/10 dark:text-[#A9B0BA]">
+      <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#A9B0BA]">
         Loading support conversations...
       </div>
     )
   }
 
   return (
-    <div className="h-full rounded-xl border border-[#EEF1F4] bg-white p-3 dark:border-white/10 dark:bg-[#121417]">
+    <div className="h-full rounded-xl border border-[#EEF1F4] bg-transparent p-3 dark:border-[#25292E]">
       <div className="grid h-full min-w-0 gap-0 lg:grid-cols-[minmax(0,40%)_24px_minmax(0,60%)]">
         {(!isCompact || mobileView === 'list') && (
           <SupportConversationList

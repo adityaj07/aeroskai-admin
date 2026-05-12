@@ -47,7 +47,7 @@ const UserDetailsPage = () => {
   }
   if (isLoading) {
     return (
-      <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-white/10 dark:text-[#A9B0BA]">
+      <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#A9B0BA]">
         Loading user details...
       </div>
     )
@@ -55,7 +55,7 @@ const UserDetailsPage = () => {
 
   if (!data) {
     return (
-      <div className="flex min-h-[420px] flex-col items-center justify-center rounded-2xl border border-dashed border-[#D7DCE2] bg-[#F9FBFC] px-6 py-10 text-center dark:border-white/10 dark:bg-[#15181C]">
+      <div className="flex min-h-[420px] flex-col items-center justify-center rounded-2xl border border-dashed border-[#D7DCE2] bg-[#F9FBFC] px-6 py-10 text-center dark:border-[#25292E] dark:bg-[#15181C]">
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-[#EAEEF3] dark:bg-white/10">
           <svg
             xmlns="http://www.w3.org/2000/svg"

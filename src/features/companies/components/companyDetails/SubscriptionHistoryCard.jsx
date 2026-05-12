@@ -40,7 +40,7 @@ const columns = [
     cell: () => (
       <Button
         variant="ghost"
-        className="h-8 rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white"
+        className="h-8 cursor-pointer rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white"
       >
         Issue Refund
       </Button>
@@ -62,7 +62,8 @@ export const SubscriptionHistoryCard = ({ rows }) => {
                 {group.headers.map((header) => (
                   <TableHead
                     key={header.id}
-                    className="px-4 text-xs text-[#6F7680] dark:text-[#A9B0BA]"
+                    className="px-4 text-xs font-semibold text-[#0C1014] dark:text-[#F7F9F9]
+            "
                   >
                     {header.isPlaceholder
                       ? null
@@ -74,7 +75,7 @@ export const SubscriptionHistoryCard = ({ rows }) => {
           </TableHeader>
           <TableBody>
             {table.getRowModel().rows.map((row) => (
-              <TableRow key={row.id} className="border-b border-[#F3F4F6] dark:border-white/10">
+              <TableRow key={row.id} className="border-b border-[#F3F4F6] dark:border-[#25292E]">
                 {row.getVisibleCells().map((cell) => (
                   <TableCell
                     key={cell.id}

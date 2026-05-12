@@ -5,7 +5,7 @@ import { CompanyStatusBadge } from '../CompanyStatusBadge'
 
 export const CompanyHeaderBanner = ({ details }) => {
   return (
-    <div className="rounded-2xl bg-[#1565C00D] p-4 dark:bg-[#1565C01A]">
+    <div className="rounded-2xl bg-[#1565C00D] p-5 dark:bg-[#1565C01A]">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
         <div className="flex items-center gap-3">
           <div className="rounded-xl bg-[#E7EEF8] p-2 text-[#1565C0] dark:bg-[#1F2937]">

@@ -16,7 +16,7 @@ const ActionButton = ({ icon, label, danger = false, onClick }) => {
       type="button"
       onClick={onClick}
       variant="ghost"
-      className={`flex h-auto w-full items-center justify-center rounded-[6px] bg-[#F1F5F9] px-4 py-2 text-center text-xs font-semibold hover:bg-[#E5EBF3] dark:bg-white/5 dark:hover:bg-white/10 ${
+      className={`flex h-auto w-full cursor-pointer items-center justify-center rounded-[6px] bg-[#F1F5F9] px-4 py-2 text-center text-xs font-semibold hover:bg-[#E5EBF3] dark:bg-white/5 dark:hover:bg-white/10 ${
         danger ? 'text-[#E50914] dark:text-[#F87171]' : 'text-[#111827] dark:text-white'
       }`}
     >

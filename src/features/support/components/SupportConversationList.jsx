@@ -30,14 +30,14 @@ export const SupportConversationList = ({
         <TabsList className="inline-flex h-10 items-center rounded-lg bg-[#F7F9F9] p-1 dark:bg-white/5">
           <TabsTrigger
             value="companies"
-            className="h-8 rounded-md px-4 text-[13px] font-semibold text-[#6F7680] transition-colors data-[state=active]:bg-[#1565C0] data-[state=active]:text-white dark:text-white"
+            className="h-8 cursor-pointer rounded-md px-4 text-[13px] font-semibold text-[#6F7680] transition-colors data-[state=active]:bg-[#1565C0] data-[state=active]:text-white dark:text-white"
           >
             Companies
           </TabsTrigger>
 
           <TabsTrigger
             value="individual-users"
-            className="h-8 rounded-md px-4 text-[13px] font-semibold text-[#6F7680] transition-colors data-[state=active]:bg-[#1565C0] data-[state=active]:text-white dark:text-white"
+            className="h-8 cursor-pointer rounded-md px-4 text-[13px] font-semibold text-[#6F7680] transition-colors data-[state=active]:bg-[#1565C0] data-[state=active]:text-white dark:text-white"
           >
             Individual Users
           </TabsTrigger>
@@ -60,7 +60,7 @@ export const SupportConversationList = ({
               key={conversation.id}
               type="button"
               onClick={() => onSelectConversation(conversation.id)}
-              className={`w-full rounded-lg px-2 py-2 text-left transition-colors ${
+              className={`w-full cursor-pointer rounded-lg px-2 py-2 text-left transition-colors ${
                 isActive
                   ? 'bg-[#F1F5F9] dark:bg-white/10'
                   : 'hover:bg-[#F8FAFC] dark:hover:bg-white/5'

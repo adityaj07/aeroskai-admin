@@ -11,11 +11,10 @@ import { ManageSubscriptionDialog } from './dialogs/ManageSubscriptionDialog'
 import { SendNormalEmailDialog } from './dialogs/SendNormalEmailDialog'
 import { SendSubscriptionEmailDialog } from './dialogs/SendSubscriptionEmailDialog'
 
-const toggleContainerClass =
-  'flex items-center justify-between rounded-lg bg-[#F7F9F9] p-3 dark:bg-white/5'
+const toggleContainerClass = 'flex items-start justify-between gap-3 rounded-lg bg-transparent p-3'
 
 const linkItemClass =
-  'flex items-center justify-between rounded-lg bg-[#F7F9F9] p-3 dark:bg-white/5 text-left w-full'
+  'flex w-full items-center justify-between gap-3 rounded-lg bg-transparent p-3 text-left transition-colors hover:bg-[#F7F9F9] dark:hover:bg-white/5 cursor-pointer'
 
 export const AdminActionsCard = ({ details }) => {
   const [manageSubOpen, setManageSubOpen] = useState(false)
@@ -36,57 +35,89 @@ export const AdminActionsCard = ({ details }) => {
         <Button
           type="button"
           onClick={() => setManageSubOpen(true)}
-          className="h-10 w-full bg-[#1565C0] text-xs text-white hover:bg-[#0F54A1]"
+          className="h-10 w-full cursor-pointer bg-[#1565C0] px-6 text-[13px] text-[#F7F9F9] hover:bg-[#0F54A1] sm:h-11 sm:text-[14px]"
         >
           Edit Subscription
         </Button>
 
         <div className={toggleContainerClass}>
-          <div>
-            <p className="text-base text-[#0C1014] dark:text-white">Account Status</p>
-            <p className="text-xs text-[#6F7680] dark:text-[#A9B0BA]">
+          <div className="min-w-0 flex-1">
+            <p className="text-[13px] font-medium text-[#0C1014] dark:text-[#F7F9F9] sm:text-[14px] lg:text-[15px]">
+              Account Status
+            </p>
+
+            <p className="mt-1 text-[11px] leading-relaxed text-[#6F7680] dark:text-[#A9B0BA] sm:text-[12px]">
               Enable access to the platform
             </p>
           </div>
+
           <Switch
             checked={isActive}
             onCheckedChange={(checked) =>
               checked ? setActivateOpen(true) : setDeactivateOpen(true)
             }
-            className="data-checked:bg-[#1565C0] data-[state=checked]:bg-[#1565C0]"
+            className="mt-0.5 cursor-pointer data-[state=checked]:bg-[#1565C0]"
           />
         </div>
 
         <div className={toggleContainerClass}>
-          <div>
-            <p className="text-base text-[#0C1014] dark:text-white">Founding Company Badge</p>
-            <p className="text-xs text-[#6F7680] dark:text-[#A9B0BA]">
+          <div className="min-w-0 flex-1">
+            <p className="text-[13px] font-medium text-[#0C1014] dark:text-[#F7F9F9] sm:text-[14px] lg:text-[15px]">
+              Founding Company Badge
+            </p>
+
+            <p className="mt-1 text-[11px] leading-relaxed text-[#6F7680] dark:text-[#A9B0BA] sm:text-[12px]">
               Display badge across the platform
             </p>
           </div>
+
           <Switch
             checked={foundingBadge}
             onCheckedChange={(checked) =>
               checked ? setAssignBadgeOpen(true) : setRemoveBadgeOpen(true)
             }
-            className="data-checked:bg-[#1565C0] data-[state=checked]:bg-[#1565C0]"
+            className="mt-0.5 cursor-pointer data-[state=checked]:bg-[#1565C0]"
           />
         </div>
 
         <button className={linkItemClass} onClick={() => setSubscriptionEmailOpen(true)}>
-          <span className="inline-flex items-center gap-2 text-base text-[#0C1014] dark:text-white">
-            <HugeiconsIcon icon={MailValidation02Icon} size={16} className="text-[#1565C0]" />
-            Send Subscription Email
+          <span className="inline-flex min-w-0 items-center gap-2">
+            <HugeiconsIcon
+              icon={MailValidation02Icon}
+              size={20}
+              className="shrink-0 text-[#1565C0] sm:size-6"
+            />
+
+            <span className="truncate text-[13px] font-medium text-[#0C1014] dark:text-[#F7F9F9] sm:text-[14px] lg:text-[15px]">
+              Send Subscription Email
+            </span>
           </span>
-          <HugeiconsIcon icon={ArrowUpRight01Icon} size={16} />
+
+          <HugeiconsIcon
+            icon={ArrowUpRight01Icon}
+            size={18}
+            className="shrink-0 text-[#6F7680] dark:text-[#A9B0BA]"
+          />
         </button>
 
         <button className={linkItemClass} onClick={() => setNormalEmailOpen(true)}>
-          <span className="inline-flex items-center gap-2 text-base text-[#0C1014] dark:text-white">
-            <HugeiconsIcon icon={Mail01Icon} size={16} className="text-[#1565C0]" />
-            Send Normal Email
+          <span className="inline-flex min-w-0 items-center gap-2">
+            <HugeiconsIcon
+              icon={Mail01Icon}
+              size={20}
+              className="shrink-0 text-[#1565C0] sm:size-6"
+            />
+
+            <span className="truncate text-[13px] font-medium text-[#0C1014] dark:text-[#F7F9F9] sm:text-[14px] lg:text-[15px]">
+              Send Normal Email
+            </span>
           </span>
-          <HugeiconsIcon icon={ArrowUpRight01Icon} size={16} />
+
+          <HugeiconsIcon
+            icon={ArrowUpRight01Icon}
+            size={18}
+            className="shrink-0 text-[#6F7680] dark:text-[#A9B0BA]"
+          />
         </button>
       </AdminSectionCard>
 

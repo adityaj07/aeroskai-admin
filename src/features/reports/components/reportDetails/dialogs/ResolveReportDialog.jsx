@@ -1,12 +1,14 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
 import { Textarea } from '@/components/ui/textarea'
 import { Input } from '@/components/ui/input'
 
-import {
-  ReportDialogActions,
-  ReportDialogShell,
-  ReportSummaryStrip,
-} from './ReportDialogShared'
+import { ReportDialogActions, ReportDialogShell, ReportSummaryStrip } from './ReportDialogShared'
 
 export const ResolveReportDialog = ({
   open,
@@ -27,7 +29,7 @@ export const ResolveReportDialog = ({
       <div>
         <p className="mb-2 text-xs font-semibold text-[#1F1E1F] dark:text-white">Resolution</p>
         <Select value={resolution} onValueChange={onResolutionChange}>
-          <SelectTrigger className="h-10 w-full rounded-md border border-[#E2E8F0] bg-white text-xs text-[#1F1E1F] dark:border-white/10 dark:bg-transparent dark:text-[#A9B0BA]">
+          <SelectTrigger className="h-10 w-full justify-between rounded-lg border border-[#E2E8F0] bg-white px-3 py-2.5 text-[13px] text-[#1F1E1F] shadow-none ring-0 placeholder:text-[#6F7680] focus:outline-none focus:ring-0 dark:border-[#25292E] dark:bg-transparent dark:text-white dark:placeholder:text-[#A9B0BA]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent align="end">
@@ -45,7 +47,7 @@ export const ResolveReportDialog = ({
         <Input
           value={actionTaken}
           onChange={(event) => onActionTakenChange(event.target.value)}
-          className="h-10 rounded-md border border-[#E2E8F0] bg-white text-xs dark:border-white/10 dark:bg-transparent"
+          className="h-10 rounded-md border border-[#E2E8F0] bg-white text-xs dark:border-[#25292E] dark:bg-transparent"
         />
       </div>
 
@@ -55,7 +57,7 @@ export const ResolveReportDialog = ({
           value={notes}
           onChange={(event) => onNotesChange(event.target.value)}
           placeholder="Add any details about how this report was handled"
-          className="min-h-[84px] rounded-md border border-[#E2E8F0] bg-white text-xs dark:border-white/10 dark:bg-transparent"
+          className="min-h-[84px] rounded-md border border-[#E2E8F0] bg-white text-xs dark:border-[#25292E] dark:bg-transparent"
         />
       </div>
 
@@ -63,7 +65,7 @@ export const ResolveReportDialog = ({
         onClose={onClose}
         onConfirm={onConfirm}
         confirmLabel="Resolve Report"
-        confirmClassName="h-10 bg-[#2643E9] text-sm text-white hover:bg-[#1E36C0]"
+        confirmClassName="h-10 cursor-pointer rounded-md bg-[#1565C0] text-sm font-semibold text-white hover:bg-[#0F54A1]"
       />
     </ReportDialogShell>
   )

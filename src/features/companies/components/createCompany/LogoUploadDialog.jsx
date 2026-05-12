@@ -33,14 +33,14 @@ export const LogoUploadDialog = ({ open, onClose, onPickFile }) => {
             type="button"
             variant="secondary"
             onClick={onClose}
-            className="h-10 border border-[#F3F4F6] bg-[#EAEEF3] text-[#1F1E1F] dark:border-white/10 dark:bg-white/10 dark:text-white"
+            className="h-10 cursor-pointer border border-[#F3F4F6] bg-[#EAEEF3] text-[#1F1E1F] dark:border-[#25292E] dark:bg-white/10 dark:text-white"
           >
             Cancel
           </Button>
           <Button
             type="button"
             onClick={() => fileRef.current?.click()}
-            className="h-10 bg-[#1565C0] text-white hover:bg-[#0F54A1]"
+            className="h-10 cursor-pointer bg-[#1565C0] text-white hover:bg-[#0F54A1]"
           >
             Choose File
           </Button>

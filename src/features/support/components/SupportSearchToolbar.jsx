@@ -37,7 +37,7 @@ export const SupportSearchToolbar = ({
             placeholder:text-[#6F7680]
             focus-visible:border-[#1565C0]/40
             focus-visible:ring-0
-            dark:border-white/10
+            dark:border-[#25292E]
             dark:bg-transparent
             dark:text-white
             dark:placeholder:text-[#A2AAB4]

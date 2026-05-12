@@ -22,7 +22,7 @@ const ReportedPost = ({ data }) => {
         <p className="text-xs font-semibold text-[#0C1014] dark:text-white">{data.author}</p>
       </div>
 
-      <div className="overflow-hidden rounded-[10px] border border-[#EEF1F4] dark:border-white/10">
+      <div className="overflow-hidden rounded-[10px] border border-[#EEF1F4] dark:border-[#25292E]">
         <img src={data.image} alt="Reported content" className="h-44 w-full object-cover sm:h-56" />
       </div>
 
@@ -38,7 +38,7 @@ const ReportedUser = ({ data }) => {
   const profileKey = rawKey?.toString().replace(/^@/, '').toLowerCase()
 
   return (
-    <div className="flex flex-col gap-4 rounded-[12px] border border-[#EEF1F4] bg-[#F7F9F9] p-4 dark:border-white/10 dark:bg-white/5 sm:flex-row sm:items-center sm:justify-between">
+    <div className="flex flex-col gap-4 rounded-[12px] border border-[#EEF1F4] bg-[#F7F9F9] p-4 dark:border-[#25292E] dark:bg-white/5 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex min-w-0 items-center gap-3">
         <div className="h-16 w-16 shrink-0 overflow-hidden rounded-full bg-[#E7EEF8] sm:h-[86px] sm:w-[86px]">
           {data.avatar ? (
@@ -75,8 +75,8 @@ const ReportedUser = ({ data }) => {
 
 const ReportedComment = ({ data }) => {
   return (
-    <div className="flex gap-3 rounded-lg border border-[#EEF1F4] bg-[#FAFBFC] p-3 dark:border-white/10 dark:bg-white/5">
-      <div className="h-12 w-16 shrink-0 overflow-hidden rounded-md border border-[#E5E7EB] dark:border-white/10">
+    <div className="flex gap-3 rounded-lg border border-[#EEF1F4] bg-[#FAFBFC] p-3 dark:border-[#25292E] dark:bg-white/5">
+      <div className="h-12 w-16 shrink-0 overflow-hidden rounded-md border border-[#E5E7EB] dark:border-[#25292E]">
         <img src={data.image} alt="Comment attachment" className="h-full w-full object-cover" />
       </div>
 

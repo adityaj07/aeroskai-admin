@@ -18,6 +18,7 @@ import { createInvitedAccountSchema } from '@/features/auth/schemas/createInvite
 export const CreateInvitedAccountForm = () => {
   const navigate = useNavigate()
   const [searchParams] = useSearchParams()
+
   const inviteToken = searchParams.get('token') ?? 'demo-invite-token'
 
   const [showPassword, setShowPassword] = useState(false)
@@ -40,21 +41,25 @@ export const CreateInvitedAccountForm = () => {
       await createInvitedAccount({ ...values, token: inviteToken })
 
       toast.success('Account created successfully')
+
       navigate(ROUTES.LOGIN)
     } catch (error) {
       const message =
-        error?.response?.data?.message || error?.message || 'Failed to create account. Please try again.'
+        error?.response?.data?.message ||
+        error?.message ||
+        'Failed to create account. Please try again.'
 
       form.setError('root', { message })
+
       toast.error(message)
     }
   }
 
   return (
     <AuthFormMotion>
-      <Card className="w-full rounded-[20px] border-[#F3F4F6] bg-white dark:border-white/10 dark:bg-[#121417]">
+      <Card className="w-full rounded-[20px] border-[#F3F4F6] bg-transparent dark:border-[#25292E]">
         <CardHeader className="space-y-2 pb-4 text-center">
-          <CardTitle className="text-2xl text-[#1F1E1F] dark:text-white md:text-3xl">
+          <CardTitle className="text-[24px] font-semibold tracking-[-0.02em] text-[#1F1E1F] dark:text-[#F7F9F9] sm:text-[28px] lg:text-[32px]">
             Create your account
           </CardTitle>
         </CardHeader>
@@ -63,26 +68,37 @@ export const CreateInvitedAccountForm = () => {
           <Form {...form}>
             <form onSubmit={form.handleSubmit(onSubmit)} noValidate>
               <FormItem className="mt-3">
-                <FormLabel htmlFor="email" className="text-[13px] font-semibold text-[#0C1014] dark:text-white">
+                <FormLabel
+                  htmlFor="email"
+                  className="text-[12px] font-semibold text-[#0C1014] dark:text-white sm:text-[13px]"
+                >
                   Email
                 </FormLabel>
+
                 <FormControl>
                   <Input
                     id="email"
                     type="email"
                     placeholder="Enter email address"
                     autoComplete="email"
-                    className="rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] text-[#1F1E1F] placeholder:text-[#6F7680] dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD]"
+                    className="mt-2 h-10 rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] text-[13px] text-[#1F1E1F] ring-0 placeholder:text-[12px] placeholder:text-[#6F7680] dark:border-[#25292E] dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD] sm:h-11 sm:text-[14px] sm:placeholder:text-[13px]"
                     {...form.register('email')}
                   />
                 </FormControl>
-                <FormMessage>{form.formState.errors.email?.message}</FormMessage>
+
+                <FormMessage className="text-xs text-[#F43F5E]">
+                  {form.formState.errors.email?.message}
+                </FormMessage>
               </FormItem>
 
               <FormItem className="mt-3">
-                <FormLabel htmlFor="password" className="text-[13px] font-semibold text-[#0C1014] dark:text-white">
+                <FormLabel
+                  htmlFor="password"
+                  className="text-[12px] font-semibold text-[#0C1014] dark:text-white sm:text-[13px]"
+                >
                   Password
                 </FormLabel>
+
                 <FormControl>
                   <div className="relative">
                     <Input
@@ -90,12 +106,13 @@ export const CreateInvitedAccountForm = () => {
                       type={showPassword ? 'text' : 'password'}
                       placeholder="Create a password"
                       autoComplete="new-password"
-                      className="rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[#1F1E1F] placeholder:text-[#6F7680] dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD]"
+                      className="mt-2 h-10 rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[13px] text-[#1F1E1F] ring-0 placeholder:text-[12px] placeholder:text-[#6F7680] dark:border-[#25292E] dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD] sm:h-11 sm:text-[14px] sm:placeholder:text-[13px]"
                       {...form.register('password')}
                     />
+
                     <button
                       type="button"
-                      className="absolute right-3 top-1/2 -translate-y-1/2"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
                       onClick={() => setShowPassword((prev) => !prev)}
                       aria-label={showPassword ? 'Hide password' : 'Show password'}
                     >
@@ -107,16 +124,20 @@ export const CreateInvitedAccountForm = () => {
                     </button>
                   </div>
                 </FormControl>
-                <FormMessage>{form.formState.errors.password?.message}</FormMessage>
+
+                <FormMessage className="text-xs text-[#F43F5E]">
+                  {form.formState.errors.password?.message}
+                </FormMessage>
               </FormItem>
 
               <FormItem className="mt-3">
                 <FormLabel
                   htmlFor="confirmPassword"
-                  className="text-[13px] font-semibold text-[#0C1014] dark:text-white"
+                  className="text-[12px] font-semibold text-[#0C1014] dark:text-white sm:text-[13px]"
                 >
                   Confirm Password
                 </FormLabel>
+
                 <FormControl>
                   <div className="relative">
                     <Input
@@ -124,12 +145,13 @@ export const CreateInvitedAccountForm = () => {
                       type={showConfirmPassword ? 'text' : 'password'}
                       placeholder="Re-enter password"
                       autoComplete="new-password"
-                      className="rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[#1F1E1F] placeholder:text-[#6F7680] dark:border-white/10 dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD]"
+                      className="mt-2 h-10 rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[13px] text-[#1F1E1F] ring-0 placeholder:text-[12px] placeholder:text-[#6F7680] dark:border-[#25292E] dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD] sm:h-11 sm:text-[14px] sm:placeholder:text-[13px]"
                       {...form.register('confirmPassword')}
                     />
+
                     <button
                       type="button"
-                      className="absolute right-3 top-1/2 -translate-y-1/2"
+                      className="absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer"
                       onClick={() => setShowConfirmPassword((prev) => !prev)}
                       aria-label={showConfirmPassword ? 'Hide password' : 'Show password'}
                     >
@@ -141,14 +163,19 @@ export const CreateInvitedAccountForm = () => {
                     </button>
                   </div>
                 </FormControl>
-                <FormMessage>{form.formState.errors.confirmPassword?.message}</FormMessage>
+
+                <FormMessage className="text-xs text-[#F43F5E]">
+                  {form.formState.errors.confirmPassword?.message}
+                </FormMessage>
               </FormItem>
 
-              <FormMessage>{form.formState.errors.root?.message}</FormMessage>
+              <FormMessage className="text-xs text-[#F43F5E]">
+                {form.formState.errors.root?.message}
+              </FormMessage>
 
               <Button
                 type="submit"
-                className="mt-10 h-10 w-full bg-[#1565C0] text-sm text-white hover:bg-[#0F54A1]"
+                className="mt-[53px] h-10 w-full cursor-pointer bg-[#1565C0] text-[13px] text-white hover:bg-[#0F54A1] sm:h-11 sm:text-[14px]"
                 disabled={isPending}
               >
                 {isPending ? 'Joining...' : 'Join Company'}

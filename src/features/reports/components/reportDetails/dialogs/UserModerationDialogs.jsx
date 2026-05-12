@@ -1,10 +1,12 @@
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
-
 import {
-  ReportDialogActions,
-  ReportDialogShell,
-  ReportSummaryStrip,
-} from './ReportDialogShared'
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select'
+
+import { ReportDialogActions, ReportDialogShell, ReportSummaryStrip } from './ReportDialogShared'
 
 export const DeactivateUserDialog = ({
   open,
@@ -23,9 +25,11 @@ export const DeactivateUserDialog = ({
       </p>
 
       <div>
-        <p className="mb-2 text-xs font-semibold text-[#1F1E1F] dark:text-white">Reason for deactivation</p>
+        <p className="mb-2 text-xs font-semibold text-[#1F1E1F] dark:text-white">
+          Reason for deactivation
+        </p>
         <Select value={reason} onValueChange={onReasonChange}>
-          <SelectTrigger className="h-10 w-full rounded-md border border-[#E2E8F0] bg-white text-xs text-[#1F1E1F] dark:border-white/10 dark:bg-transparent dark:text-[#A9B0BA]">
+          <SelectTrigger className="h-10 w-full justify-between rounded-lg border border-[#E2E8F0] bg-white px-3 py-2.5 text-[13px] text-[#1F1E1F] shadow-none ring-0 placeholder:text-[#6F7680] focus:outline-none focus:ring-0 dark:border-[#25292E] dark:bg-transparent dark:text-white dark:placeholder:text-[#A9B0BA]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent align="end">
@@ -61,9 +65,11 @@ export const SuspendUserDialog = ({
       <ReportSummaryStrip report={report} />
 
       <div>
-        <p className="mb-2 text-xs font-semibold text-[#1F1E1F] dark:text-white">Suspension Duration</p>
+        <p className="mb-2 text-xs font-semibold text-[#1F1E1F] dark:text-white">
+          Suspension Duration
+        </p>
         <Select value={duration} onValueChange={onDurationChange}>
-          <SelectTrigger className="h-10 w-full rounded-md border border-[#E2E8F0] bg-white text-xs text-[#1F1E1F] dark:border-white/10 dark:bg-transparent dark:text-[#A9B0BA]">
+          <SelectTrigger className="h-10 w-full justify-between rounded-lg border border-[#E2E8F0] bg-white px-3 py-2.5 text-[13px] text-[#1F1E1F] shadow-none ring-0 placeholder:text-[#6F7680] focus:outline-none focus:ring-0 dark:border-[#25292E] dark:bg-transparent dark:text-white dark:placeholder:text-[#A9B0BA]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent align="end">
@@ -75,9 +81,11 @@ export const SuspendUserDialog = ({
       </div>
 
       <div>
-        <p className="mb-2 text-xs font-semibold text-[#1F1E1F] dark:text-white">Reason for suspension</p>
+        <p className="mb-2 text-xs font-semibold text-[#1F1E1F] dark:text-white">
+          Reason for suspension
+        </p>
         <Select value={reason} onValueChange={onReasonChange}>
-          <SelectTrigger className="h-10 w-full rounded-md border border-[#E2E8F0] bg-white text-xs text-[#1F1E1F] dark:border-white/10 dark:bg-transparent dark:text-[#A9B0BA]">
+          <SelectTrigger className="h-10 w-full justify-between rounded-lg border border-[#E2E8F0] bg-white px-3 py-2.5 text-[13px] text-[#1F1E1F] shadow-none ring-0 placeholder:text-[#6F7680] focus:outline-none focus:ring-0 dark:border-[#25292E] dark:bg-transparent dark:text-white dark:placeholder:text-[#A9B0BA]">
             <SelectValue />
           </SelectTrigger>
           <SelectContent align="end">

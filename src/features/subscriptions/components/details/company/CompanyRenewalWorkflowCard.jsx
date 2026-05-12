@@ -32,14 +32,16 @@ export const CompanyRenewalWorkflowCard = ({ workflow }) => {
               <Button
                 type="button"
                 variant="secondary"
-                className="h-8 shrink-0 bg-[#EAEEF3] px-3 text-[11px] text-[#16A34A] hover:bg-[#DFE5EB] dark:bg-[#14171A] dark:text-[#16A34A] dark:hover:bg-[#1A1E22]"
+                className="h-8 shrink-0 cursor-pointer bg-[#EAEEF3] px-3 text-[11px] text-[#16A34A] hover:bg-[#DFE5EB] dark:bg-[#14171A] dark:text-[#16A34A] dark:hover:bg-[#1A1E22]"
               >
                 {step.cta}
               </Button>
             )}
           </div>
 
-          <p className="mt-0.5 text-[11px] text-[#6F7680] dark:text-[#A9B0BA]">{step.description}</p>
+          <p className="mt-0.5 text-[11px] text-[#6F7680] dark:text-[#A9B0BA]">
+            {step.description}
+          </p>
           {step.note && <p className="mt-1 text-[11px] text-[#16A34A]">{step.note}</p>}
         </div>
       ))}

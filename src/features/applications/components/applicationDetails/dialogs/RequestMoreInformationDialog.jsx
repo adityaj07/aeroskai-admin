@@ -54,13 +54,13 @@ Aeroskai Admin Team`}
             type="button"
             variant="secondary"
             onClick={onClose}
-            className="h-10 bg-[#EAEEF3] dark:bg-white/10"
+            className="h-10 cursor-pointer bg-[#EAEEF3] dark:bg-white/10"
           >
             Cancel
           </Button>
           <Button
             type="button"
-            className="h-10 bg-[#1565C0] text-white hover:bg-[#0F54A1]"
+            className="h-10 cursor-pointer bg-[#1565C0] text-white hover:bg-[#0F54A1]"
             onClick={onSubmit}
           >
             Send Email

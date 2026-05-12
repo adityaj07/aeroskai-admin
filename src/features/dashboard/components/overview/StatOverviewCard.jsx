@@ -3,6 +3,7 @@ import { Card } from '@/components/ui/card'
 import { DASHBOARD_COLORS } from '../../constants/dashboard.constants'
 
 import { SparklineAreaChart } from './SparklineAreaChart'
+import { formatCompactNumber } from '@/utils/formatCompactNumber'
 
 export const StatOverviewCard = ({ title, value, trend }) => {
   return (
@@ -20,7 +21,7 @@ export const StatOverviewCard = ({ title, value, trend }) => {
           </p>
 
           <p className="text-[56px] font-medium leading-none tracking-[-2px] text-[#0C1014] dark:text-white">
-            {value}
+            {formatCompactNumber(value)}
           </p>
         </div>
 

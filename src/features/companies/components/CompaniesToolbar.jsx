@@ -18,14 +18,14 @@ export const CompaniesToolbar = ({ search, onSearchChange, onCreateCompany }) =>
           value={search}
           onChange={(event) => onSearchChange(event.target.value)}
           placeholder="Search by company name, username, or email"
-          className="h-11 w-full rounded-md border border-[#F3F4F6] bg-white pl-9 pr-3 text-sm text-[#0C1014] placeholder:text-[#6F7680] focus-visible:border-[#1565C0]/40 focus-visible:ring-0 dark:border-white/10 dark:bg-transparent dark:text-white dark:placeholder:text-[#A2AAB4]"
+          className="h-11 w-full rounded-md border border-[#F3F4F6] bg-white pl-9 pr-3 text-sm text-[#0C1014] placeholder:text-[#6F7680] focus-visible:border-[#1565C0]/40 focus-visible:ring-0 dark:border-[#25292E] dark:bg-transparent dark:text-white dark:placeholder:text-[#A2AAB4]"
         />
       </div>
 
       <Button
         type="button"
         onClick={onCreateCompany}
-        className="h-10 rounded-md bg-[#1565C0] px-4 text-xs font-semibold text-white hover:bg-[#0F4DA0] dark:bg-[#1565C0] dark:hover:bg-[#0F4DA0]"
+        className="py-5.5 col-span-2 h-11 w-full cursor-pointer rounded-[8px] bg-[#1565C0] px-4 text-[13px] font-semibold text-white hover:bg-[#0F54A1] sm:col-auto sm:h-9 sm:w-auto sm:rounded-md"
       >
         Create Company Account
       </Button>

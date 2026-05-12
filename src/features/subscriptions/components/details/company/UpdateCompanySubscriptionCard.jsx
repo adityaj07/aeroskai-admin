@@ -25,17 +25,17 @@ export const UpdateCompanySubscriptionCard = ({ subscription }) => {
   return (
     <AdminSectionCard title="Update Subscription Details" contentClassName="space-y-3">
       <div>
-        <p className="mb-1 text-xs font-semibold text-[#0C1014] dark:text-white">Number of Seats</p>
+        <p className="mb-2 text-xs font-semibold text-[#0C1014] dark:text-white">Number of Seats</p>
         <Input
           value={form.seats}
           onChange={(event) => setForm((prev) => ({ ...prev, seats: event.target.value }))}
-          className="h-10 border border-[#F3F4F6] bg-[#F7F9F9]  placeholder:text-[13px] dark:border-[#25292E] dark:bg-[#14171A] dark:placeholder:text-[#A2AAB4]"
+          className="sm:placeholder:text-[13px]] mt-2 h-10 rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[13px] text-[#1F1E1F] ring-0 placeholder:text-[12px] placeholder:text-[#6F7680] dark:border-[#25292E] dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD] sm:h-11 sm:text-[14px]"
         />
       </div>
 
       <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
         <div>
-          <p className="mb-1 text-xs font-semibold text-[#0C1014] dark:text-white">
+          <p className="mb-2 text-xs font-semibold text-[#0C1014] dark:text-white">
             Subscription Start Date
           </p>
           <SubscriptionDatePickerField
@@ -45,7 +45,7 @@ export const UpdateCompanySubscriptionCard = ({ subscription }) => {
         </div>
 
         <div>
-          <p className="mb-1 text-xs font-semibold text-[#0C1014] dark:text-white">
+          <p className="mb-2 text-xs font-semibold text-[#0C1014] dark:text-white">
             Subscription End Date
           </p>
           <SubscriptionDatePickerField
@@ -56,7 +56,7 @@ export const UpdateCompanySubscriptionCard = ({ subscription }) => {
       </div>
 
       <div>
-        <p className="mb-1 text-xs font-semibold text-[#0C1014] dark:text-white">
+        <p className="mb-2 text-xs font-semibold text-[#0C1014] dark:text-white">
           Payment Reference / PO Number (internal)
         </p>
         <Input
@@ -64,7 +64,7 @@ export const UpdateCompanySubscriptionCard = ({ subscription }) => {
           onChange={(event) =>
             setForm((prev) => ({ ...prev, paymentReference: event.target.value }))
           }
-          className="h-10 border border-[#F3F4F6] bg-[#F7F9F9] dark:border-[#25292E] dark:bg-[#14171A]"
+          className="mt-2 h-10 rounded-lg border border-[#F3F4F6] bg-[#F7F9F9] pr-10 text-[13px] text-[#1F1E1F] ring-0 placeholder:text-[12px] placeholder:text-[#6F7680] dark:border-[#25292E] dark:bg-white/5 dark:text-white dark:placeholder:text-[#9AA2AD] sm:h-11 sm:text-[14px] sm:placeholder:text-[13px]"
         />
       </div>
 
@@ -85,13 +85,13 @@ export const UpdateCompanySubscriptionCard = ({ subscription }) => {
         <Button
           type="button"
           variant="secondary"
-          className="max-sm:max-w-none h-10 w-full max-w-[140px] bg-[#EAEEF3] dark:bg-white/10"
+          className="max-sm:max-w-none h-10 w-full max-w-[140px] cursor-pointer bg-[#EAEEF3] dark:bg-white/10"
         >
           Cancel
         </Button>
         <Button
           type="button"
-          className="max-sm:max-w-none h-10 w-full max-w-[140px] bg-[#1565C0] text-white hover:bg-[#0F54A1]"
+          className="max-sm:max-w-none h-10 w-full max-w-[140px] cursor-pointer bg-[#1565C0] text-white hover:bg-[#0F54A1]"
         >
           Save Subscription
         </Button>

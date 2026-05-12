@@ -19,7 +19,7 @@ class ErrorBoundary extends Component {
           <h1 className="text-2xl font-bold text-gray-900">Something went wrong</h1>
           <p className="text-sm text-gray-500">{this.state.error?.message}</p>
           <button
-            className="btn-primary"
+            className="btn-primary cursor-pointer"
             onClick={() => window.location.reload()}
             aria-label="Reload page"
           >

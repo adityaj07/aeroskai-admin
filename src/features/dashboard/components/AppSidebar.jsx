@@ -57,7 +57,7 @@ export function AppSidebar({ ...props }) {
             type="button"
             variant="ghost"
             onClick={() => setLogoutOpen(true)}
-            className="px-4.5 flex h-11 w-full items-center justify-start gap-3 rounded-[10px] py-2.5 text-[#6F7680] hover:bg-[#F3F4F6] hover:text-[#1565C0] dark:text-white dark:hover:bg-white/10 dark:hover:text-white"
+            className="px-4.5 flex h-11 w-full cursor-pointer items-center justify-start gap-3 rounded-[10px] py-2.5 text-[#6F7680] hover:bg-[#F3F4F6] hover:text-[#1565C0] dark:text-white dark:hover:bg-white/10 dark:hover:text-white"
           >
             <HugeiconsIcon icon={LogOut} size={24} strokeWidth={1.7} className="shrink-0" />
 

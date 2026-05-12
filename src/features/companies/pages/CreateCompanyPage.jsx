@@ -74,15 +74,15 @@ const CreateCompanyPage = () => {
             <div className="flex flex-col justify-end gap-2 pb-1 sm:flex-row">
               <Button
                 type="button"
-                variant="secondary"
+                variant="ghost"
                 onClick={() => navigate(`${ROUTES.DASHBOARD}/${ROUTES.COMPANIES}`)}
-                className="h-10 border border-[#F3F4F6] bg-[#EAEEF3] text-sm text-[#1F1E1F] hover:bg-[#DEE5EC] dark:border-white/10 dark:bg-white/10 dark:text-white"
+                className="h-10 cursor-pointer cursor-pointer text-sm text-[#1F1E1F] dark:text-white"
               >
                 Cancel
               </Button>
               <Button
                 type="submit"
-                className="h-10 bg-[#1565C0] text-sm text-white hover:bg-[#0F54A1]"
+                className="h-10 cursor-pointer cursor-pointer bg-[#1565C0] p-[12px] text-sm font-semibold text-white hover:bg-[#0F54A1]"
               >
                 Create Company
               </Button>

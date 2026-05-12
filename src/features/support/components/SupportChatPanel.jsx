@@ -14,7 +14,7 @@ export const SupportChatPanel = ({ conversation, onBack }) => {
 
   if (!conversation) {
     return (
-      <section className="flex h-full min-h-[460px] items-center justify-center rounded-xl border border-[#EEF1F4] bg-white p-6 text-center text-sm text-[#6F7680] dark:border-white/10 dark:bg-[#121417] dark:text-[#A9B0BA]">
+      <section className="flex h-full min-h-[460px] items-center justify-center rounded-xl border border-[#EEF1F4] bg-transparent p-6 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#A9B0BA]">
         Select a support query to view messages.
       </section>
     )
@@ -26,15 +26,15 @@ export const SupportChatPanel = ({ conversation, onBack }) => {
         initial={{ opacity: 0, y: 6 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.22, ease: 'easeOut' }}
-        className="flex h-full min-h-[460px] min-w-0 flex-col rounded-xl border border-[#EEF1F4] bg-white dark:border-white/10 dark:bg-[#121417]"
+        className="flex h-full min-h-[460px] min-w-0 flex-col rounded-xl border border-[#EEF1F4] bg-transparent dark:border-[#25292E]"
       >
-        <div className="flex items-center justify-between gap-3 border-b border-[#EEF1F4] px-3 py-3 dark:border-white/10 md:px-4">
+        <div className="flex items-center justify-between gap-3 border-b border-[#EEF1F4] px-3 py-3 dark:border-[#25292E] md:px-4">
           <div className="flex min-w-0 items-center gap-2 md:gap-3">
             {!!onBack && (
               <button
                 type="button"
                 onClick={onBack}
-                className="inline-flex h-8 w-8 items-center justify-center rounded-md bg-[#F7F9F9] text-[#6F7680] dark:bg-white/10 dark:text-[#A9B0BA] md:hidden"
+                className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md bg-[#F7F9F9] text-[#6F7680] dark:bg-white/10 dark:text-[#A9B0BA] md:hidden"
               >
                 <HugeiconsIcon icon={ArrowLeft01Icon} size={16} />
               </button>
@@ -55,7 +55,7 @@ export const SupportChatPanel = ({ conversation, onBack }) => {
             </div>
           </div>
 
-          <Button className="h-8 rounded-md bg-[#1565C0] px-3 text-[11px] text-white hover:bg-[#0F54A1]">
+          <Button className="h-8 cursor-pointer rounded-md bg-[#1565C0] px-3 text-[11px] text-white hover:bg-[#0F54A1]">
             <HugeiconsIcon icon={Tick02Icon} size={14} className="mr-1" />
             Mark as Resolved
           </Button>
@@ -93,17 +93,17 @@ export const SupportChatPanel = ({ conversation, onBack }) => {
               <button
                 type="button"
                 onClick={() => setUploadOpen(true)}
-                className="absolute left-3 top-1/2 inline-flex -translate-y-1/2 items-center justify-center rounded-md text-[#6F7680] hover:text-[#1565C0] dark:text-[#A9B0BA]"
+                className="absolute left-3 top-1/2 inline-flex -translate-y-1/2 cursor-pointer items-center justify-center rounded-md text-[#6F7680] hover:text-[#1565C0] dark:text-[#A9B0BA]"
               >
                 <HugeiconsIcon icon={Image01Icon} size={16} />
               </button>
               <Input
                 placeholder="Type your message..."
-                className="h-10 rounded-full border border-[#F3F4F6] bg-transparent pl-10 text-sm dark:border-white/10 "
+                className="h-10 rounded-full border border-[#F3F4F6] bg-transparent pl-10 text-sm dark:border-[#25292E] "
               />
             </div>
 
-            <Button className="h-10 rounded-full bg-[#1565C0] px-5 text-xs text-white hover:bg-[#0F54A1]">
+            <Button className="h-10 cursor-pointer rounded-full bg-[#1565C0] px-5 text-xs text-white hover:bg-[#0F54A1]">
               Send
             </Button>
           </div>

@@ -18,7 +18,7 @@ export const ReportDetailsHeader = ({ report, onOpenReject, onOpenResolve, onRev
             <Button
               type="button"
               variant="outline"
-              className="h-10 w-full rounded-md border-[#E2E8F0] bg-[#F8FAFC] px-4 text-xs font-semibold text-[#1F2937] hover:bg-[#EEF2F7] dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:w-auto"
+              className="h-10 w-full cursor-pointer rounded-md border-[#E2E8F0] bg-[#F8FAFC] px-4 text-xs font-semibold text-[#1F2937] hover:bg-[#EEF2F7] dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:w-auto"
             >
               Mark as Duplicate
             </Button>
@@ -29,7 +29,7 @@ export const ReportDetailsHeader = ({ report, onOpenReject, onOpenResolve, onRev
               type="button"
               variant="outline"
               onClick={onOpenReject}
-              className="h-10 w-full rounded-md border-[#E2E8F0] bg-[#F8FAFC] px-4 text-xs font-semibold text-[#1F2937] hover:bg-[#EEF2F7] dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:w-auto"
+              className="h-10 w-full cursor-pointer rounded-md border-[#E2E8F0] bg-[#F8FAFC] px-4 text-xs font-semibold text-[#1F2937] hover:bg-[#EEF2F7] dark:border-white/15 dark:bg-white/5 dark:text-white dark:hover:bg-white/10 sm:w-auto"
             >
               Reject Report
             </Button>
@@ -39,7 +39,7 @@ export const ReportDetailsHeader = ({ report, onOpenReject, onOpenResolve, onRev
             <Button
               type="button"
               onClick={onReviewReport}
-              className="h-10 w-full rounded-md bg-[#2643E9] px-4 text-xs font-semibold text-white hover:bg-[#1E36C0] sm:w-auto"
+              className="h-10 cursor-pointer rounded-md bg-[#1565C0] px-4 text-sm font-semibold text-white hover:bg-[#0F54A1] sm:w-auto"
             >
               Review Report
             </Button>
@@ -49,7 +49,7 @@ export const ReportDetailsHeader = ({ report, onOpenReject, onOpenResolve, onRev
             <Button
               type="button"
               onClick={onOpenResolve}
-              className="h-10 w-full rounded-md bg-[#2643E9] px-4 text-xs font-semibold text-white hover:bg-[#1E36C0] sm:w-auto"
+              className="h-10 cursor-pointer rounded-md bg-[#1565C0] px-4 text-sm font-semibold text-white hover:bg-[#0F54A1] sm:w-auto"
             >
               Resolve Report
             </Button>

@@ -3,7 +3,10 @@ import { useState } from 'react'
 import { useDebounce } from '@/hooks/useDebounce'
 import { formatCurrency, parseCurrencyAmount } from '@/utils/formatCurrency'
 
-import { PAYMENT_DURATION_FILTERS, PAYMENT_STATUS_FILTERS } from '../../constants/payments.constants'
+import {
+  PAYMENT_DURATION_FILTERS,
+  PAYMENT_STATUS_FILTERS,
+} from '../../constants/payments.constants'
 import { useCompanyPayments } from '../../hooks/useCompanyPayments'
 import { PaymentsOverviewCard } from '../shared/PaymentsOverviewCard'
 import { PaymentsToolbar } from '../shared/PaymentsToolbar'
@@ -112,13 +115,21 @@ export const PaymentCompaniesSection = () => {
       />
 
       <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
-        <PaymentsOverviewCard title="Total Revenue" value={overviewMetrics.totalRevenue} trend={buildTrend(0)} />
+        <PaymentsOverviewCard
+          title="Total Revenue"
+          value={overviewMetrics.totalRevenue}
+          trend={buildTrend(0)}
+        />
         <PaymentsOverviewCard
           title="Active Subscriptions Revenue"
           value={overviewMetrics.activeSubscriptionsRevenue}
           trend={buildTrend(-2)}
         />
-        <PaymentsOverviewCard title="Refunds" value={overviewMetrics.refunds} trend={buildTrend(-5)} />
+        <PaymentsOverviewCard
+          title="Refunds"
+          value={overviewMetrics.refunds}
+          trend={buildTrend(-5)}
+        />
         <PaymentsOverviewCard
           title="Failed Payments"
           value={overviewMetrics.failedPayments}
@@ -127,7 +138,7 @@ export const PaymentCompaniesSection = () => {
       </div>
 
       {isLoading ? (
-        <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-white/10 dark:text-[#9AA2AD]">
+        <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#9AA2AD]">
           Loading company payments...
         </div>
       ) : (

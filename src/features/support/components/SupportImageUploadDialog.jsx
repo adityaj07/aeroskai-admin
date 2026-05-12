@@ -7,7 +7,12 @@ export const SupportImageUploadDialog = ({ open, onClose, onPickFile }) => {
   const fileRef = useRef(null)
 
   return (
-    <BaseDialog open={open} title="Upload Chat Image" onClose={onClose} widthClassName="max-w-[520px]">
+    <BaseDialog
+      open={open}
+      title="Upload Chat Image"
+      onClose={onClose}
+      widthClassName="max-w-[520px]"
+    >
       <div className="space-y-3">
         <p className="text-xs text-[#6F7680] dark:text-[#A9B0BA]">
           Choose an image to attach in this conversation.
@@ -29,14 +34,14 @@ export const SupportImageUploadDialog = ({ open, onClose, onPickFile }) => {
           <Button
             type="button"
             variant="secondary"
-            className="h-10 bg-[#EAEEF3] text-[#1F1E1F] dark:bg-white/10 dark:text-white"
+            className="h-10 cursor-pointer bg-[#EAEEF3] text-[#1F1E1F] dark:bg-white/10 dark:text-white"
             onClick={onClose}
           >
             Cancel
           </Button>
           <Button
             type="button"
-            className="h-10 bg-[#1565C0] text-white hover:bg-[#0F54A1]"
+            className="h-10 cursor-pointer bg-[#1565C0] text-white hover:bg-[#0F54A1]"
             onClick={() => fileRef.current?.click()}
           >
             Choose Image

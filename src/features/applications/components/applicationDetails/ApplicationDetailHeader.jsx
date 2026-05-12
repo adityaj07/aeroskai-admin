@@ -17,9 +17,9 @@ export const ApplicationDetailHeader = ({ details, onReject, onRequestInfo, onAp
       ?.join('') || 'A'
 
   return (
-    <div className="flex flex-col gap-4 rounded-2xl bg-white px-4 py-4 dark:bg-[#121417] sm:flex-row sm:items-center sm:justify-between md:px-5">
+    <div className="flex flex-col gap-4 rounded-2xl bg-white px-5 py-5 dark:bg-[#121417] sm:flex-row sm:items-center sm:justify-between md:px-5">
       <div className="flex min-w-0 items-start gap-3 sm:gap-4">
-        <Avatar className="h-12 w-12 shrink-0 rounded-[14px] border border-[#E5E7EB] bg-[#E7EEF8] dark:border-white/10 dark:bg-[#1F2937]">
+        <Avatar className="h-12 w-12 shrink-0 rounded-[14px] border border-[#E5E7EB] bg-[#E7EEF8] dark:border-[#25292E] dark:bg-[#1F2937]">
           <AvatarImage
             src={companyPlaceholder}
             alt={details.logoAlt ?? `${details.companyName} logo`}
@@ -45,7 +45,7 @@ export const ApplicationDetailHeader = ({ details, onReject, onRequestInfo, onAp
           type="button"
           onClick={() => onReject && onReject()}
           className={cn(
-            'h-10 rounded-md px-4 text-[11px] font-semibold shadow-none sm:px-5',
+            'h-10 cursor-pointer rounded-md px-4 text-[11px] font-semibold shadow-none sm:px-5',
             'bg-[#F1F5F9] text-[#DC2626] hover:bg-[#E2E8F0] dark:bg-[#1F2937] dark:text-[#F87171]'
           )}
         >
@@ -55,7 +55,7 @@ export const ApplicationDetailHeader = ({ details, onReject, onRequestInfo, onAp
           type="button"
           onClick={() => onRequestInfo && onRequestInfo()}
           className={cn(
-            'h-10 rounded-md px-4 text-[11px] font-semibold shadow-none sm:px-5',
+            'h-10 cursor-pointer rounded-md px-4 text-[11px] font-semibold shadow-none sm:px-5',
             'bg-[#F1F5F9] text-[#0C1014] hover:bg-[#E2E8F0] dark:bg-[#1F2937] dark:text-white'
           )}
         >
@@ -68,7 +68,7 @@ export const ApplicationDetailHeader = ({ details, onReject, onRequestInfo, onAp
           type="button"
           onClick={() => onApprove && onApprove()}
           className={cn(
-            'h-10 rounded-md px-4 text-[11px] font-semibold shadow-none sm:px-5',
+            'h-10 cursor-pointer rounded-md px-4 text-[11px] font-semibold shadow-none sm:px-5',
             'bg-[#1565C0] text-white hover:bg-[#0F4C92] dark:bg-[#1565C0] dark:text-white'
           )}
         >

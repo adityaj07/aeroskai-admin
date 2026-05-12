@@ -1,34 +1,9 @@
-import { Calendar01Icon } from '@hugeicons/core-free-icons'
-import { HugeiconsIcon } from '@hugeicons/react'
-import { format } from 'date-fns'
 import { useState } from 'react'
 
-import { Button } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
-import { Input } from '@/components/ui/input'
-import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { BaseDialog } from '@/components/shared/app/BaseDialog'
-
-const DatePickerField = ({ value, onChange }) => {
-  return (
-    <Popover>
-      <PopoverTrigger asChild>
-        <button className="flex h-10 w-full items-center justify-between rounded-md border border-[#F3F4F6] bg-[#F7F9F9] px-3 text-left text-xs text-[#1F1E1F] dark:border-white/10 dark:bg-white/5 dark:text-white">
-          {format(value, 'dd-MM-yyyy')}
-          <HugeiconsIcon icon={Calendar01Icon} size={14} className="text-[#6F7680]" />
-        </button>
-      </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
-        <Calendar
-          mode="single"
-          selected={value}
-          onSelect={(date) => date && onChange(date)}
-          initialFocus
-        />
-      </PopoverContent>
-    </Popover>
-  )
-}
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
+import { SubscriptionDatePickerField } from '@/features/subscriptions/components/details/company/SubscriptionDatePickerField'
 
 export const ManageSubscriptionDialog = ({ open, data, onClose }) => {
   const [startDate, setStartDate] = useState(new Date('2025-01-01'))
@@ -76,11 +51,11 @@ export const ManageSubscriptionDialog = ({ open, data, onClose }) => {
               <p className="mb-1 text-xs font-semibold text-[#0C1014] dark:text-white">
                 Start Date
               </p>
-              <DatePickerField value={startDate} onChange={setStartDate} />
+              <SubscriptionDatePickerField value={startDate} onChange={setStartDate} />
             </div>
             <div>
               <p className="mb-1 text-xs font-semibold text-[#0C1014] dark:text-white">End Date</p>
-              <DatePickerField value={endDate} onChange={setEndDate} />
+              <SubscriptionDatePickerField value={endDate} onChange={setEndDate} />
             </div>
           </div>
         </div>
@@ -90,11 +65,14 @@ export const ManageSubscriptionDialog = ({ open, data, onClose }) => {
             type="button"
             variant="secondary"
             onClick={onClose}
-            className="h-10 border border-[#F3F4F6] bg-[#EAEEF3] text-sm text-[#1F1E1F] hover:bg-[#DEE5EC] dark:border-white/10 dark:bg-white/10 dark:text-white"
+            className="h-10 cursor-pointer border border-[#F3F4F6] bg-[#EAEEF3] text-sm text-[#1F1E1F] hover:bg-[#DEE5EC] dark:border-[#25292E] dark:bg-white/10 dark:text-white"
           >
             Cancel
           </Button>
-          <Button type="button" className="h-10 bg-[#1565C0] text-sm text-white hover:bg-[#0F54A1]">
+          <Button
+            type="button"
+            className="h-10 cursor-pointer bg-[#1565C0] text-sm text-white hover:bg-[#0F54A1]"
+          >
             Save Subscription
           </Button>
         </div>

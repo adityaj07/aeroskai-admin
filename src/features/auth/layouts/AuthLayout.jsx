@@ -18,7 +18,7 @@ const AuthLayout = () => {
           {/* Content Area - Form Container */}
           <div className="flex flex-1 flex-col items-center justify-center px-6 py-8 md:px-12 md:py-12">
             {/* Max Width Container */}
-            <div className="w-full max-w-md">
+            <div className="w-full max-w-xl">
               {/* Logo - Positioned above form */}
               <div className="mb-20 flex justify-center">
                 <img src={Logo} alt="Aeroskai Logo" className="h-24 w-auto md:h-36" />

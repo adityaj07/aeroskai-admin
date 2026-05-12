@@ -26,10 +26,7 @@ const getColumns = (navigate) => [
     header: 'Company',
     cell: ({ row }) => (
       <div className="flex items-center gap-2">
-        <Avatar
-          size="lg"
-          className="h-[40px] w-[40px] border border-[#E5E7EB] dark:border-white/10"
-        >
+        <Avatar size="lg" className="h-10 w-10 border border-[#E5E7EB] dark:border-[#25292E]">
           <AvatarImage src={companyPlaceholder} alt={row.original.logoAlt} />
           <AvatarFallback className="bg-[#EAEEF3] text-[10px] text-[#6F7680] dark:bg-white/10 dark:text-[#9AA2AD]">
             {row.original.company.slice(0, 2).toUpperCase()}
@@ -62,7 +59,7 @@ const getColumns = (navigate) => [
       return (
         <Button
           variant="ghost"
-          className="h-8 rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
+          className="mx-auto h-8 w-28 cursor-pointer justify-center rounded-md bg-[#EAEEF3] px-3 text-xs font-semibold text-[#0C1014] hover:bg-[#DEE5EC] dark:bg-white/10 dark:text-white dark:hover:bg-white/15"
           onClick={() =>
             navigate(`${ROUTES.DASHBOARD}/${ROUTES.APPLICATION_DETAIL(row.original.id)}`)
           }
@@ -92,14 +89,14 @@ export const ApplicationsTable = ({ applications, meta }) => {
       initial={{ opacity: 0, y: 6 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.22, ease: 'easeOut' }}
-      className="overflow-hidden rounded-xl border border-[#EEF1F4] pt-4 dark:border-white/10"
+      className="overflow-hidden rounded-xl border border-[#EEF1F4] pt-4 dark:border-[#25292E]"
     >
-      <Table className="min-w-[980px]">
+      <Table className="min-w-245">
         <TableHeader className="bg-[#F7F9F9] dark:bg-[#14171A]">
           {table.getHeaderGroups().map((headerGroup) => (
             <TableRow
               key={headerGroup.id}
-              className="border-b border-[#EEF1F4] hover:bg-transparent dark:border-white/10"
+              className="border-b border-[#EEF1F4] hover:bg-transparent dark:border-[#25292E]"
             >
               {headerGroup.headers.map((header, index) => (
                 <TableHead
@@ -122,7 +119,7 @@ export const ApplicationsTable = ({ applications, meta }) => {
           {table.getRowModel().rows.map((row) => (
             <TableRow
               key={row.id}
-              className="border-b border-[#F3F4F6] hover:bg-[#FBFCFD] dark:border-white/10 dark:hover:bg-[#14171A]"
+              className="border-b border-[#F3F4F6] hover:bg-[#FBFCFD] dark:border-[#25292E] dark:hover:bg-[#14171A]"
             >
               {row.getVisibleCells().map((cell) => (
                 <TableCell
@@ -148,17 +145,17 @@ export const ApplicationsTable = ({ applications, meta }) => {
         </TableBody>
       </Table>
 
-      <div className="flex items-center justify-between border-t border-[#EEF1F4] px-4 py-3 text-xs text-[#6F7680] dark:border-white/10 dark:text-[#9AA2AD]">
+      <div className="flex items-center justify-between border-t border-[#EEF1F4] px-4 py-3 text-xs text-[#6F7680] dark:border-[#25292E] dark:text-[#9AA2AD]">
         <p>
           Showing 1-{data.length} of {total}
         </p>
 
         <div className="flex items-center gap-2">
-          <button className="rounded-md p-1 text-[#9AA2AD] hover:bg-[#F5F7FA] hover:text-[#0C1014] dark:hover:bg-white/5 dark:hover:text-white">
+          <button className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md text-[#9AA2AD] hover:bg-[#F5F7FA] hover:text-[#0C1014] dark:hover:bg-white/5 dark:hover:text-white">
             <HugeiconsIcon icon={ArrowLeft01Icon} size={16} />
           </button>
 
-          <button className="rounded-md p-1 text-[#9AA2AD] hover:bg-[#F5F7FA] hover:text-[#0C1014] dark:hover:bg-white/5 dark:hover:text-white">
+          <button className="flex h-8 w-8 cursor-pointer items-center justify-center rounded-md text-[#9AA2AD] hover:bg-[#F5F7FA] hover:text-[#0C1014] dark:hover:bg-white/5 dark:hover:text-white">
             <HugeiconsIcon icon={ArrowRight01Icon} size={16} />
           </button>
         </div>

@@ -11,7 +11,7 @@ export const PaymentsOverviewCard = ({ title, value, trend = [] }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.22, ease: 'easeOut' }}
     >
-      <Card className="h-[160px] rounded-2xl border border-[#ECEFF3] bg-white px-4 py-4 shadow-none dark:border-white/10 dark:bg-transparent sm:h-[170px] sm:px-5">
+      <Card className="h-[160px] rounded-2xl border border-[#ECEFF3] bg-white px-4 py-4 shadow-none dark:border-[#25292E] dark:bg-transparent sm:h-[170px] sm:px-5">
         <div className="items-between grid h-full grid-cols-[minmax(0,1fr)_110px] gap-3 sm:grid-cols-[minmax(0,1fr)_130px]">
           <div className="flex min-w-0 flex-col justify-between">
             <p className="text-[14px] font-medium text-[#6F7680] dark:text-[#A9B0BA]">{title}</p>

@@ -14,7 +14,7 @@ export const UserDetailHeader = ({ details, onToggleStatus }) => {
       ?.join('') || 'U'
 
   return (
-    <div className="flex flex-col gap-4 rounded-2xl bg-white px-4 py-4  dark:bg-[#121417] sm:flex-row sm:items-center sm:justify-between md:px-5">
+    <div className="flex flex-col gap-4 rounded-2xl bg-white px-5 py-5  dark:bg-[#121417] sm:flex-row sm:items-center sm:justify-between md:px-5">
       <div className="flex min-w-0 items-start gap-4 sm:gap-5">
         <Avatar className="h-11.5 w-11.5 shrink-0 rounded-[12px] bg-[#1565C01A]">
           <AvatarFallback className="rounded-[12px] bg-[#1565C01A] text-[20px] font-semibold text-[#1F1E1F] dark:text-white">
@@ -37,7 +37,7 @@ export const UserDetailHeader = ({ details, onToggleStatus }) => {
         type="button"
         onClick={() => onToggleStatus && onToggleStatus()}
         className={cn(
-          'w-full rounded-md px-4 py-3 text-[11px] font-semibold shadow-none sm:w-auto sm:px-6 sm:py-4',
+          'h-11 w-full cursor-pointer rounded-md px-4 py-3 text-[11px] text-xs font-semibold shadow-none sm:w-auto sm:px-6 sm:py-4 md:text-sm',
           status === 'Active'
             ? 'bg-[#F1F5F9] text-[#DC2626] hover:bg-[#E2E8F0] dark:bg-[#1F2937] dark:text-[#F87171]'
             : 'bg-[#1565C0] text-white hover:bg-[#0F4C92] dark:bg-[#1565C0] dark:text-white'
