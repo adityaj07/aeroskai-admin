@@ -14,7 +14,7 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-import { PaymentsStatusBadge } from '../shared/PaymentsStatusBadge'
+import { StatusBadge } from '@/components/shared/app/StatusBadge'
 
 const getColumns = (onIssueRefund) => [
   {
@@ -43,7 +43,7 @@ const getColumns = (onIssueRefund) => [
   {
     accessorKey: 'status',
     header: 'Status',
-    cell: ({ row }) => <PaymentsStatusBadge status={row.original.status} />,
+    cell: ({ row }) => <StatusBadge status={row.original.status} />,
   },
   {
     accessorKey: 'date',

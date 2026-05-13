@@ -1,10 +1,10 @@
 import { Calendar01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
-import { format } from 'date-fns'
 
 import { Calendar } from '@/components/ui/calendar'
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover'
 import { cn } from '@/lib/utils'
+import { formatDate } from '@/utils/formatDate'
 
 export const SubscriptionDatePickerField = ({
   value,
@@ -22,7 +22,7 @@ export const SubscriptionDatePickerField = ({
             triggerClassName
           )}
         >
-          <span>{value ? format(value, 'dd/MM/yyyy') : placeholder}</span>
+          <span>{value ? formatDate(value) : placeholder}</span>
           <HugeiconsIcon
             icon={Calendar01Icon}
             size={14}

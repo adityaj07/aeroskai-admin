@@ -1,5 +1,5 @@
 import { lazy, Suspense } from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import { createBrowserRouter, Navigate, RouterProvider } from 'react-router-dom'
 
 import ErrorBoundary from '@/components/shared/ErrorBoundary/ErrorBoundary'
 import PrivateRoute from '@/components/shared/PrivateRoute/PrivateRoute'
@@ -51,6 +51,11 @@ const ReportDetailsPage = lazy(() => import('@/features/reports/pages/ReportDeta
 const SettingsPage = lazy(() => import('@/features/settings/page/SettingsPage'))
 
 const router = createBrowserRouter([
+  {
+    path: '/',
+    element: <Navigate to={ROUTES.LOGIN} replace />,
+  },
+
   {
     element: (
       <RouteSuspense>

@@ -39,7 +39,10 @@ export const DeleteContentDialog = ({
           <SelectTrigger className="h-10 w-full justify-between rounded-lg border border-[#E2E8F0] bg-white px-3 py-2.5 text-[13px] text-[#1F1E1F] shadow-none ring-0 placeholder:text-[#6F7680] focus:outline-none focus:ring-0 dark:border-[#25292E] dark:bg-transparent dark:text-white dark:placeholder:text-[#A9B0BA]">
             <SelectValue />
           </SelectTrigger>
-          <SelectContent align="end">
+          <SelectContent
+            className="z-1000 border border-[#E2E8F0] bg-white dark:border-[#25292E] dark:bg-[#121417]"
+            align="end"
+          >
             <SelectItem value="Spam">Spam</SelectItem>
             <SelectItem value="Hate speech">Hate speech</SelectItem>
             <SelectItem value="Harassment">Harassment</SelectItem>

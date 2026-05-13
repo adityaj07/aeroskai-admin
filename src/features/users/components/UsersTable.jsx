@@ -13,13 +13,13 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { UserStatusBadge } from './UserStatusBadge'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { usersService } from '../services/user.service'
 import { USERS_QUERY_KEYS } from '../constants/users.constants'
 import { ConfirmUserStatusDialog } from './userDetails/dialogs/ConfirmUserStatusDialog'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
+import { StatusBadge } from '@/components/shared/app/StatusBadge'
 
 const getColumns = (navigate, onToggleStatus) => [
   {
@@ -44,7 +44,7 @@ const getColumns = (navigate, onToggleStatus) => [
   {
     accessorKey: 'status',
     header: 'Status',
-    cell: ({ row }) => <UserStatusBadge status={row.original.status} />,
+    cell: ({ row }) => <StatusBadge status={row.original.status} />,
   },
 
   {

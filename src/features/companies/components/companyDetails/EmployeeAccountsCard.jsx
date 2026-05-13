@@ -1,9 +1,12 @@
 import { AdminSectionCard } from '@/components/shared/app/AdminSectionCard'
-import { CompanyStatusBadge } from '../CompanyStatusBadge'
+import { StatusBadge } from '@/components/shared/app/StatusBadge'
 
 export const EmployeeAccountsCard = ({ employees }) => {
   return (
-    <AdminSectionCard title={`Employee Accounts (${employees.used} / ${employees.total})`} contentClassName="space-y-3">
+    <AdminSectionCard
+      title={`Employee Accounts (${employees.used} / ${employees.total})`}
+      contentClassName="space-y-3"
+    >
       {employees.list.map((employee) => (
         <div key={employee.email} className="flex items-center justify-between">
           <div className="flex items-center gap-2">
@@ -15,7 +18,7 @@ export const EmployeeAccountsCard = ({ employees }) => {
               <p className="text-xs text-[#6F7680] dark:text-[#A9B0BA]">{employee.email}</p>
             </div>
           </div>
-          <CompanyStatusBadge status={employee.status} />
+          <StatusBadge status={employee.status} />
         </div>
       ))}
     </AdminSectionCard>

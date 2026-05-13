@@ -6,7 +6,7 @@ import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs'
 import { SUPPORT_STATUS_FILTERS } from '../constants/support.constants'
 
 import { SupportSearchToolbar } from './SupportSearchToolbar'
-import { SupportStatusBadge } from './SupportStatusBadge'
+import { StatusBadge } from '@/components/shared/app/StatusBadge'
 
 export const SupportConversationList = ({
   tab,
@@ -51,54 +51,56 @@ export const SupportConversationList = ({
         onStatusChange={onStatusChange}
       />
 
-      <div className="-pr-14 mt-2 min-h-0 flex-1 space-y-1 overflow-y-auto">
-        {conversations.map((conversation) => {
+      <div className="-pr-14 mt-2 min-h-0 flex-1 overflow-y-auto">
+        {conversations.map((conversation, index) => {
           const isActive = conversation.id === activeConversationId
+          const isLastItem = index === conversations.length - 1
 
           return (
-            <button
-              key={conversation.id}
-              type="button"
-              onClick={() => onSelectConversation(conversation.id)}
-              className={`w-full cursor-pointer rounded-lg px-2 py-2 text-left transition-colors ${
-                isActive
-                  ? 'bg-[#F1F5F9] dark:bg-white/10'
-                  : 'hover:bg-[#F8FAFC] dark:hover:bg-white/5'
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <img
-                  src={conversation.avatar}
-                  alt={conversation.username}
-                  className="h-9 w-9 shrink-0 self-stretch rounded-full object-cover"
-                />
+            <div key={conversation.id}>
+              <button
+                type="button"
+                onClick={() => onSelectConversation(conversation.id)}
+                className={`w-full cursor-pointer rounded-lg px-2 py-2 text-left transition-colors ${
+                  isActive ? 'bg-[#1E88E50D]' : 'hover:bg-[#1E88E50D]'
+                }`}
+              >
+                <div className="flex items-center gap-2">
+                  <img
+                    src={conversation.avatar}
+                    alt={conversation.username}
+                    className="h-9 w-9 shrink-0 self-stretch rounded-full object-cover"
+                  />
 
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-start justify-between gap-2">
-                    <p className="truncate text-xs font-semibold text-[#0C1014] dark:text-white">
-                      {conversation.username}
-                    </p>
+                  <div className="min-w-0 flex-1">
+                    <div className="flex items-start justify-between gap-2">
+                      <p className="truncate text-xs font-semibold text-[#0C1014] dark:text-white">
+                        {conversation.username}
+                      </p>
 
-                    <div className="flex items-center gap-1.5">
-                      {!!conversation.unreadCount && (
-                        <span className="inline-flex min-w-4 items-center justify-center rounded-full bg-[#1565C0] px-1.5 py-0.5 text-[10px] text-white">
-                          {conversation.unreadCount}
-                        </span>
-                      )}
-                      <SupportStatusBadge status={conversation.status} />
+                      <div className="flex items-center gap-1.5">
+                        {!!conversation.unreadCount && (
+                          <span className="inline-flex min-w-4 items-center justify-center rounded-full bg-[#1565C0] px-1.5 py-0.5 text-[10px] text-white">
+                            {conversation.unreadCount}
+                          </span>
+                        )}
+                        <StatusBadge status={conversation.status} />
+                      </div>
                     </div>
-                  </div>
 
-                  <p className="mt-0.5 text-[11px] text-[#6F7680] dark:text-[#A9B0BA]">
-                    <span className="inline-block max-w-[78%] truncate align-bottom">
-                      {conversation.lastMessage}
-                    </span>
-                    <span className="mx-1 text-[#98A2B3]">•</span>
-                    <span className="text-[10px] text-[#98A2B3]">{conversation.timeAgo}</span>
-                  </p>
+                    <p className="mt-0.5 text-[11px] text-[#6F7680] dark:text-[#A9B0BA]">
+                      <span className="inline-block max-w-[78%] truncate align-bottom">
+                        {conversation.lastMessage}
+                      </span>
+                      <span className="mx-1 text-[#98A2B3]">•</span>
+                      <span className="text-[10px] text-[#98A2B3]">{conversation.timeAgo}</span>
+                    </p>
+                  </div>
                 </div>
-              </div>
-            </button>
+              </button>
+
+              {!isLastItem && <div className="my-2 h-px bg-[#EEF1F4] dark:bg-[#25292E]" />}
+            </div>
           )
         })}
 

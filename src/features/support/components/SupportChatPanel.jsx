@@ -11,6 +11,7 @@ import { SupportImageUploadDialog } from './SupportImageUploadDialog'
 
 export const SupportChatPanel = ({ conversation, onBack }) => {
   const [uploadOpen, setUploadOpen] = useState(false)
+  const chatStartTime = conversation?.messages?.find((message) => message.time)?.time
 
   if (!conversation) {
     return (
@@ -34,7 +35,7 @@ export const SupportChatPanel = ({ conversation, onBack }) => {
               <button
                 type="button"
                 onClick={onBack}
-                className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md bg-[#F7F9F9] text-[#6F7680] dark:bg-white/10 dark:text-[#A9B0BA] md:hidden"
+                className="inline-flex h-8 w-8 cursor-pointer items-center justify-center rounded-md bg-[#F7F9F9] text-[#6F7680] dark:bg-white/10 dark:text-[#A9B0BA] lg:hidden"
               >
                 <HugeiconsIcon icon={ArrowLeft01Icon} size={16} />
               </button>
@@ -62,6 +63,12 @@ export const SupportChatPanel = ({ conversation, onBack }) => {
         </div>
 
         <div className="flex-1 space-y-3 overflow-y-auto px-3 py-4 md:px-4">
+          {chatStartTime && (
+            <p className="pb-1 text-center text-[10px] text-[#98A2B3] dark:text-[#7E8896]">
+              {chatStartTime}
+            </p>
+          )}
+
           {conversation.messages.map((message, index) => {
             const isAdmin = message.sender === 'admin'
 
@@ -70,18 +77,23 @@ export const SupportChatPanel = ({ conversation, onBack }) => {
                 key={`${message.id}-${index}`}
                 className={`flex ${isAdmin ? 'justify-end' : 'justify-start'}`}
               >
-                <div
-                  className={`max-w-[85%] rounded-md px-3 py-2 text-xs md:max-w-[70%] ${
-                    isAdmin
-                      ? 'bg-[#EAF3FF] text-[#0C1014] dark:bg-[#1A2636] dark:text-[#E6ECF5]'
-                      : 'bg-[#F7F9F9] text-[#0C1014] dark:bg-white/10 dark:text-white'
-                  }`}
-                >
-                  <p>{message.text}</p>
-                  {message.time && (
-                    <p className="mt-1 text-[10px] text-[#98A2B3]">{message.time}</p>
-                  )}
-                </div>
+                {isAdmin ? (
+                  <div className="max-w-[85%] rounded-md bg-[#EAF3FF] px-3 py-2 text-xs text-[#0C1014] dark:bg-[#1A2636] dark:text-[#E6ECF5] md:max-w-[70%]">
+                    <p>{message.text}</p>
+                  </div>
+                ) : (
+                  <div className="flex items-end gap-2 pr-6 md:pr-10">
+                    <img
+                      src={conversation.avatar}
+                      alt={conversation.username}
+                      className="h-8 w-8 shrink-0 rounded-full object-cover"
+                    />
+
+                    <div className="max-w-[85%] rounded-md bg-[#F7F9F9] px-3 py-2 text-xs text-[#0C1014] dark:bg-white/10 dark:text-white md:max-w-[70%]">
+                      <p>{message.text}</p>
+                    </div>
+                  </div>
+                )}
               </div>
             )
           })}

@@ -1,12 +1,11 @@
-import { Building01Icon, Mail01Icon, Tick02Icon } from '@hugeicons/core-free-icons'
+import { Building01Icon } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 
 import companyPlaceholder from '@/assets/images/company-placeholder.svg'
+import { StatusBadge } from '@/components/shared/app/StatusBadge'
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { cn } from '@/lib/utils'
-
-import { ApplicationStatusBadge } from '../ApplicationStatusBadge'
 
 export const ApplicationDetailHeader = ({ details, onReject, onRequestInfo, onApprove }) => {
   const initials =
@@ -17,13 +16,15 @@ export const ApplicationDetailHeader = ({ details, onReject, onRequestInfo, onAp
       ?.join('') || 'A'
 
   return (
-    <div className="flex flex-col gap-4 rounded-2xl bg-white px-5 py-5 dark:bg-[#121417] sm:flex-row sm:items-center sm:justify-between md:px-5">
+    <div className="flex flex-col gap-5 rounded-2xl bg-transparent px-4 py-4 sm:px-5 sm:py-5 xl:flex-row xl:items-center xl:justify-between">
+      {/* Left Section */}
       <div className="flex min-w-0 items-start gap-3 sm:gap-4">
-        <Avatar className="h-12 w-12 shrink-0 rounded-[14px] border border-[#E5E7EB] bg-[#E7EEF8] dark:border-[#25292E] dark:bg-[#1F2937]">
+        <Avatar className="h-12 w-12 shrink-0 rounded-[14px] border border-[#E5E7EB] bg-[#E7EEF8] dark:border-[#25292E] dark:bg-[#1F2937] sm:h-14 sm:w-14">
           <AvatarImage
             src={companyPlaceholder}
             alt={details.logoAlt ?? `${details.companyName} logo`}
           />
+
           <AvatarFallback className="rounded-[14px] bg-[#E7EEF8] text-[16px] font-semibold text-[#1565C0] dark:bg-[#1F2937] dark:text-[#8DBEFF]">
             <HugeiconsIcon icon={Building01Icon} size={18} />
             <span className="sr-only">{initials}</span>
@@ -31,51 +32,51 @@ export const ApplicationDetailHeader = ({ details, onReject, onRequestInfo, onAp
         </Avatar>
 
         <div className="min-w-0">
-          <p className="truncate text-[20px] font-semibold text-[#1F1E1F] dark:text-white">
+          <p className="truncate text-[18px] font-semibold text-[#1F1E1F] dark:text-white sm:text-[20px] lg:text-[22px]">
             {details.companyName}
           </p>
+
           <div className="mt-2 flex flex-wrap gap-2">
-            <ApplicationStatusBadge status={details.status} />
+            <StatusBadge status={details.status} />
           </div>
         </div>
       </div>
 
-      <div className="grid gap-2 sm:grid-cols-3">
+      {/* Actions */}
+      <div className="flex w-full flex-wrap gap-2 xl:w-auto xl:justify-end">
         <Button
           type="button"
           onClick={() => onReject && onReject()}
           className={cn(
-            'h-10 cursor-pointer rounded-md px-4 text-[11px] font-semibold shadow-none sm:px-5',
-            'bg-[#F1F5F9] text-[#DC2626] hover:bg-[#E2E8F0] dark:bg-[#1F2937] dark:text-[#F87171]'
+            'h-10 w-full cursor-pointer  rounded-md px-4 text-[12px] font-semibold shadow-none transition-colors sm:h-11 sm:flex-1 sm:text-[13px] xl:w-auto xl:flex-none',
+            'bg-[#F1F5F9] text-[#DC2626] hover:bg-[#E2E8F0]',
+            'dark:bg-[#14171A] dark:text-[#F87171] dark:hover:bg-white/10'
           )}
         >
           Reject Application
         </Button>
+
         <Button
           type="button"
           onClick={() => onRequestInfo && onRequestInfo()}
           className={cn(
-            'h-10 cursor-pointer rounded-md px-4 text-[11px] font-semibold shadow-none sm:px-5',
-            'bg-[#F1F5F9] text-[#0C1014] hover:bg-[#E2E8F0] dark:bg-[#1F2937] dark:text-white'
+            'h-10 w-full cursor-pointer rounded-md px-4 text-[12px] font-semibold shadow-none transition-colors sm:h-11 sm:flex-1 sm:text-[13px] xl:w-auto xl:flex-none',
+            'bg-[#F1F5F9] text-[#0C1014] hover:bg-[#E2E8F0]',
+            'dark:bg-[#14171A] dark:text-white dark:hover:bg-white/10'
           )}
         >
-          <span className="inline-flex items-center gap-2">
-            <HugeiconsIcon icon={Mail01Icon} size={14} />
-            Request More Information
-          </span>
+          <span className="truncate">Request More Information</span>
         </Button>
+
         <Button
           type="button"
           onClick={() => onApprove && onApprove()}
           className={cn(
-            'h-10 cursor-pointer rounded-md px-4 text-[11px] font-semibold shadow-none sm:px-5',
-            'bg-[#1565C0] text-white hover:bg-[#0F4C92] dark:bg-[#1565C0] dark:text-white'
+            'h-10 w-full cursor-pointer rounded-md px-4 text-[12px] font-semibold text-white transition-colors sm:h-11 sm:flex-1 sm:text-[13px] xl:w-auto xl:flex-none',
+            'bg-[#1565C0] hover:bg-[#0F54A1]'
           )}
         >
-          <span className="inline-flex items-center gap-2">
-            <HugeiconsIcon icon={Tick02Icon} size={14} />
-            Approve Application
-          </span>
+          <span className="truncate">Approve Application</span>
         </Button>
       </div>
     </div>

@@ -149,7 +149,15 @@ export const PaymentCompaniesSection = () => {
         />
       )}
 
-      <RecordPaymentDialog open={recordDialogOpen} onClose={() => setRecordDialogOpen(false)} />
+      <RecordPaymentDialog
+        open={recordDialogOpen}
+        onClose={() => setRecordDialogOpen(false)}
+        onSubmit={(values) => {
+          console.log(values)
+
+          setRecordDialogOpen(false)
+        }}
+      />
       <IssueRefundDialog
         open={refundDialogOpen}
         payment={selectedPayment}

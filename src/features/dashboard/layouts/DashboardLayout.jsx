@@ -13,6 +13,7 @@ import { SidebarInset, SidebarProvider, SidebarTrigger } from '@/components/ui/s
 import { resolveBreadcrumbs } from '@/utils/resolveBreadcrumbs'
 
 import { AppSidebar } from '../components/AppSidebar'
+import { AnimatedThemeToggler } from '@/components/ui/animated-theme-toggler'
 
 const DashboardLayout = () => {
   const location = useLocation()
@@ -55,7 +56,9 @@ const DashboardLayout = () => {
                         )}
                       </BreadcrumbItem>
 
-                      {!isLast && <span className="mx-2 hidden text-xl font-medium sm:inline">/</span>}
+                      {!isLast && (
+                        <span className="mx-2 hidden text-xl font-medium sm:inline">/</span>
+                      )}
                     </div>
                   )
                 })}
@@ -64,7 +67,8 @@ const DashboardLayout = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <ModeToggle />
+            {/* <ModeToggle /> */}
+            <AnimatedThemeToggler />
 
             <Separator orientation="vertical" className="h-6 w-px bg-[#E5E7EB] dark:bg-[#D1D5DB]" />
 

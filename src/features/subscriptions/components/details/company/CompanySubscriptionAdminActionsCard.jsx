@@ -54,12 +54,22 @@ export const CompanySubscriptionAdminActionsCard = ({ details }) => {
         open={renewalOpen}
         onClose={() => setRenewalOpen(false)}
         data={details.renewalReminder}
+        onSubmit={(values) => {
+          console.log(values)
+
+          setRenewalOpen(false)
+        }}
       />
 
       <SendInvoiceEmailDialog
         open={invoiceOpen}
         onClose={() => setInvoiceOpen(false)}
         data={details.invoiceEmail}
+        onSubmit={(values) => {
+          console.log(values)
+
+          setInvoiceOpen(false)
+        }}
       />
     </>
   )

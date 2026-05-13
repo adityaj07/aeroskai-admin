@@ -32,7 +32,7 @@ export const RejectReportDialog = ({
 
           <SelectContent
             align="end"
-            className="border border-[#E2E8F0] bg-white dark:border-[#25292E] dark:bg-[#121417]"
+            className="z-1000 border border-[#E2E8F0] bg-white dark:border-[#25292E] dark:bg-[#121417]"
           >
             <SelectItem value="No violation found">No violation found</SelectItem>
 

@@ -125,6 +125,11 @@ export const AdminActionsCard = ({ details }) => {
         open={manageSubOpen}
         data={details.subscription}
         onClose={() => setManageSubOpen(false)}
+        onSubmit={(values) => {
+          console.log(values)
+
+          setManageSubOpen(false)
+        }}
       />
 
       <ConfirmCompanyActionDialog
@@ -183,12 +188,22 @@ export const AdminActionsCard = ({ details }) => {
         open={subscriptionEmailOpen}
         toEmail={details.primaryContact.find((item) => item.label === 'Work Email')?.value}
         onClose={() => setSubscriptionEmailOpen(false)}
+        onSubmit={(values) => {
+          console.log(values)
+
+          setSubscriptionEmailOpen(false)
+        }}
       />
 
       <SendNormalEmailDialog
         open={normalEmailOpen}
         toEmail={details.email || 'contact@skyjet.com'}
         onClose={() => setNormalEmailOpen(false)}
+        onSubmit={(values) => {
+          console.log(values)
+
+          setNormalEmailOpen(false)
+        }}
       />
     </>
   )

@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/table'
 import { ROUTES } from '@/constants/routes.constants'
 
-import { ReportsStatusBadge } from './ReportsStatusBadge'
+import { StatusBadge } from '@/components/shared/app/StatusBadge'
 
 const getColumns = (onOpenDetails) => [
   {
@@ -47,7 +47,7 @@ const getColumns = (onOpenDetails) => [
     accessorKey: 'status',
     header: 'Status',
 
-    cell: ({ row }) => <ReportsStatusBadge status={row.original.status} />,
+    cell: ({ row }) => <StatusBadge status={row.original.status} />,
   },
 
   {

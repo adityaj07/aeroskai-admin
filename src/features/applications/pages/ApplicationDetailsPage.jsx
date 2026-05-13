@@ -112,8 +112,14 @@ const ApplicationDetailsPage = () => {
         confirmLabel="Yes, Reject"
         confirmClassName="h-10 bg-[#EF4444] text-sm text-white hover:bg-[#DC2626]"
         onClose={() => setRejectOpen(false)}
-        onConfirm={() => {
-          mutation.mutate({ action: 'reject', payload: { reason: '' } })
+        onConfirm={(values) => {
+          mutation.mutate({
+            action: 'reject',
+            payload: {
+              reason: values.reason,
+            },
+          })
+
           setRejectOpen(false)
         }}
       />
@@ -122,8 +128,12 @@ const ApplicationDetailsPage = () => {
         open={requestInfoOpen}
         application={data}
         onClose={() => setRequestInfoOpen(false)}
-        onSubmit={() => {
-          mutation.mutate({ action: 'requestMoreInformation', payload: {} })
+        onSubmit={(payload) => {
+          mutation.mutate({
+            action: 'requestMoreInformation',
+            payload,
+          })
+
           setRequestInfoOpen(false)
         }}
       />

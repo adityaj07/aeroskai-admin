@@ -110,7 +110,7 @@ export const LoginForm = () => {
                       type="button"
                       onClick={() => setShowPassword((prev) => !prev)}
                       aria-label={showPassword ? 'Hide password' : 'Show password'}
-                      className="text-muted-foreground hover:text-foreground absolute right-3 top-1/2 -translate-y-1/2 transition-colors"
+                      className="text-muted-foreground hover:text-foreground absolute right-3 top-1/2 -translate-y-1/2 cursor-pointer transition-colors"
                     >
                       <HugeiconsIcon
                         icon={showPassword ? ViewIcon : ViewOffSlashIcon}
@@ -125,7 +125,7 @@ export const LoginForm = () => {
                 <div className="flex justify-end">
                   <Link
                     to={ROUTES.FORGOT_PASSWORD}
-                    className="text-[11px] font-medium text-[#F43F5E] transition-colors hover:opacity-80 dark:text-[#FB7185] sm:text-[12px]"
+                    className="cursor-pointer text-[11px] font-medium text-[#F43F5E] transition-colors hover:opacity-80 dark:text-[#FB7185] sm:text-[12px]"
                   >
                     Forgot password?
                   </Link>
@@ -140,7 +140,7 @@ export const LoginForm = () => {
 
               <Button
                 type="submit"
-                className="mt-[48px] h-10 w-full cursor-pointer bg-[#1565C0] text-[13px] sm:mt-[53px] sm:h-11 sm:text-[14px]"
+                className="mt-[48px] h-10 w-full cursor-pointer  bg-[#1565C0] text-[13px] sm:mt-[53px] sm:h-11 sm:text-[14px]"
                 disabled={isPending}
               >
                 {isPending ? 'Logging in...' : 'Log In'}

@@ -16,9 +16,9 @@ import {
   TableRow,
 } from '@/components/ui/table'
 
-import { ApplicationStatusBadge } from './ApplicationStatusBadge'
 import { HugeiconsIcon } from '@hugeicons/react'
 import { ArrowLeft01Icon, ArrowRight01Icon } from '@hugeicons/core-free-icons'
+import { StatusBadge } from '@/components/shared/app/StatusBadge'
 
 const getColumns = (navigate) => [
   {
@@ -47,7 +47,7 @@ const getColumns = (navigate) => [
   {
     accessorKey: 'status',
     header: 'Status',
-    cell: ({ row }) => <ApplicationStatusBadge status={row.original.status} />,
+    cell: ({ row }) => <StatusBadge status={row.original.status} />,
   },
 
   {

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button'
 
-import { ReportsStatusBadge } from '../ReportsStatusBadge'
+import { StatusBadge } from '@/components/shared/app/StatusBadge'
 
 export const ReportDetailsHeader = ({ report, onOpenReject, onOpenResolve, onReviewReport }) => {
   const isPending = report.status === 'Pending'
@@ -10,7 +10,7 @@ export const ReportDetailsHeader = ({ report, onOpenReject, onOpenResolve, onRev
     <div className="space-y-3">
       <div className="flex flex-col gap-4 rounded-[14px] bg-transparent p-4 sm:flex-row sm:items-center sm:justify-between">
         <div className="flex items-center">
-          <ReportsStatusBadge status={report.status} />
+          <StatusBadge status={report.status} />
         </div>
 
         <div className="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:flex-wrap sm:items-center sm:justify-end">

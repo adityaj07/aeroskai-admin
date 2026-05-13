@@ -1,7 +1,7 @@
 import { Building01Icon, Star } from '@hugeicons/core-free-icons'
 import { HugeiconsIcon } from '@hugeicons/react'
 
-import { SubscriptionStatusBadge } from '../../shared/SubscriptionStatusBadge'
+import { StatusBadge } from '@/components/shared/app/StatusBadge'
 
 export const CompanySubscriptionHeaderBanner = ({ details }) => {
   return (
@@ -20,7 +20,7 @@ export const CompanySubscriptionHeaderBanner = ({ details }) => {
         </div>
 
         <div className="flex flex-wrap items-center gap-2">
-          <SubscriptionStatusBadge status={details.status} />
+          <StatusBadge status={details.status} />
           {details.foundingCompany && (
             <div className="flex items-center gap-1 rounded-lg bg-[#1565C01A] px-2 py-1 text-[12px] text-[#1565C0]">
               <HugeiconsIcon icon={Star} strokeWidth={2} className="h-[12px]" />

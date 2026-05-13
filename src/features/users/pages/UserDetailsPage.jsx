@@ -6,10 +6,10 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useUserDetails } from '../hooks/useUserDetails'
 import { UserDetailHeader } from '../components/userDetails/UserDetailHeader'
 import UserDetailInfoCard from '../components/userDetails/UserDetailInfoCard'
-import { UserStatusBadge } from '../components/UserStatusBadge'
 import { ConfirmUserStatusDialog } from '../components/userDetails/dialogs/ConfirmUserStatusDialog'
 import { usersService } from '../services/user.service'
 import { USERS_QUERY_KEYS } from '../constants/users.constants'
+import { StatusBadge } from '@/components/shared/app/StatusBadge'
 
 const UserDetailsPage = () => {
   const { userId } = useParams()
@@ -120,7 +120,7 @@ const UserDetailsPage = () => {
     { label: 'Plan', value: sub.plan ?? '' },
     { label: 'Start Date', value: sub.startDate ?? '' },
     { label: 'End Date', value: sub.endDate ?? '' },
-    { label: 'Status', value: sub.status ? <UserStatusBadge status={sub.status} /> : '' },
+    { label: 'Status', value: sub.status ? <StatusBadge status={sub.status} /> : '' },
   ]
 
   return (

@@ -140,11 +140,11 @@ const ReportDetailsPage = () => {
         resolution={resolution}
         actionTaken={resolutionActionTaken}
         notes={resolutionNotes}
-        onResolutionChange={setResolution}
-        onActionTakenChange={setResolutionActionTaken}
-        onNotesChange={setResolutionNotes}
         onClose={() => closeDialog('resolveReport')}
-        onConfirm={() => {
+        onConfirm={(values) => {
+          setResolution(values.resolution)
+          setResolutionActionTaken(values.actionTaken)
+          setResolutionNotes(values.notes ?? '')
           setReportStatus('Resolved')
           closeDialog('resolveReport')
         }}
@@ -165,11 +165,13 @@ const ReportDetailsPage = () => {
         content={editContent}
         reason={editReason}
         explanation={editExplanation}
-        onContentChange={setEditContent}
-        onReasonChange={setEditReason}
-        onExplanationChange={setEditExplanation}
         onClose={() => closeDialog('editContent')}
-        onConfirm={() => closeDialog('editContent')}
+        onConfirm={(values) => {
+          setEditContent(values.content)
+          setEditReason(values.reason)
+          setEditExplanation(values.explanation ?? '')
+          closeDialog('editContent')
+        }}
       />
 
       <DeactivateUserDialog

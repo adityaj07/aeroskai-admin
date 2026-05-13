@@ -13,7 +13,7 @@ import { CompanyDetailsSection } from '../components/createCompany/CompanyDetail
 import { LogoUploadDialog } from '../components/createCompany/LogoUploadDialog'
 import { PrimaryContactSection } from '../components/createCompany/PrimaryContactSection'
 import { SubscriptionSettingsSection } from '../components/createCompany/SubscriptionSettingsSection'
-import { createCompanySchema } from '../schemas/createCompany.schema'
+import { createCompanySchema } from '../schemas/companies.schema'
 
 const defaultValues = {
   businessName: '',

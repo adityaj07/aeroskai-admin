@@ -7,7 +7,7 @@ export const ApplicationStatusHistoryCard = ({ title, items }) => {
     <AdminSectionCard title={title} contentClassName="space-y-4">
       {items.map((item, index) => (
         <motion.div
-          key={`${item.title}-${item.date}`}
+          key={`${item.title}-${item.date}-${index}`}
           initial={{ opacity: 0, x: -6 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.18, delay: index * 0.04, ease: 'easeOut' }}

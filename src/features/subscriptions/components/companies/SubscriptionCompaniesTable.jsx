@@ -16,7 +16,7 @@ import {
 } from '@/components/ui/table'
 import { ROUTES } from '@/constants/routes.constants'
 
-import { SubscriptionStatusBadge } from '../shared/SubscriptionStatusBadge'
+import { StatusBadge } from '@/components/shared/app/StatusBadge'
 
 const getColumns = (navigate) => [
   {
@@ -41,7 +41,7 @@ const getColumns = (navigate) => [
   {
     accessorKey: 'status',
     header: 'Status',
-    cell: ({ row }) => <SubscriptionStatusBadge status={row.original.status} />,
+    cell: ({ row }) => <StatusBadge status={row.original.status} />,
   },
   {
     id: 'actions',
