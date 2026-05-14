@@ -8,15 +8,20 @@ import { EmployeeAccountsCard } from '../components/companyDetails/EmployeeAccou
 import { SubscriptionCard } from '../components/companyDetails/SubscriptionCard'
 import { SubscriptionHistoryCard } from '../components/companyDetails/SubscriptionHistoryCard'
 import { useCompanyDetails } from '../hooks/useCompanyDetails'
+import { CompanyDetailsPageSkeleton } from '@/components/shared/app/skeletons/companies/CompanyDetailsPageSkeleton'
 
 const CompanyDetailsPage = () => {
   const { companyId } = useParams()
   const { data, isLoading } = useCompanyDetails(companyId)
 
-  if (isLoading || !data) {
+  if (isLoading) {
+    return <CompanyDetailsPageSkeleton />
+  }
+
+  if (!data) {
     return (
-      <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#A9B0BA]">
-        Loading company details...
+      <div className="rounded-xl border border-[#EEF1F4] p-10 text-center dark:border-[#25292E]">
+        <p className="text-sm text-[#6F7680] dark:text-[#A9B0BA]">Company details not found.</p>
       </div>
     )
   }

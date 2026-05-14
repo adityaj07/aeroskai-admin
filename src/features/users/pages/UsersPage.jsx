@@ -6,6 +6,7 @@ import { useUsers } from '../hooks/useUsers'
 import { UsersToolbar } from '../components/UsersToolbar'
 import { StatusSwitcher } from '@/components/shared/app/StatusSwitcher'
 import { USER_STATUS_FILTERS } from '../constants/users.constants'
+import { UsersPageSkeleton } from '@/components/shared/app/skeletons/users/UsersPageSkeleton'
 
 const UsersPage = () => {
   const [status, setStatus] = useState('All')
@@ -33,13 +34,7 @@ const UsersPage = () => {
         onStatusChange={setStatus}
       />
 
-      {isLoading ? (
-        <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#9AA2AD]">
-          Loading users...
-        </div>
-      ) : (
-        <UsersTable users={data?.data} />
-      )}
+      {isLoading ? <UsersPageSkeleton /> : <UsersTable users={data.data} meta={data.meta} />}
     </motion.div>
   )
 }

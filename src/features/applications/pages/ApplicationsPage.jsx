@@ -7,6 +7,7 @@ import { ApplicationsTable } from '../components/ApplicationsTable'
 import { ApplicationsToolbar } from '../components/ApplicationsToolbar'
 import { StatusSwitcher } from '@/components/shared/app/StatusSwitcher'
 import { APPLICATION_STATUS_FILTERS } from '../constants/applications.constants'
+import { ApplicationsPageSkeleton } from '@/components/shared/app/skeletons/applications/ApplicationsPageSkeleton'
 
 const ApplicationsPage = () => {
   const [status, setStatus] = useState('All')
@@ -34,13 +35,7 @@ const ApplicationsPage = () => {
         onStatusChange={setStatus}
       />
 
-      {isLoading ? (
-        <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#9AA2AD]">
-          Loading applications...
-        </div>
-      ) : (
-        <ApplicationsTable applications={data?.data} />
-      )}
+      {isLoading ? <ApplicationsPageSkeleton /> : <ApplicationsTable applications={data.data} />}
     </motion.div>
   )
 }

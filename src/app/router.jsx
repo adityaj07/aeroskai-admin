@@ -6,6 +6,17 @@ import PrivateRoute from '@/components/shared/PrivateRoute/PrivateRoute'
 import { ROUTES } from '@/constants/routes.constants'
 import { RouteSuspense } from '@/components/shared/app/RouteSuspense'
 import AccountActivatedPage from '@/features/auth/pages/AccountActivatedPage'
+import { DashboardPageSkeleton } from '@/components/shared/app/skeletons/dashboard/DashboardPageSkeleton'
+import { CompaniesPageSkeleton } from '@/components/shared/app/skeletons/companies/CompaniesPageSkeleton'
+import { CompanyDetailsPageSkeleton } from '@/components/shared/app/skeletons/companies/CompanyDetailsPageSkeleton'
+import { CreateCompanyPageSkeleton } from '@/components/shared/app/skeletons/companies/CreateCompanyPageSkeleton'
+import { ApplicationsPageSkeleton } from '@/components/shared/app/skeletons/applications/ApplicationsPageSkeleton'
+import { ApplicationDetailsPageSkeleton } from '@/components/shared/app/skeletons/applications/ApplicationsPageDetailsSkeleton'
+import { UsersPageSkeleton } from '@/components/shared/app/skeletons/users/UsersPageSkeleton'
+import { UserDetailsPageSkeleton } from '@/components/shared/app/skeletons/users/UserDetailsPageSkeleton'
+import { SubscriptionsPageSkeleton } from '@/components/shared/app/skeletons/subscription/SubscriptionPageSkeleton'
+import { CompanySubscriptionDetailsPageSkeleton } from '@/components/shared/app/skeletons/subscription/details/CompanySubscriptionDetailsPageSkeleton'
+import { UserSubscriptionDetailsPageSkeleton } from '@/components/shared/app/skeletons/subscription/details/UserSubscriptionDetailsPageSkeleton'
 
 const AuthLayout = lazy(() => import('@/features/auth/layouts/AuthLayout'))
 const DashboardLayout = lazy(() => import('@/features/dashboard/layouts/DashboardLayout'))
@@ -148,7 +159,7 @@ const router = createBrowserRouter([
             index: true,
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<DashboardPageSkeleton />}>
                 <DashboardPage />
               </RouteSuspense>
             ),
@@ -158,7 +169,7 @@ const router = createBrowserRouter([
             path: ROUTES.COMPANIES,
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<CompaniesPageSkeleton />}>
                 <CompaniesPage />
               </RouteSuspense>
             ),
@@ -168,7 +179,7 @@ const router = createBrowserRouter([
             path: ROUTES.COMPANY_CREATE,
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<CreateCompanyPageSkeleton />}>
                 <CreateCompanyPage />
               </RouteSuspense>
             ),
@@ -178,7 +189,7 @@ const router = createBrowserRouter([
             path: ROUTES.COMPANY_DETAIL(),
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<CompanyDetailsPageSkeleton />}>
                 <CompanyDetailsPage />
               </RouteSuspense>
             ),
@@ -188,7 +199,7 @@ const router = createBrowserRouter([
             path: ROUTES.APPLICATIONS,
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<ApplicationsPageSkeleton />}>
                 <ApplicationsPage />
               </RouteSuspense>
             ),
@@ -198,7 +209,7 @@ const router = createBrowserRouter([
             path: ROUTES.APPLICATION_DETAIL(),
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<ApplicationDetailsPageSkeleton />}>
                 <ApplicationDetailsPage />
               </RouteSuspense>
             ),
@@ -208,7 +219,7 @@ const router = createBrowserRouter([
             path: ROUTES.USERS,
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<UsersPageSkeleton />}>
                 <UsersPage />
               </RouteSuspense>
             ),
@@ -218,7 +229,7 @@ const router = createBrowserRouter([
             path: ROUTES.USER_DETAIL(),
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<UserDetailsPageSkeleton />}>
                 <UserDetailsPage />
               </RouteSuspense>
             ),
@@ -228,7 +239,7 @@ const router = createBrowserRouter([
             path: ROUTES.SUBSCRIPTIONS,
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<SubscriptionsPageSkeleton />}>
                 <SubscriptionsPage />
               </RouteSuspense>
             ),
@@ -238,7 +249,7 @@ const router = createBrowserRouter([
             path: ROUTES.SUBSCRIPTION_DETAIL_COMPANY(),
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<CompanySubscriptionDetailsPageSkeleton />}>
                 <CompanySubscriptionDetailsPage />
               </RouteSuspense>
             ),
@@ -248,7 +259,7 @@ const router = createBrowserRouter([
             path: ROUTES.SUBSCRIPTION_DETAIL_USER(),
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<UserSubscriptionDetailsPageSkeleton />}>
                 <UserSubscriptionDetailsPage />
               </RouteSuspense>
             ),

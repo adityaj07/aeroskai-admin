@@ -10,6 +10,7 @@ import { CompaniesToolbar } from '../components/CompaniesToolbar'
 import { useCompanies } from '../hooks/useCompanies'
 import { COMPANY_STATUS_FILTERS } from '../constants/companies.constants'
 import { StatusSwitcher } from '@/components/shared/app/StatusSwitcher'
+import { CompaniesPageSkeleton } from '@/components/shared/app/skeletons/companies/CompaniesPageSkeleton'
 
 const CompaniesPage = () => {
   const navigate = useNavigate()
@@ -42,13 +43,7 @@ const CompaniesPage = () => {
         onStatusChange={setStatus}
       />
 
-      {isLoading ? (
-        <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#9AA2AD]">
-          Loading companies...
-        </div>
-      ) : (
-        <CompaniesTable companies={data?.data} />
-      )}
+      {isLoading ? <CompaniesPageSkeleton /> : <CompaniesTable companies={data?.data} />}
     </motion.div>
   )
 }

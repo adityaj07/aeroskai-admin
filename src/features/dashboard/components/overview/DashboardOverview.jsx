@@ -7,6 +7,7 @@ import { ROUTES } from '@/constants/routes.constants'
 import { QuickActionCard } from './QuickActionCard'
 import { RevenueBarChartCard } from './RevenueBarChartCard'
 import { StatOverviewCard } from './StatOverviewCard'
+import { DashboardPageSkeleton } from '@/components/shared/app/skeletons/dashboard/DashboardPageSkeleton'
 
 export const DashboardOverview = ({ data, isLoading }) => {
   const navigate = useNavigate()
@@ -19,23 +20,7 @@ export const DashboardOverview = ({ data, isLoading }) => {
   }
 
   if (isLoading) {
-    return (
-      <div className="space-y-4">
-        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {Array.from({ length: 6 }).map((_, index) => (
-            <Skeleton key={index} className="h-36 rounded-[20px]" />
-          ))}
-        </div>
-        <div className="grid gap-4 lg:grid-cols-[1.2fr_1fr]">
-          <Skeleton className="h-[360px] rounded-[20px]" />
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2">
-            {Array.from({ length: 4 }).map((_, index) => (
-              <Skeleton key={index} className="h-[172px] rounded-[20px]" />
-            ))}
-          </div>
-        </div>
-      </div>
-    )
+    return <DashboardPageSkeleton />
   }
 
   if (!data) return null

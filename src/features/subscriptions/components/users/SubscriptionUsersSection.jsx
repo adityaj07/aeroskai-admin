@@ -7,6 +7,7 @@ import { useIndividualSubscriptions } from '../../hooks/useIndividualSubscriptio
 import { SubscriptionOverviewCard } from '../shared/SubscriptionOverviewCard'
 
 import { SubscriptionUsersTable } from './SubscriptionUsersTable'
+import { SubscriptionUsersSectionSkeleton } from '@/components/shared/app/skeletons/subscription/SubscriptionUsersSectionSkeleton'
 
 export const SubscriptionUsersSection = () => {
   const [status, setStatus] = useState('All')
@@ -62,9 +63,7 @@ export const SubscriptionUsersSection = () => {
       />
 
       {isLoading ? (
-        <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#9AA2AD]">
-          Loading individual subscriptions...
-        </div>
+        <SubscriptionUsersSectionSkeleton />
       ) : (
         <SubscriptionUsersTable users={subscriptionData?.data} meta={subscriptionData?.meta} />
       )}

@@ -5,6 +5,7 @@ import { useCompanySubscriptions } from '../../hooks/useCompanySubsriptions'
 
 import { SubscriptionCompaniesTable } from './SubscriptionCompaniesTable'
 import { StatusSwitcher } from '@/components/shared/app/StatusSwitcher'
+import { SubscriptionCompaniesSectionSkeleton } from '@/components/shared/app/skeletons/subscription/SubscriptionCompaniesSectionSkeleton'
 
 export const SubscriptionCompaniesSection = () => {
   const [status, setStatus] = useState('All')
@@ -22,9 +23,7 @@ export const SubscriptionCompaniesSection = () => {
       />
 
       {isLoading ? (
-        <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#9AA2AD]">
-          Loading company subscriptions...
-        </div>
+        <SubscriptionCompaniesSectionSkeleton />
       ) : (
         <SubscriptionCompaniesTable
           companies={subscriptionData?.data}

@@ -1,21 +1,31 @@
 import { motion } from 'framer-motion'
 import { useParams } from 'react-router-dom'
 
+import EmptyState from '@/components/shared/app/EmptyState'
+
 import { UserBillingHistoryCard } from '../components/details/user/UserBillingHistoryCard'
 import { UserBillingSummaryCard } from '../components/details/user/UserBillingSummaryCard'
 import { UserCurrentSubscriptionCard } from '../components/details/user/UserCurrentSubscriptionCard'
 import { UserSubscriptionHeaderBanner } from '../components/details/user/UserSubscriptionHeaderBanner'
+
 import { useIndividualSubscriptionDetails } from '../hooks/useIndividualSubscriptionDetails'
+import { UserSubscriptionDetailsPageSkeleton } from '@/components/shared/app/skeletons/subscription/details/UserSubscriptionDetailsPageSkeleton'
 
 const UserSubscriptionDetailsPage = () => {
   const { subscriptionId } = useParams()
+
   const { data, isLoading } = useIndividualSubscriptionDetails(subscriptionId)
 
-  if (isLoading || !data) {
+  if (isLoading) {
+    return <UserSubscriptionDetailsPageSkeleton />
+  }
+
+  if (!data) {
     return (
-      <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#A9B0BA]">
-        Loading individual subscription details...
-      </div>
+      <EmptyState
+        title="Subscription details not found"
+        description="The requested individual subscription could not be found."
+      />
     )
   }
 
@@ -30,6 +40,7 @@ const UserSubscriptionDetailsPage = () => {
 
       <div className="grid min-w-0 gap-4 lg:grid-cols-2">
         <UserCurrentSubscriptionCard currentSubscription={data.currentSubscription} />
+
         <UserBillingSummaryCard billingSummary={data.billingSummary} />
       </div>
 
