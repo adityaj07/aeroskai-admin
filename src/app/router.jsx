@@ -17,6 +17,11 @@ import { UserDetailsPageSkeleton } from '@/components/shared/app/skeletons/users
 import { SubscriptionsPageSkeleton } from '@/components/shared/app/skeletons/subscription/SubscriptionPageSkeleton'
 import { CompanySubscriptionDetailsPageSkeleton } from '@/components/shared/app/skeletons/subscription/details/CompanySubscriptionDetailsPageSkeleton'
 import { UserSubscriptionDetailsPageSkeleton } from '@/components/shared/app/skeletons/subscription/details/UserSubscriptionDetailsPageSkeleton'
+import { PaymentsPageSkeleton } from '@/components/shared/app/skeletons/payments/PaymentsPageSkeleton'
+import { SupportPageSkeleton } from '@/components/shared/app/skeletons/support/SupportPageSkeleton'
+import { ReportsPageSkeleton } from '@/components/shared/app/skeletons/reports/ReportsPageSkeleton'
+import { ReportDetailsPageSkeleton } from '@/components/shared/app/skeletons/reports/ReportDetailsPageSkeleton'
+import { SettingsPageSkeleton } from '@/components/shared/app/skeletons/settings/SettingsPageSkeleton'
 
 const AuthLayout = lazy(() => import('@/features/auth/layouts/AuthLayout'))
 const DashboardLayout = lazy(() => import('@/features/dashboard/layouts/DashboardLayout'))
@@ -269,7 +274,7 @@ const router = createBrowserRouter([
             path: ROUTES.PAYMENTS,
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<PaymentsPageSkeleton showRecordPayment />}>
                 <PaymentsPage />
               </RouteSuspense>
             ),
@@ -279,7 +284,7 @@ const router = createBrowserRouter([
             path: ROUTES.SUPPORT,
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<SupportPageSkeleton />}>
                 <SupportPage />
               </RouteSuspense>
             ),
@@ -289,7 +294,7 @@ const router = createBrowserRouter([
             path: ROUTES.REPORTS,
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<ReportsPageSkeleton />}>
                 <ReportsPage />
               </RouteSuspense>
             ),
@@ -299,7 +304,7 @@ const router = createBrowserRouter([
             path: ROUTES.REPORT_DETAIL(),
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<ReportDetailsPageSkeleton />}>
                 <ReportDetailsPage />
               </RouteSuspense>
             ),
@@ -309,7 +314,7 @@ const router = createBrowserRouter([
             path: ROUTES.SETTINGS,
 
             element: (
-              <RouteSuspense>
+              <RouteSuspense fallback={<SettingsPageSkeleton />}>
                 <SettingsPage />
               </RouteSuspense>
             ),

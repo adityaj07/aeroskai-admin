@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 
 import { SupportChatPanel } from './SupportChatPanel'
 import { SupportConversationList } from './SupportConversationList'
+import { SupportPageSkeleton } from '@/components/shared/app/skeletons/support/SupportPageSkeleton'
 
 export const SupportTabContent = ({ companyData = [], individualData = [], isLoading }) => {
   const [tab, setTab] = useState('companies')
@@ -65,11 +66,7 @@ export const SupportTabContent = ({ companyData = [], individualData = [], isLoa
   }
 
   if (isLoading) {
-    return (
-      <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#A9B0BA]">
-        Loading support conversations...
-      </div>
-    )
+    return <SupportPageSkeleton />
   }
 
   return (

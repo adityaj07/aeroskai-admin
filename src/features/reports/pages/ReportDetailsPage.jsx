@@ -16,6 +16,8 @@ import {
   SuspendUserDialog,
 } from '../components/reportDetails/dialogs/UserModerationDialogs'
 import { useReportDetails } from '../hooks/useReportDetails'
+import { ReportDetailsPageSkeleton } from '@/components/shared/app/skeletons/reports/ReportDetailsPageSkeleton'
+import EmptyState from '@/components/shared/app/EmptyState'
 
 const defaultDialogState = {
   rejectReport: false,
@@ -70,18 +72,15 @@ const ReportDetailsPage = () => {
   }
 
   if (isLoading) {
-    return (
-      <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#A9B0BA]">
-        Loading report details...
-      </div>
-    )
+    return <ReportDetailsPageSkeleton />
   }
 
   if (!report) {
     return (
-      <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#A9B0BA]">
-        Report not found.
-      </div>
+      <EmptyState
+        title="Report not found"
+        description="The report you're looking for does not exist or may have been removed."
+      />
     )
   }
 

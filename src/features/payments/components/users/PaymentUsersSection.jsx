@@ -13,6 +13,7 @@ import { PaymentsToolbar } from '../shared/PaymentsToolbar'
 import { IssueRefundDialog } from '../shared/dialogs/IssueRefundDialog'
 
 import { PaymentUsersTable } from './PaymentUsersTable'
+import { PaymentsPageSkeleton } from '@/components/shared/app/skeletons/payments/PaymentsPageSkeleton'
 
 const downloadCsv = (rows) => {
   const headers = ['User', 'Reference ID', 'Plan', 'Amount', 'Payment Method', 'Status', 'Date']
@@ -124,9 +125,7 @@ export const PaymentUsersSection = () => {
       </div>
 
       {isLoading ? (
-        <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#9AA2AD]">
-          Loading user payments...
-        </div>
+        <PaymentsPageSkeleton />
       ) : (
         <PaymentUsersTable
           users={paymentData?.data}

@@ -14,6 +14,7 @@ import { IssueRefundDialog } from '../shared/dialogs/IssueRefundDialog'
 import { RecordPaymentDialog } from '../shared/dialogs/RecordPaymentDialog'
 
 import { PaymentCompaniesTable } from './PaymentCompaniesTable'
+import { PaymentsPageSkeleton } from '@/components/shared/app/skeletons/payments/PaymentsPageSkeleton'
 
 const downloadCsv = (rows) => {
   const headers = ['Company', 'Reference ID', 'Seats', 'Amount', 'Payment Method', 'Status', 'Date']
@@ -138,9 +139,7 @@ export const PaymentCompaniesSection = () => {
       </div>
 
       {isLoading ? (
-        <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#9AA2AD]">
-          Loading company payments...
-        </div>
+        <PaymentsPageSkeleton showRecordPayment />
       ) : (
         <PaymentCompaniesTable
           companies={paymentData?.data}

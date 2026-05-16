@@ -13,6 +13,7 @@ import { useReports } from '../hooks/useReports'
 
 import { ReportsToolbar } from '../components/ReportsToolbar'
 import { ReportsTable } from '../components/ReportsTable'
+import { ReportsPageSkeleton } from '@/components/shared/app/skeletons/reports/ReportsPageSkeleton'
 
 const ReportsPage = () => {
   const [status, setStatus] = useState('All')
@@ -54,9 +55,7 @@ const ReportsPage = () => {
       />
 
       {isLoading ? (
-        <div className="rounded-xl border border-[#EEF1F4] p-10 text-center text-sm text-[#6F7680] dark:border-[#25292E] dark:text-[#9AA2AD]">
-          Loading reports...
-        </div>
+        <ReportsPageSkeleton />
       ) : (
         <ReportsTable reports={data?.data} meta={data?.meta} />
       )}
